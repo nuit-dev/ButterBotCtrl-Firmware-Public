@@ -1,0 +1,13 @@
+.idea
+
+cmake-build-debug
+build
+
+sdkconfig*
+!sdkconfig
+
+spiffs.bin
+
+venv
+
+managed_components/*
