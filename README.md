@@ -10,8 +10,13 @@ Fork of the [CircuitMess ButterBot](https://github.com/CircuitMess/ButterBot-Fir
 - **Menu navigation fix** (in the controller mod): joystick up/down now reliably moves through the action menu.
 
 ## About nju aj ti OVERKLOKING
-**nju aj ti OVERKLOKING** is a satirical comic strip about everyday IT life – users, sysadmins, printers that never work and all the chaos in between. It's drawn by Croatian comic artist **Dubravko Mataković** and published by NUIT. If you've ever worked in IT, you'll recognise yourself in it.
-👉 Read it on [nuit.hr](https://nuit.hr)
+**OVERKLOKING** by [Dubravko Mataković](https://nuit.hr/overkloking/dubravko-matakovic/) is the longest-running and best-known humorous online comic about IT and society in our region. It started when the internet was still in its infancy, and generations of readers have grown up – and laughed – with it.
+
+After more than 20 years and over 1,000 pages on iskon.hr and net.hr, it was cancelled at Christmas 2025. At Easter 2026 it found a new home at NUIT as **nju aj ti OVERKLOKING** – a new strip every Thursday, free to read, no ads.
+
+It's social satire and absurdist black comedy. It began with the world of computers and grew into the misadventures of one burnt-out family, with constant jabs at current events and tech – like the robot that "does nothing instead of me, and does it better".
+
+👉 Read it: [nuit.hr/overkloking](https://nuit.hr/overkloking/) · 📰 [Lupiga: "OVERKLOKING je živ"](https://lupiga.com/vijesti/overkloking-je-ziv-dubravko-matakovic-nastavlja-sa-kultnom-satirom-na-vrlo-neobicnom-mjestu)
 
 ## Build & flash
 ESP-IDF 5.5.3: `idf.py build`, then `idf.py -p <port> flash`.
