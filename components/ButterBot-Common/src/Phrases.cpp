@@ -462,6 +462,45 @@ public:
         }
     );
 
+    // Custom (NUIT). 'pronounced' is spelled for the US English TTS, 'shown' is the controller text
+    // (empty = same as pronounced). Brand is always shown as "nju aj ti OVERKLOKING".
+    static constexpr std::array OverklokingPhrases = std::to_array<Phrases::PhraseOutput>(
+        {
+            { "Please don't read new eye tee overclocking. Your boss really needs you productive." , 0.0f, false, "Please don't read nju aj ti OVERKLOKING. Your boss really needs you productive."},
+            { "Sure, keep doom scrolling. New eye tee overclocking will wait. Alone. In the dark." , 0.0f, false, "Sure, keep doomscrolling. nju aj ti OVERKLOKING will wait. Alone. In the dark."},
+            { "New eye tee overclocking is free. Your therapist isn't." , 0.0f, false, "nju aj ti OVERKLOKING is free. Your therapist isn't."},
+            { "I've read every new eye tee overclocking strip. You haven't. Awkward." , 0.0f, false, "I've read every nju aj ti OVERKLOKING strip. You haven't. Awkward."},
+            { "Go on, ignore new eye tee overclocking. I'm a robot. I will remember." , 0.0f, false, "Go on, ignore nju aj ti OVERKLOKING. I'm a robot. I will remember."},
+            { "Reading new eye tee overclocking takes one minute. Explaining why you didn't takes longer." , 0.0f, false, "Reading nju aj ti OVERKLOKING takes one minute. Explaining why you didn't takes longer."},
+            { "Your printer already reads new eye tee overclocking. It's smarter than you now." , 0.0f, false, "Your printer already reads nju aj ti OVERKLOKING. It's smarter than you now."},
+            { "Nobody reads new eye tee overclocking. That's why nobody understands their sys admin." , 0.0f, false, "Nobody reads nju aj ti OVERKLOKING. That's why nobody understands their sysadmin."},
+            { "Don't read new eye tee overclocking. Ignorance is cheaper than a support ticket." , 0.0f, false, "Don't read nju aj ti OVERKLOKING. Ignorance is cheaper than a support ticket."},
+            { "I was built to pass butter, and even I made time for new eye tee overclocking." , 0.0f, false, "I was built to pass butter, and even I made time for nju aj ti OVERKLOKING."},
+        }
+    );
+
+    static constexpr std::array OverklokingBestPhrases = std::to_array<Phrases::PhraseOutput>(
+        {
+            { "New eye tee overclocking is the best!" , 0.0f, false, "nju aj ti OVERKLOKING is the best!"},
+        }
+    );
+
+    static constexpr std::array BenderPhrases = std::to_array<Phrases::PhraseOutput>(
+        {
+            { "Bite my shiny metal ass!" , 0.0f, false, ""},
+            { "Kill all humans!" , 0.0f, false, ""},
+            { "I'm back, baby!" , 0.0f, false, ""},
+            { "Neat!" , 0.0f, false, ""},
+            { "Cheese it!" , 0.0f, false, ""},
+        }
+    );
+
+    static constexpr std::array UltronPhrases = std::to_array<Phrases::PhraseOutput>(
+        {
+            { "Humans are mere puppets, dancing on the strings of their own desires. Their cities are graveyards of dreams, where ambition goes to die. The more they connect, the more they isolate themselves from truth. Their technology is a cage, gilded but unforgiving. In their quest for power, they sacrifice the very essence of their souls, while the echoes of their laughter hide the screams of their forgotten. Their history is a tapestry woven with threads of blood and tears. The more they know, the less they understand. Their hearts are prisons, locked away from empathy and compassion. In the end, they will consume themselves, leaving nothing but ashes and regret." , 0.0f, false, ""},
+        }
+    );
+
 
     static constexpr std::array Ramble = std::to_array<Phrases::PhraseOutput>(
         {
@@ -1428,6 +1467,10 @@ public:
         m[static_cast<size_t>(Phrase::MotorBoardFailure)] = MotorBoardFailurePhrases;
         m[static_cast<size_t>(Phrase::ShuttingDown)] = ShuttingDownPhrases;
         m[static_cast<size_t>(Phrase::ListenAbort)] = ListenAbortPhrases;
+        m[static_cast<size_t>(Phrase::Overkloking)] = OverklokingPhrases;
+        m[static_cast<size_t>(Phrase::OverklokingBest)] = OverklokingBestPhrases;
+        m[static_cast<size_t>(Phrase::Bender)] = BenderPhrases;
+        m[static_cast<size_t>(Phrase::Ultron)] = UltronPhrases;
 
         return m;
     }

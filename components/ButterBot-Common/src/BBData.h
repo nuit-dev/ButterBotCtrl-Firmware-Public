@@ -43,6 +43,11 @@ struct BB {
 			PhonePlayMusic,
 			PhoneStopMusic,
 			WhatsThis,
+			// Custom (NUIT) - keep these LAST so stock values never shift
+			OverklokingDrive, // Poke held 1 s: 10 cm forward + "nju aj ti OVERKLOKING is the best"
+			OverklokingQuote, // menu: random sarcastic OVERKLOKING line
+			BenderQuote,      // menu: random Bender line
+			UltronQuote,      // menu: Ultron monologue
 		} scenario;
 
 		enum class Listen {
@@ -400,6 +405,16 @@ struct CantMoveData : BBData {
 	enum class Reason : uint8_t {
 		Charging, Unstable
 	} reason;
+};
+
+// Custom (NUIT): a spoken quote, shown on the controller in QuoteWindow
+struct QuoteData : BBData {
+	enum class Category : uint8_t {
+		Overkloking, OverklokingBest, Bender, Ultron
+	} category;
+	uint8_t id;   // index in the category's phrase list
+	uint8_t part; // sentence index for long quotes, WholeQuote otherwise
+	static constexpr uint8_t WholeQuote = 0xFF;
 };
 
 #endif //BUTTERBOT_COMMON_ACTIONDATA_H

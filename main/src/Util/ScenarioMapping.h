@@ -11,6 +11,10 @@ struct Action {
 
 // Declaration order defines the display order in the action list
 constexpr std::pair<const char*, Action> ScenarioNameMap[] = {
+	// Custom (NUIT) - right after SETTINGS; subtitles are in ActionElement::collectPhrases
+	{ "OVERKLOKING", { BB::Action::Scenario::OverklokingQuote, {} } },
+	{ "BENDER", { BB::Action::Scenario::BenderQuote, {} } },
+	{ "ULTRON", { BB::Action::Scenario::UltronQuote, {} } },
 	{ "Fact", { BB::Action::Scenario::Fact, {} } },
 	{ "Joke", { BB::Action::Scenario::Joke, {} } },
 	{ "Pass The Butter", { BB::Action::Scenario::PassTheButter, {} } },

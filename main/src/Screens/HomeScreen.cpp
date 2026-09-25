@@ -64,6 +64,7 @@
 #include "Components/HomeWindows/ObserveWindow.h"
 #include "Components/HomeWindows/CantMoveWindow.h"
 #include "Components/HomeWindows/HoldPopupWindow.h"
+#include "Components/HomeWindows/QuoteWindow.h"
 #include "RCScreen.h"
 #include "Util/WiFiAccessPoint.h"
 
@@ -155,7 +156,7 @@ void HomeScreen::handleButtonEvent(const Button btn, const ButtonInput::Action a
 
 	// Early return if popup modal active
 	if(popup != nullptr && btn != popupOwner){
-		if(static_cast<HoldPopupWindow*>(popup)->isBarFull() || overridePressTime != 0 || summonPressTime != 0){
+		if(static_cast<HoldPopupWindow*>(popup)->isBarFull() || overridePressTime != 0 || summonPressTime != 0 || pokePressTime != 0){
 			return;
 		}
 	}
@@ -166,7 +167,9 @@ void HomeScreen::handleButtonEvent(const Button btn, const ButtonInput::Action a
 	}
 
 	if(action == ButtonInput::Action::Press){
-		if(btn == Button::ShutUp){
+		if(btn == Button::Poke){
+			pokePressTime = millis();
+		} else if(btn == Button::ShutUp){
 			com->sendCommand(Ctrl::Command::ShutUp);
 		} else if(btn == Button::Summon){
 			// Summon press takes over the short-press override hint
@@ -189,7 +192,12 @@ void HomeScreen::handleButtonEvent(const Button btn, const ButtonInput::Action a
 	}
 
 	if(btn == Button::Poke){
-		com->sendCommand(Ctrl::Command::Poke);
+		// Short press = poke; released mid-hold = cancelled; hold already fired = nothing
+		if(pokePressTime != 0 && millis() - pokePressTime < PokeShortPressMaxMs){
+			com->sendCommand(Ctrl::Command::Poke);
+		}
+		pokePressTime = 0;
+		clearPopupFor(Button::Poke);
 	} else if(btn == Button::Summon){
 		if(summonPressTime != 0 && millis() - summonPressTime < SummonShortPressMaxMs && listenSendCount < MaxListenSends){
 			com->sendCommand(Ctrl::Command::Listen);
@@ -252,7 +260,16 @@ void HomeScreen::loop(){
 		summonPressTime = 0;
 	}
 
-	if(overridePressTime != 0 && millis() - overridePressTime >= OverrideHoldMinMs){
+	if(pokePressTime != 0 && popup == nullptr && millis() - pokePressTime >= PokeShortPressMaxMs){
+		showPopup(new HoldPopupWindow(*this, "Overkloking", PokeLongPressMinMs - PokeShortPressMaxMs), Button::Poke);
+	}
+
+	if(pokePressTime != 0 && millis() - pokePressTime >= PokeLongPressMinMs){
+		com->sendScenario(BB::Action::Scenario::OverklokingDrive, {});
+		pokePressTime = 0; // popup stays until release, like Summon
+	}
+
+		if(overridePressTime != 0 && millis() - overridePressTime >= OverrideHoldMinMs){
 		overridePressTime = 0;
 		startRC();
 	}
@@ -280,6 +297,7 @@ void HomeScreen::startRC(){
 		// Button events are ignored while waiting for RC, manually clear popup
 		clearPopup();
 		summonPressTime = 0;
+		pokePressTime = 0;
 	}
 }
 
@@ -491,6 +509,13 @@ HomeWindow* HomeScreen::createActionWindow(const BB::State state, const BB::Acti
 			case BB::Action::Scenario::WhatsThis: // Object Detection window - on demand
 				newWin = initActionWindow<WhatsThisWindow, WhatsThisData>(windowContainer, data);
 				break;
+			// Custom (NUIT)
+			case BB::Action::Scenario::OverklokingDrive:
+			case BB::Action::Scenario::OverklokingQuote:
+			case BB::Action::Scenario::BenderQuote:
+			case BB::Action::Scenario::UltronQuote:
+				newWin = initActionWindow<QuoteWindow, QuoteData>(windowContainer, data);
+				break;
 			default:
 				ESP_LOGE(TAG, "Action scenario not recognised");
 				break;
@@ -648,6 +673,7 @@ void HomeScreen::showActions(){
 	clearPopup();
 	summonPressTime = 0;
 	overridePressTime = 0;
+	pokePressTime = 0;
 
 	actionElement = new ActionElement(*this, inputGroup, [this]() {
 		// SETTINGS entry; the list is cleaned up by the screen transition

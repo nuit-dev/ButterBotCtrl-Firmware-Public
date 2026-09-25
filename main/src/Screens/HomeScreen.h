@@ -82,6 +82,10 @@ private:
 	static constexpr uint64_t OverrideShortPressMaxMs = 300;
 	static constexpr uint64_t OverrideHintDurationMs = 3000;
 	uint64_t overridePressTime = 0;
+	// Custom (NUIT): short Poke = stock poke, hold 1 s = 10 cm forward + "nju aj ti OVERKLOKING is the best"
+	static constexpr uint64_t PokeShortPressMaxMs = 300;
+	static constexpr uint64_t PokeLongPressMinMs = 1000;
+	uint64_t pokePressTime = 0;
 	uint64_t overrideHintShownAt = 0;
 
 	// "Loading RC..." indicator

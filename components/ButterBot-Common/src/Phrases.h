@@ -174,6 +174,11 @@ enum class Phrase : uint16_t {
     MotorBoardFailure,
     ShuttingDown,
 	ListenAbort,
+    // Custom (NUIT)
+    Overkloking,
+    OverklokingBest,
+    Bender,
+    Ultron,
     // Add phrases here
     COUNT
 };
