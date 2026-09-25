@@ -7,6 +7,11 @@ Fork of the [CircuitMess ButterBot](https://github.com/CircuitMess/ButterBot-Fir
 - **Action menu:** OVERKLOKING, BENDER and ULTRON – the robot says a random quote and the controller shows it. Long quotes go sentence by sentence; Shut Up or Poke stops them.
 - **Hold Poke 1 s:** drives ~10 cm forward and says "nju aj ti OVERKLOKING is the best!"
 - **Settings → SENSOR:** turn off the front and/or floor proximity sensors, for surfaces where they misfire. With the floor sensor off, the robot can drive off a table edge.
+- **Menu navigation fix** (in the controller mod): joystick up/down now reliably moves through the action menu.
+
+## About nju aj ti OVERKLOKING
+**nju aj ti OVERKLOKING** is a satirical comic strip about everyday IT life – users, sysadmins, printers that never work and all the chaos in between. It's drawn by Croatian comic artist **Dubravko Mataković** and published by NUIT. If you've ever worked in IT, you'll recognise yourself in it.
+👉 Read it on [nuit.hr](https://nuit.hr)
 
 ## Build & flash
 ESP-IDF 5.5.3: `idf.py build`, then `idf.py -p <port> flash`.
@@ -14,7 +19,7 @@ The robot has 16 MB flash, the controller 4 MB – don't mix up the firmwares.
 Quotes live in `components/ButterBot-Common/src/Phrases.cpp`. Full change list: [NUIT-CHANGES.md](NUIT-CHANGES.md).
 
 ## Credits
-Original firmware © CircuitMess (MIT licence). Mod by Cyberlord / NUIT d.o.o. – read **nju aj ti OVERKLOKING** on [nuit.hr](https://nuit.hr).
+Original firmware © CircuitMess (MIT licence). Mod by Cyberlord / NUIT d.o.o.
 
 ---
 *Original CircuitMess README below.*
