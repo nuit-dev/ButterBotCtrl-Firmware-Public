@@ -1,3 +1,24 @@
+# ButterBot robot firmware – NUIT OVERKLOKING mod
+
+Fork of the [CircuitMess ButterBot](https://github.com/CircuitMess/ButterBot-Firmware-Public) firmware by **NUIT d.o.o.** ([nuit.hr](https://nuit.hr)).
+⚠️ Use together with the [controller mod](https://github.com/nuit-dev/ButterBotCtrl-Firmware-Public) – flash both.
+
+## What's new
+- **Action menu:** OVERKLOKING, BENDER and ULTRON – the robot says a random quote and the controller shows it. Long quotes go sentence by sentence; Shut Up or Poke stops them.
+- **Hold Poke 1 s:** drives ~10 cm forward and says "nju aj ti OVERKLOKING is the best!"
+- **Settings → SENSOR:** turn off the front and/or floor proximity sensors, for surfaces where they misfire. With the floor sensor off, the robot can drive off a table edge.
+
+## Build & flash
+ESP-IDF 5.5.3: `idf.py build`, then `idf.py -p <port> flash`.
+The robot has 16 MB flash, the controller 4 MB – don't mix up the firmwares.
+Quotes live in `components/ButterBot-Common/src/Phrases.cpp`. Full change list: [NUIT-CHANGES.md](NUIT-CHANGES.md).
+
+## Credits
+Original firmware © CircuitMess (MIT licence). Mod by Cyberlord / NUIT d.o.o. – read **nju aj ti OVERKLOKING** on [nuit.hr](https://nuit.hr).
+
+---
+*Original CircuitMess README below.*
+
 # ButterBot Controller Firmware
 
 ## Building
