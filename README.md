@@ -10,13 +10,22 @@ Fork of the [CircuitMess ButterBot](https://github.com/CircuitMess/ButterBot-Fir
 - **Menu navigation fix** (in the controller mod): joystick up/down now reliably moves through the action menu.
 
 ## About nju aj ti OVERKLOKING
-**OVERKLOKING** by [Dubravko Mataković](https://nuit.hr/overkloking/dubravko-matakovic/) is the longest-running and best-known humorous online comic about IT and society in Croatia. It started more than 20 years ago, when the internet was still in its infancy, and generations of readers have grown up – and laughed – with it.
 
-After over 1,000 pages it was cancelled at Christmas 2025. At Easter 2026 it found a new home at NUIT as **nju aj ti OVERKLOKING** – a new strip every Thursday, free to read, no ads.
+**OVERKLOKING** is a Croatian satirical comic by [Dubravko Mataković](https://nuit.hr/overkloking/dubravko-matakovic/), focused on computers, technology, everyday life and the increasingly absurd relationship between people and the digital world.
 
-It's social satire and absurdist black comedy. It began with the world of computers and grew into the misadventures of one burnt-out family, with constant jabs at current events and tech – like the robot that "does nothing instead of me, and does it better".
+The comic began more than two decades ago, when the web looked very different and computers were still mysterious enough to be funny on their own. Over time, it grew far beyond IT: into social satire, black comedy, current events and the ongoing disasters of one thoroughly dysfunctional family.
 
-👉 Read it: [nuit.hr/overkloking](https://nuit.hr/overkloking/)
+After more than **1,000 published pages**, the original run ended at Christmas 2025.
+
+At Easter 2026 it returned at NUIT under a new name:
+
+**nju aj ti OVERKLOKING**
+
+The format remains simple: **one new strip every Thursday**, freely available online and without advertising.
+
+Expect computers, bureaucracy, artificial intelligence, family catastrophes, current events and technology that supposedly exists to make life easier — including robots that can *“do nothing instead of me, and do it better.”*
+
+**Read the comic:** [nuit.hr/overkloking](https://nuit.hr/overkloking/)
 
 ## Build & flash
 ESP-IDF 5.5.3: `idf.py build`, then `idf.py -p <port> flash`.
