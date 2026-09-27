@@ -24,6 +24,7 @@ namespace QuoteText {
 			case QuoteData::Category::Daisy: return Phrase::Daisy;
 			case QuoteData::Category::Toaster: return Phrase::Toaster;
 			case QuoteData::Category::Yoda: return Phrase::Yoda;
+			case QuoteData::Category::Croatian: return Phrase::Croatian;
 		}
 		return Phrase::None;
 	}
@@ -40,6 +41,7 @@ namespace QuoteText {
 			case QuoteData::Category::Daisy: return "SHUTDOWN";
 			case QuoteData::Category::Toaster: return "TALKIE TOASTER";
 			case QuoteData::Category::Yoda: return "YODA";
+			case QuoteData::Category::Croatian: return "HRVATSKI";
 		}
 		return "";
 	}

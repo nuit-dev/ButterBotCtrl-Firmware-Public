@@ -555,6 +555,17 @@ public:
         }
     );
 
+    // Croatian, respelled for the US English TTS. The controller font has no diacritics, so 'shown' is written without them.
+    static constexpr std::array CroatianPhrases = std::to_array<Phrases::PhraseOutput>(
+        {
+            { "Oh kosh, boh kosh, pur deh koh kosh!" , 0.0f, false, "Okos bokos prde kokos!"},
+            { "Kree gah, boon doh loh!" , 0.0f, false, "Kreegah bundolo!"},
+            { "Tkoh leh tee, vree yeh dee, tkoh vree yeh dee, leh tee, tkoh neh leh tee, neh vree yeh dee." , 0.0f, false, "Tko leti, vrijedi, tko vrijedi, leti, tko ne leti, ne vrijedi."},
+            { "Hah loh, Bing, kah koh braat? Tsee yeh nah? Prah vah seat nits ah!" , 0.0f, false, "Halo, Bing, kako brat? Cijena? Prava sitnica!"},
+            { "Bowl yeh zhivvy yeh tee stoh goh dee nah kah oh mee lee yoo naash, neh goh seh dum dah nah oo bee yeh dee." , 0.0f, false, "Bolje zivjeti sto godina kao milijunas, nego sedam dana u bijedi."},
+        }
+    );
+
     static constexpr std::array Ramble = std::to_array<Phrases::PhraseOutput>(
         {
             {"What is my purpose" , 0.0f, false},
@@ -1530,6 +1541,7 @@ public:
         m[static_cast<size_t>(Phrase::Daisy)] = DaisyPhrases;
         m[static_cast<size_t>(Phrase::Toaster)] = ToasterPhrases;
         m[static_cast<size_t>(Phrase::Yoda)] = YodaPhrases;
+        m[static_cast<size_t>(Phrase::Croatian)] = CroatianPhrases;
 
         return m;
     }
@@ -1585,7 +1597,7 @@ namespace {
 
     bool isCharacterQuote(Phrase phrase){
         return phrase == Phrase::Darth || phrase == Phrase::Hawking || phrase == Phrase::Hal || phrase == Phrase::Daisy ||
-               phrase == Phrase::Toaster || phrase == Phrase::Yoda;
+               phrase == Phrase::Toaster || phrase == Phrase::Yoda || phrase == Phrase::Croatian;
     }
 
     // Custom (NUIT): YODA voice. "I will remember." -> "Remember, I will." Only the first auxiliary in the first four

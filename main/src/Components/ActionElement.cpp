@@ -269,6 +269,7 @@ std::string ActionElement::collectPhrases(const BB::Action::Scenario scenario, c
 		case BB::Action::Scenario::HalQuote: return "POD BAY DOORS: CLOSED";
 		case BB::Action::Scenario::ToasterQuote: return "WOULD YOU LIKE SOME TOAST?";
 		case BB::Action::Scenario::YodaQuote: return "GRAND JEDI MASTER";
+		case BB::Action::Scenario::CroatianQuote: return "BUTTER BOT ZNA I HRVATSKI";
 		default: break;
 	}
 

@@ -5,6 +5,9 @@ Fork of the [CircuitMess ButterBot controller](https://github.com/CircuitMess/Bu
 
 ## What's new
 
+### v3.2 – HRVATSKI
+- **HRVATSKI** menu item after YODA ("BUTTER BOT ZNA I HRVATSKI"): the robot speaks Croatian lines, shown on the controller.
+
 ### v3 – more characters
 - **Settings → VOICE:** new TALKIE TOASTER and YODA (VADER is now shown as DARTH VADER). The VOICE box is as wide as THEME and SLEEP.
 - **Action menu:** TALKIE TOASTER and YODA after HAL 9000, each in its own voice.
@@ -55,7 +58,7 @@ python -m esptool -p <PORT> flash_id
 **Option A – one file** (`…-controller-full.bin`): simplest, but resets the controller's settings (theme, brightness, sleep, SENSOR, VOICE).
 
 ```shell
-python -m esptool --chip esp32s3 -p <PORT> -b 460800 write_flash 0 ButterBot-OVERKLOKING-v3-controller-full.bin
+python -m esptool --chip esp32s3 -p <PORT> -b 460800 write_flash 0 ButterBot-OVERKLOKING-v3.2-controller-full.bin
 ```
 
 **Option B – keep settings** (`…-controller-parts.zip`): unzip, then run in the unzipped folder:

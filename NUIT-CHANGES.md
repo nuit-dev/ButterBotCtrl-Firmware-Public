@@ -14,6 +14,7 @@ Custom OVERKLOKING mod by NUIT d.o.o. Must be flashed together with the matching
   (`Services/Com::setSensorCommand`). "Press joystick to return" hint removed to make room.
   Home screen guide shows "SENSORS: ... OFF" while any sensor is off.
 - `components/CMF/lib/glm` is git-ignored in this repo's CMF copy but required – keep it (copy from the robot repo).
+- Action menu: HRVATSKI ("BUTTER BOT ZNA I HRVATSKI") after YODA - Croatian lines, in the VOICE setting's voice.
 - Action menu: DARTH OVERKLOKING, OVERHAWKING, HAL 9000, TALKIE TOASTER, YODA right after OVERKLOKING (shown in
   `QuoteWindow`). The robot speaks them in the Darth Vader / Hawking / HAL / Talkie Toaster / Yoda voice regardless
   of the VOICE setting.
