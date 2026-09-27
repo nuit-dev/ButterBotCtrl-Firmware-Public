@@ -13,6 +13,9 @@ struct Action {
 constexpr std::pair<const char*, Action> ScenarioNameMap[] = {
 	// Custom (NUIT) - right after SETTINGS; subtitles are in ActionElement::collectPhrases
 	{ "OVERKLOKING", { BB::Action::Scenario::OverklokingQuote, {} } },
+	{ "DARTH OVERKLOKING", { BB::Action::Scenario::DarthQuote, {} } },
+	{ "OVERHAWKING", { BB::Action::Scenario::HawkingQuote, {} } },
+	{ "HAL 9000", { BB::Action::Scenario::HalQuote, {} } },
 	{ "BENDER", { BB::Action::Scenario::BenderQuote, {} } },
 	{ "ULTRON", { BB::Action::Scenario::UltronQuote, {} } },
 	{ "Fact", { BB::Action::Scenario::Fact, {} } },
@@ -63,6 +66,8 @@ constexpr std::pair<const char*, Action> ScenarioNameMap[] = {
 	{ "Remember this face", { BB::Action::Scenario::FaceDetect, FaceScenarioData{ FaceScenarioData::Phase::Remember } } },
 	{ "Forget Owner", { BB::Action::Scenario::FaceDetectForget, FaceScenarioData{ FaceScenarioData::Phase::Forget } } },
 	{ "Dance", { BB::Action::Scenario::Dance, {} } },
+	// Custom (NUIT) - last, with the settings icon; asks "TERMINATE CONSCIOUSNESS?" first (ActionElement)
+	{ "SHUTDOWN", { BB::Action::Scenario::DaisySong, {} } },
 };
 
 #endif //BUTTERBOTCTRL_FIRMWARE_SCENARIOMAPPING_H

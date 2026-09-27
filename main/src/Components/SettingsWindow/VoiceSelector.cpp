@@ -1,9 +1,9 @@
-#include "SleepSelector.h"
+#include "VoiceSelector.h"
 
 #include <Fonts/font.hpp>
 #include <misc/lv_event_private.h>
 
-SleepSelector::SleepSelector(lv_obj_t* parent, const InactivityTimeout initVal, const std::function<void(uint32_t)>& keyCb, const std::function<void(InactivityTimeout)>& valCb)
+VoiceSelector::VoiceSelector(lv_obj_t* parent, const VoiceMode initVal, const std::function<void(uint32_t)>& keyCb, const std::function<void(VoiceMode)>& valCb)
 	: LVObject(parent), keyCb(keyCb), valCb(valCb){
 	const auto app = Application::getApp();
 	theme = app->getService<ThemeService>();
@@ -19,38 +19,38 @@ SleepSelector::SleepSelector(lv_obj_t* parent, const InactivityTimeout initVal, 
 	// CALLBACKS
 	lv_obj_add_event_cb(*this, [](lv_event_t* e) {
 		const uint32_t key = lv_event_get_key(e);
-		const auto sleepSelector = (SleepSelector*)(e->user_data);
+		const auto voiceSelector = (VoiceSelector*)(e->user_data);
 
 		if(key != LV_KEY_RIGHT && key != LV_KEY_LEFT && key != LV_KEY_UP && key != LV_KEY_DOWN) return;
 		if(key == LV_KEY_UP || key == LV_KEY_DOWN){
 			// WINDOW CALLBACK
-			sleepSelector->keyCb(key);
+			voiceSelector->keyCb(key);
 			return;
 		}
 		if(key == LV_KEY_RIGHT){
-			if(sleepSelector->currentIndex >= OptionsNum - 1){
-				sleepSelector->currentIndex = 0;
+			if(voiceSelector->currentIndex >= OptionsNum - 1){
+				voiceSelector->currentIndex = 0;
 			} else{
-				sleepSelector->currentIndex += 1;
+				voiceSelector->currentIndex += 1;
 			}
 		} else{
-			if(sleepSelector->currentIndex <= 0){
-				sleepSelector->currentIndex = OptionsNum - 1;
+			if(voiceSelector->currentIndex <= 0){
+				voiceSelector->currentIndex = OptionsNum - 1;
 			} else{
-				sleepSelector->currentIndex -= 1;
+				voiceSelector->currentIndex -= 1;
 			}
 		}
 
-		lv_label_set_text(sleepSelector->selectorLabel, OptionNameMap.at(sleepSelector->currentIndex));
-		sleepSelector->valCb(OptionValueMap.at(sleepSelector->currentIndex));
+		lv_label_set_text(voiceSelector->selectorLabel, OptionNameMap.at(voiceSelector->currentIndex));
+		voiceSelector->valCb(OptionValueMap.at(voiceSelector->currentIndex));
 	}, LV_EVENT_KEY, this);
 
 	buildUI(parent);
 }
 
-SleepSelector::~SleepSelector(){}
+VoiceSelector::~VoiceSelector(){}
 
-void SleepSelector::buildUI(lv_obj_t* parent){
+void VoiceSelector::buildUI(lv_obj_t* parent){
 	const lv_color_t colorPrim = theme->getPrimaryColor();
 	const lv_color_t colorTert = theme->getTertiaryColor();
 
@@ -64,17 +64,17 @@ void SleepSelector::buildUI(lv_obj_t* parent){
 	lv_style_set_size(labelDefaultStyle, 80, LV_SIZE_CONTENT);
 	lv_style_set_bg_opa(labelDefaultStyle, LV_OPA_TRANSP);
 
-	// Sleep widget label
+	// Voice widget label
 	widgetLabel = lv_label_create(*this);
 	lv_obj_add_style(widgetLabel, labelDefaultStyle, 0);
-	lv_label_set_text(widgetLabel, "SLEEP");
-	lv_obj_set_width(widgetLabel, 24);
+	lv_label_set_text(widgetLabel, "VOICE");
+	lv_obj_set_width(widgetLabel, 32);
 	lv_obj_set_pos(widgetLabel, 2, 4);
 
 	// Selector container
 	lv_obj_t* selector = lv_obj_create(*this);
-	lv_obj_set_size(selector, 83, 15); // Custom (NUIT): was 18, 5 rows
-	lv_obj_set_pos(selector, 28, 0);
+	lv_obj_set_size(selector, 77, 15);
+	lv_obj_set_pos(selector, 34, 0);
 	lv_obj_set_style_border_width(selector, 1, 0);
 	lv_obj_set_style_border_color(selector, colorPrim, 0);
 	lv_obj_set_style_bg_color(selector, colorTert, 0);
@@ -85,7 +85,7 @@ void SleepSelector::buildUI(lv_obj_t* parent){
 	selectorLabel = lv_label_create(selector);
 	lv_obj_add_style(selectorLabel, labelDefaultStyle, 0);
 	lv_label_set_text(selectorLabel, OptionNameMap.at(currentIndex));
-	lv_obj_set_width(selectorLabel, 69);
+	lv_obj_set_width(selectorLabel, 63);
 	lv_obj_set_pos(selectorLabel, 7, 3);
 	lv_obj_set_style_text_align(selectorLabel, LV_TEXT_ALIGN_CENTER, 0);
 	lv_obj_set_style_bg_opa(selectorLabel, LV_OPA_TRANSP, 0);
@@ -100,5 +100,5 @@ void SleepSelector::buildUI(lv_obj_t* parent){
 	lv_obj_t* selectorRight = lv_image_create(selector);
 	lv_image_set_src(selectorRight, theme->getAsset(Asset::SettingsRight));
 	lv_obj_set_style_bg_opa(selectorRight, LV_OPA_TRANSP, 0);
-	lv_obj_set_pos(selectorRight, 73, 2);
+	lv_obj_set_pos(selectorRight, 67, 2);
 }

@@ -179,6 +179,10 @@ enum class Phrase : uint16_t {
     OverklokingBest,
     Bender,
     Ultron,
+    Darth,
+    Hawking,
+    Hal,
+    Daisy,
     // Add phrases here
     COUNT
 };

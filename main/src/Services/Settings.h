@@ -27,6 +27,20 @@ inline Ctrl::Command sensorModeToCommand(SensorMode mode){
 	}
 }
 
+// Custom (NUIT): robot TTS voice preset, stored separately like SensorMode
+enum class VoiceMode : uint8_t {
+	Normal = 0, Hawking = 1, Vader = 2, Hal = 3
+};
+
+inline Ctrl::Command voiceModeToCommand(VoiceMode mode){
+	switch(mode){
+		case VoiceMode::Hawking: return Ctrl::VoiceHawking;
+		case VoiceMode::Vader: return Ctrl::VoiceVader;
+		case VoiceMode::Hal: return Ctrl::VoiceHal;
+		default: return Ctrl::VoiceNormal;
+	}
+}
+
 struct SettingsStruct {
 	float screenBrightness = 1.0f;
 	Theme currentTheme = Theme::Main;
@@ -46,10 +60,15 @@ public:
 	SensorMode getSensorMode() const;
 	void setSensorMode(SensorMode mode);
 
+	VoiceMode getVoiceMode() const;
+	void setVoiceMode(VoiceMode mode);
+
 private:
 	SettingsStruct settingsStruct;
 	SensorMode sensorMode = SensorMode::AllOn;
 	static constexpr const char* SensorKey = "Sensors";
+	VoiceMode voiceMode = VoiceMode::Normal;
+	static constexpr const char* VoiceKey = "Voice";
 
 	static constexpr const char* BlobName = "Settings";
 	static constexpr const char* NVSNamespace = "ButterbotCtrl";

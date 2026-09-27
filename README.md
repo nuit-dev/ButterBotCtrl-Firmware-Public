@@ -1,13 +1,20 @@
-# ButterBot robot firmware – nju aj ti OVERKLOKING mod
+# ButterBot controller firmware – nju aj ti OVERKLOKING mod
 
-Fork of the [CircuitMess ButterBot](https://github.com/CircuitMess/ButterBot-Firmware-Public) firmware by **NUIT d.o.o.** ([nuit.hr](https://nuit.hr)).
-⚠️ Use together with the [controller mod](https://github.com/nuit-dev/ButterBotCtrl-Firmware-Public) – flash both.
+Fork of the [CircuitMess ButterBot controller](https://github.com/CircuitMess/ButterBotCtrl-Firmware-Public) firmware by **NUIT d.o.o.** ([nuit.hr](https://nuit.hr)).
+⚠️ Use together with the [robot mod](https://github.com/nuit-dev/ButterBot-Firmware-Public) – flash both.
 
 ## What's new
-- **Action menu:** OVERKLOKING, BENDER and ULTRON – the robot says a random quote and the controller shows it. Long quotes go sentence by sentence; Shut Up or Poke stops them.
-- **Hold Poke 1 s:** drives ~10 cm forward and says "nju aj ti OVERKLOKING is the best!"
-- **Settings → SENSOR:** turn off the front and/or floor proximity sensors, for surfaces where they misfire. With the floor sensor off, the robot can drive off a table edge.
-- **Menu navigation fix** (in the controller mod): joystick up/down now reliably moves through the action menu.
+
+### v2 – voices
+- **Settings → VOICE:** NORMAL / HAWKING / VADER / HAL 9000 – the robot's voice for everything it says. Saved on the controller and sent to the robot on every connect. The Settings rows are a little slimmer so all five fit.
+- **Action menu:** DARTH OVERKLOKING (Darth Vader), OVERHAWKING (Stephen Hawking) and HAL 9000 right after OVERKLOKING – each in its own voice.
+- **SHUTDOWN** at the bottom of the menu, with the gear icon: asks "TERMINATE CONSCIOUSNESS?" (YES / NO, NO is preselected), then HAL sings *Daisy Bell* on the robot and it powers off.
+
+### v1
+- **Menu navigation fix:** joystick up/down now reliably moves through the action menu (the dominant stick axis wins, and left/right also move in the list).
+- **Action menu:** OVERKLOKING, BENDER and ULTRON right after SETTINGS – the robot says a random quote and the controller shows it. Long quotes follow the robot sentence by sentence; Shut Up or Poke stops them.
+- **Hold Poke 1 s:** a fill bar, then the robot drives ~10 cm forward and says "nju aj ti OVERKLOKING is the best!" A short press is still the normal poke.
+- **Settings → SENSOR:** ALL ON / FRONT OFF / FLOOR OFF / ALL OFF, for surfaces where the robot's proximity sensors misfire. Saved on the controller and sent to the robot on every connect. With the floor sensor off, the robot can drive off a table edge.
 
 ## About nju aj ti OVERKLOKING
 
@@ -23,17 +30,20 @@ At Easter 2026 it returned at NUIT under a new name:
 
 The format remains simple: **one new strip every Thursday**, freely available online and without advertising.
 
-Expect computers, bureaucracy, artificial intelligence, family catastrophes, current events and technology that supposedly exists to make life easier — including robots that can *“do nothing instead of me, and do it better.”*
+Expect computers, bureaucracy, artificial intelligence, family catastrophes, current events and technology that supposedly exists to make life easier – including robots that can *“do nothing instead of me, and do it better.”*
 
 **Read the comic:** [nuit.hr/overkloking](https://nuit.hr/overkloking/)
 
 ## Build & flash
-ESP-IDF 5.5.3: `idf.py build`, then `idf.py -p <port> flash`.
-The robot has 16 MB flash, the controller 4 MB – don't mix up the firmwares.
-Quotes live in `components/ButterBot-Common/src/Phrases.cpp`. Full change list: [NUIT-CHANGES.md](NUIT-CHANGES.md).
+ESP-IDF 5.5.3: `idf.py build`, then `idf.py -p <PORT> flash` (fine for the controller).
+Copy `components/CMF/lib/glm` from the robot repo before building – it's missing here (git-ignored upstream).
+The controller has 4 MB flash, the robot 16 MB – check with `esptool.py -p <PORT> flash_id` and don't mix up the firmwares.
+⚠️ The **robot** must not be flashed with plain `idf.py flash` – see [Build & flash in the robot repo](https://github.com/nuit-dev/ButterBot-Firmware-Public#build--flash).
+Full change list: [NUIT-CHANGES.md](NUIT-CHANGES.md).
 
 ## Credits
-Original firmware © CircuitMess (MIT licence). Mod by Cyberlord / NUIT d.o.o.
+Original firmware © CircuitMess (MIT licence). Mod by Cyberlord ([@kibergospodar](https://github.com/kibergospodar)) / NUIT d.o.o.
+*Daisy Bell* (Harry Dacre, 1892) is in the public domain.
 
 ---
 *Original CircuitMess README below.*

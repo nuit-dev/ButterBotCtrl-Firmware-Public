@@ -13,6 +13,7 @@
 #include "Components/SettingsWindow/ThemeSelector.h"
 #include "Components/SettingsWindow/SleepSelector.h"
 #include "Components/SettingsWindow/SensorSelector.h"
+#include "Components/SettingsWindow/VoiceSelector.h"
 
 class SettingsWindow : public LVObject {
 public:
@@ -37,6 +38,7 @@ private:
 	SleepSelector* sleepSelector;
 	BrightnessSlider* brightnessSlider;
 	SensorSelector* sensorSelector; // Custom (NUIT)
+	VoiceSelector* voiceSelector; // Custom (NUIT)
 
 	lv_obj_t* innerContent;
 	LVStyle labelDefaultStyle;
@@ -53,8 +55,8 @@ private:
 	int32_t currentFocusIndex = 0;
 
 	static constexpr int32_t WindowWidth = 120;
-	static constexpr int32_t WindowHeight = 76; // Custom (NUIT): was 60, 4th row (SENSOR)
-	static constexpr int32_t RowCount = 4;
+	static constexpr int32_t WindowHeight = 76; // Custom (NUIT): was 60, rows SENSOR + VOICE (15 px rows)
+	static constexpr int32_t RowCount = 5;
 	static constexpr const char* WindowTitle = "Settings";
 
 	const std::function<void(const Theme &newTheme)> themeCb;

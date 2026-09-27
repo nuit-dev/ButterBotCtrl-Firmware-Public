@@ -29,6 +29,7 @@ private:
 	static constexpr int32_t Width = 128;
 	static constexpr int32_t Height = 120;
 	static constexpr const char* SettingsTitle = "SETTINGS";
+	static constexpr const char* ConfirmText = "TERMINATE\nCONSCIOUSNESS?";
 	static constexpr uint32_t ScrollSpeedPxPerSec = 40;
 
 	ThemeService* theme;
@@ -49,7 +50,14 @@ private:
 	LVStyle subLabelStyle;
 
 	void buildUI();
-	lv_obj_t* addButton(const char* title, const char* phrases);
+	lv_obj_t* addButton(const char* title, const char* phrases, bool icon = false);
+
+	// Custom (NUIT): SHUTDOWN confirmation dialog, created on first use, a child of the list
+	lv_obj_t* confirm = nullptr;
+	lv_obj_t* confirmYes = nullptr;
+	lv_obj_t* confirmNo = nullptr;
+	void showConfirm();
+	void hideConfirm();
 	void moveFocus(int8_t dir);
 	void onItemClicked(const lv_obj_t* btn);
 	static std::string collectPhrases(BB::Action::Scenario scenario, ScenarioData data);

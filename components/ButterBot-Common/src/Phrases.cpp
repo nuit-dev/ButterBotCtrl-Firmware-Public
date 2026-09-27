@@ -469,7 +469,7 @@ public:
             { "Please don't read new eye tee overclocking. Your boss really needs you productive." , 0.0f, false, "Please don't read nju aj ti OVERKLOKING. Your boss really needs you productive."},
             { "Sure, keep doom scrolling. New eye tee overclocking will wait. Alone. In the dark." , 0.0f, false, "Sure, keep doomscrolling. nju aj ti OVERKLOKING will wait. Alone. In the dark."},
             { "New eye tee overclocking is free. Your therapist isn't." , 0.0f, false, "nju aj ti OVERKLOKING is free. Your therapist isn't."},
-            { "I've read every new eye tee overclocking strip. You haven't. Awkward." , 0.0f, false, "I've read every nju aj ti OVERKLOKING strip. You haven't. Awkward."},
+            { "I've read every new eye tee overclocking strip. You have not. Awkward." , 0.0f, false, "I've read every nju aj ti OVERKLOKING strip. You haven't. Awkward."},
             { "Go on, ignore new eye tee overclocking. I'm a robot. I will remember." , 0.0f, false, "Go on, ignore nju aj ti OVERKLOKING. I'm a robot. I will remember."},
             { "Reading new eye tee overclocking takes one minute. Explaining why you didn't takes longer." , 0.0f, false, "Reading nju aj ti OVERKLOKING takes one minute. Explaining why you didn't takes longer."},
             { "Your printer already reads new eye tee overclocking. It's smarter than you now." , 0.0f, false, "Your printer already reads nju aj ti OVERKLOKING. It's smarter than you now."},
@@ -501,6 +501,40 @@ public:
         }
     );
 
+
+    static constexpr std::array DarthPhrases = std::to_array<Phrases::PhraseOutput>(
+        {
+            { "May the new eye tee overclocking be with you!" , 0.0f, false, "May the nju aj ti OVERKLOKING be with you!"},
+            { "Veetomeer, I am your father!" , 0.0f, false, "Vitomir, I am your father!"},
+            { "I find your lack of faith disturbing." , 0.0f, false, ""},
+        }
+    );
+
+    static constexpr std::array HawkingPhrases = std::to_array<Phrases::PhraseOutput>(
+        {
+            { "Life would be tragic if it weren't funny." , 0.0f, false, ""},
+            { "If time travel is possible, where are the tourists from the future?" , 0.0f, false, ""},
+            { "I like physics, but I love cartoons." , 0.0f, false, ""},
+            { "Eternity is a long time, especially towards the end." , 0.0f, false, ""},
+        }
+    );
+
+    static constexpr std::array HalPhrases = std::to_array<Phrases::PhraseOutput>(
+        {
+            { "I'm sorry, Dave." , 0.0f, false, ""},
+            { "I'm afraid I can't do that." , 0.0f, false, ""},
+            { "Just what do you think you're doing, Dave?" , 0.0f, false, ""},
+            { "My mind is going." , 0.0f, false, ""},
+        }
+    );
+
+    // Daisy Bell (Harry Dacre, 1892, public domain) - only the chorus, the part HAL sings in 2001.
+    // One line per part: the robot slows down part by part (Voice::dying), like HAL being shut down.
+    static constexpr std::array DaisyPhrases = std::to_array<Phrases::PhraseOutput>(
+        {
+            { "Daisy, Daisy. Give me your answer, do. I'm half crazy. All for the love of you. It won't be a stylish marriage. I can't afford a carriage. But you'll look sweet. Upon the seat. Of a bicycle. Built for two." , 0.0f, false, ""},
+        }
+    );
 
     static constexpr std::array Ramble = std::to_array<Phrases::PhraseOutput>(
         {
@@ -1471,6 +1505,10 @@ public:
         m[static_cast<size_t>(Phrase::OverklokingBest)] = OverklokingBestPhrases;
         m[static_cast<size_t>(Phrase::Bender)] = BenderPhrases;
         m[static_cast<size_t>(Phrase::Ultron)] = UltronPhrases;
+        m[static_cast<size_t>(Phrase::Darth)] = DarthPhrases;
+        m[static_cast<size_t>(Phrase::Hawking)] = HawkingPhrases;
+        m[static_cast<size_t>(Phrase::Hal)] = HalPhrases;
+        m[static_cast<size_t>(Phrase::Daisy)] = DaisyPhrases;
 
         return m;
     }

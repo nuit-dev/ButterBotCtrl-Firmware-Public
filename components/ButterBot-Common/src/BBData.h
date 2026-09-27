@@ -48,6 +48,10 @@ struct BB {
 			OverklokingQuote, // menu: random sarcastic OVERKLOKING line
 			BenderQuote,      // menu: random Bender line
 			UltronQuote,      // menu: Ultron monologue
+			DarthQuote,       // menu: DARTH OVERKLOKING, always Vader voice
+			HawkingQuote,     // menu: OVERHAWKING, always Hawking voice
+			HalQuote,         // menu: HAL 9000, always HAL voice
+			DaisySong,        // menu: SHUTDOWN, HAL sings Daisy (slowing down), then the robot powers off
 		} scenario;
 
 		enum class Listen {
@@ -410,7 +414,7 @@ struct CantMoveData : BBData {
 // Custom (NUIT): a spoken quote, shown on the controller in QuoteWindow
 struct QuoteData : BBData {
 	enum class Category : uint8_t {
-		Overkloking, OverklokingBest, Bender, Ultron
+		Overkloking, OverklokingBest, Bender, Ultron, Darth, Hawking, Hal, Daisy
 	} category;
 	uint8_t id;   // index in the category's phrase list
 	uint8_t part; // sentence index for long quotes, WholeQuote otherwise

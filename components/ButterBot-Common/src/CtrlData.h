@@ -6,8 +6,10 @@
 struct Ctrl {
 	enum Command {
 		EnterRC, ExitRC, Listen, Summon, ShutUp, Poke, Drive, RCSound, Scenario,
-		// Custom (NUIT) - proximity sensor filter, keep LAST
-		SensorsAllOn, SensorsFrontOff, SensorsFloorOff, SensorsAllOff
+		// Custom (NUIT) - proximity sensor filter
+		SensorsAllOn, SensorsFrontOff, SensorsFloorOff, SensorsAllOff,
+		// Custom (NUIT) - TTS voice preset, keep LAST
+		VoiceNormal, VoiceHawking, VoiceVader, VoiceHal
 	} type;
 };
 

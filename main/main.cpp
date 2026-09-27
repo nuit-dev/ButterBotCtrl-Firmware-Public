@@ -169,6 +169,7 @@ protected:
 		if(settings != nullptr){
 			ledService->on(LEDs::TftBacklight, settings->get().screenBrightness);
 			com->setSensorCommand(sensorModeToCommand(settings->getSensorMode())); // Custom (NUIT)
+			com->setVoiceCommand(voiceModeToCommand(settings->getVoiceMode())); // Custom (NUIT)
 		}
 
 		if(!SPIFFS::init()){

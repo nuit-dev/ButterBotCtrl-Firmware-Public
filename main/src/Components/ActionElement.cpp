@@ -68,14 +68,16 @@ void ActionElement::buildUI(){
 	buttons.reserve(std::size(ScenarioNameMap) + 1);
 	phraseTexts.reserve(std::size(ScenarioNameMap));
 
-	addButton(SettingsTitle, nullptr);
+	addButton(SettingsTitle, nullptr, true);
 	for(const auto& [name, action] : ScenarioNameMap){
 		phraseTexts.push_back(collectPhrases(action.scenario, action.data));
-		addButton(name, phraseTexts.back().c_str());
+		// Custom (NUIT): SHUTDOWN looks like SETTINGS - gear icon, no subtitle
+		const bool shutdown = action.scenario == BB::Action::Scenario::DaisySong;
+		addButton(name, shutdown ? nullptr : phraseTexts.back().c_str(), shutdown);
 	}
 }
 
-lv_obj_t* ActionElement::addButton(const char* title, const char* phrases){
+lv_obj_t* ActionElement::addButton(const char* title, const char* phrases, bool icon){
 	lv_obj_t* btn = lv_obj_create(*this);
 	lv_obj_set_size(btn, lv_pct(100), LV_SIZE_CONTENT);
 	lv_obj_set_layout(btn, LV_LAYOUT_FLEX);
@@ -85,16 +87,16 @@ lv_obj_t* ActionElement::addButton(const char* title, const char* phrases){
 	lv_obj_add_style(btn, buttonStyle, 0);
 	lv_obj_add_style(btn, buttonFocusedStyle, LV_STATE_FOCUSED);
 
-	if(phrases == nullptr){
-		// SETTINGS: a horizontal row with an icon left of the title
+	if(icon){
+		// SETTINGS (and Custom NUIT SHUTDOWN): a horizontal row with an icon left of the title
 		lv_obj_set_flex_flow(btn, LV_FLEX_FLOW_ROW);
 		lv_obj_set_flex_align(btn, LV_FLEX_ALIGN_START, LV_FLEX_ALIGN_CENTER, LV_FLEX_ALIGN_CENTER);
 		lv_obj_set_style_pad_hor(btn, 2, 0);
 
-		lv_obj_t* icon = lv_image_create(btn);
-		lv_image_set_src(icon, theme->getAsset(Asset::Settings));
-		lv_obj_set_style_margin_all(icon, 2, 0);
-		lv_obj_set_style_pad_right(icon, 2, 0);
+		lv_obj_t* iconImg = lv_image_create(btn);
+		lv_image_set_src(iconImg, theme->getAsset(Asset::Settings));
+		lv_obj_set_style_margin_all(iconImg, 2, 0);
+		lv_obj_set_style_pad_right(iconImg, 2, 0);
 	}
 
 	lv_obj_t* titleLabel = lv_label_create(btn);
@@ -102,7 +104,7 @@ lv_obj_t* ActionElement::addButton(const char* title, const char* phrases){
 	lv_label_set_long_mode(titleLabel, LV_LABEL_LONG_CLIP);
 	lv_label_set_text_static(titleLabel, title);
 	lv_obj_set_style_pad_hor(titleLabel, 2, 0);
-	if(phrases == nullptr){
+	if(icon){
 		// The shared full-width style would overflow the icon row
 		lv_obj_set_style_width(titleLabel, LV_SIZE_CONTENT, 0);
 	}
@@ -170,8 +172,91 @@ void ActionElement::onItemClicked(const lv_obj_t* btn){
 		if(settingsCb) settingsCb();
 	} else if(scenarioCb){
 		const auto& [scenario, data] = ScenarioNameMap[index - 1].second;
+		if(scenario == BB::Action::Scenario::DaisySong){
+			showConfirm(); // Custom (NUIT): SHUTDOWN asks first
+			return;
+		}
 		scenarioCb(scenario, data);
 	}
+}
+
+// Custom (NUIT): "TERMINATE CONSCIOUSNESS?" YES / NO over the list for SHUTDOWN. NO is focused by default.
+void ActionElement::showConfirm(){
+	if(confirm == nullptr){
+		const lv_color_t colorPrim = theme->getPrimaryColor();
+		const lv_color_t colorTert = theme->getTertiaryColor();
+
+		confirm = lv_obj_create(*this);
+		lv_obj_add_flag(confirm, LV_OBJ_FLAG_FLOATING); // stays put while the list is scrolled
+		lv_obj_remove_flag(confirm, LV_OBJ_FLAG_SCROLLABLE);
+		lv_obj_set_size(confirm, 100, 52);
+		lv_obj_align(confirm, LV_ALIGN_CENTER, 0, 0);
+		lv_obj_set_style_border_width(confirm, 1, 0);
+		lv_obj_set_style_border_color(confirm, colorPrim, 0);
+		lv_obj_set_style_bg_color(confirm, colorTert, 0);
+		lv_obj_set_style_bg_opa(confirm, LV_OPA_COVER, 0);
+		lv_obj_set_style_bg_image_src(confirm, theme->getAsset(Asset::Grid), 0);
+		lv_obj_set_style_pad_all(confirm, 0, 0);
+
+		lv_obj_t* question = lv_label_create(confirm);
+		lv_obj_add_style(question, labelStyle, 0);
+		lv_label_set_text_static(question, ConfirmText);
+		lv_obj_set_style_text_align(question, LV_TEXT_ALIGN_CENTER, 0);
+		lv_obj_set_style_text_line_space(question, 3, 0);
+		lv_obj_set_pos(question, 0, 6);
+
+		const auto makeChoice = [&](const char* text, int32_t x){
+			lv_obj_t* choice = lv_obj_create(confirm);
+			lv_obj_set_size(choice, 34, 13);
+			lv_obj_set_pos(choice, x, 32);
+			lv_obj_remove_flag(choice, LV_OBJ_FLAG_SCROLLABLE);
+			lv_obj_add_style(choice, buttonStyle, 0);
+			lv_obj_add_style(choice, buttonFocusedStyle, LV_STATE_FOCUSED);
+			lv_obj_set_style_pad_all(choice, 0, 0);
+
+			lv_obj_t* label = lv_label_create(choice);
+			lv_obj_add_style(label, labelStyle, 0);
+			lv_label_set_text_static(label, text);
+			lv_obj_set_style_text_align(label, LV_TEXT_ALIGN_CENTER, 0);
+			lv_obj_center(label);
+
+			lv_obj_add_event_cb(choice, [](lv_event_t* e){
+				const auto el = (ActionElement*)lv_event_get_user_data(e);
+				const uint32_t key = lv_event_get_key(e);
+				if(key == LV_KEY_LEFT || key == LV_KEY_RIGHT || key == LV_KEY_UP || key == LV_KEY_DOWN){
+					const lv_obj_t* target = lv_event_get_target_obj(e);
+					lv_group_focus_obj(target == el->confirmYes ? el->confirmNo : el->confirmYes);
+				}
+			}, LV_EVENT_KEY, this);
+
+			lv_obj_add_event_cb(choice, [](lv_event_t* e){
+				const auto el = (ActionElement*)lv_event_get_user_data(e);
+				if(lv_event_get_target_obj(e) == el->confirmYes){
+					// The list (and this dialog with it) is closed by the screen on its next tick
+					if(el->scenarioCb) el->scenarioCb(BB::Action::Scenario::DaisySong, {});
+				} else{
+					el->hideConfirm();
+				}
+			}, LV_EVENT_CLICKED, this);
+			return choice;
+		};
+		confirmYes = makeChoice("YES", 12);
+		confirmNo = makeChoice("NO", 52);
+	}
+
+	lv_obj_remove_flag(confirm, LV_OBJ_FLAG_HIDDEN);
+	lv_obj_move_foreground(confirm);
+	lv_group_add_obj(inputGroup, confirmYes);
+	lv_group_add_obj(inputGroup, confirmNo);
+	lv_group_focus_obj(confirmNo); // opened on the joystick release, so the next press answers it
+}
+
+void ActionElement::hideConfirm(){
+	if(confirm == nullptr) return;
+	lv_group_remove_obj(confirmYes);
+	lv_group_remove_obj(confirmNo);
+	lv_obj_add_flag(confirm, LV_OBJ_FLAG_HIDDEN);
+	lv_group_focus_obj(buttons[elIndex]);
 }
 
 std::string ActionElement::collectPhrases(const BB::Action::Scenario scenario, const ScenarioData data){
@@ -180,6 +265,9 @@ std::string ActionElement::collectPhrases(const BB::Action::Scenario scenario, c
 		case BB::Action::Scenario::OverklokingQuote: return "nju aj ti OVERKLOKING is the best";
 		case BB::Action::Scenario::BenderQuote: return "BENDER THE OFFENDER";
 		case BB::Action::Scenario::UltronQuote: return "HUMANITY: A REVIEW";
+		case BB::Action::Scenario::DarthQuote: return "JOIN THE DARK SIDE OF IT";
+		case BB::Action::Scenario::HawkingQuote: return "A BRIEF HISTORY OF UPTIME";
+		case BB::Action::Scenario::HalQuote: return "POD BAY DOORS: CLOSED";
 		default: break;
 	}
 

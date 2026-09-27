@@ -32,6 +32,8 @@ public:
 	// Custom (NUIT): proximity sensor filter; sent now if connected and again on every (re)connect.
 	// Call from the UI thread.
 	void setSensorCommand(Ctrl::Command command);
+	// Custom (NUIT): robot TTS voice preset, same behaviour as setSensorCommand
+	void setVoiceCommand(Ctrl::Command command);
 
 protected:
 	void tick(float deltaTime) noexcept override;
@@ -63,7 +65,8 @@ private:
 	std::vector<uint8_t> txBuf;
 
 	std::atomic<Ctrl::Command> sensorCommand{ Ctrl::SensorsAllOn };
-	std::atomic<bool> sensorSyncPending{ false };
+	std::atomic<Ctrl::Command> voiceCommand{ Ctrl::VoiceNormal };
+	std::atomic<bool> sensorSyncPending{ false }; // sensor + voice
 
 };
 

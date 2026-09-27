@@ -18,6 +18,10 @@ namespace QuoteText {
 			case QuoteData::Category::OverklokingBest: return Phrase::OverklokingBest;
 			case QuoteData::Category::Bender: return Phrase::Bender;
 			case QuoteData::Category::Ultron: return Phrase::Ultron;
+			case QuoteData::Category::Darth: return Phrase::Darth;
+			case QuoteData::Category::Hawking: return Phrase::Hawking;
+			case QuoteData::Category::Hal: return Phrase::Hal;
+			case QuoteData::Category::Daisy: return Phrase::Daisy;
 		}
 		return Phrase::None;
 	}
@@ -28,6 +32,10 @@ namespace QuoteText {
 			case QuoteData::Category::OverklokingBest: return "OVERKLOKING";
 			case QuoteData::Category::Bender: return "BENDER";
 			case QuoteData::Category::Ultron: return "ULTRON";
+			case QuoteData::Category::Darth: return "DARTH OVERKLOKING";
+			case QuoteData::Category::Hawking: return "OVERHAWKING";
+			case QuoteData::Category::Hal: return "HAL 9000";
+			case QuoteData::Category::Daisy: return "SHUTDOWN";
 		}
 		return "";
 	}
