@@ -41,6 +41,28 @@ Expect computers, bureaucracy, artificial intelligence, family catastrophes, cur
 
 **Read the comic:** [nuit.hr/overkloking](https://nuit.hr/overkloking/)
 
+## Flash without building
+Ready-made images are attached to every [release](https://github.com/nuit-dev/ButterBotCtrl-Firmware-Public/releases/latest) – no ESP-IDF needed, only Python and esptool: `pip install esptool`.
+`<PORT>` is e.g. `COM6` (Windows), `/dev/cu.usbserial-XXXX` (macOS) or `/dev/ttyUSB0` (Linux). First check that it's the controller – it must say **4MB**:
+
+```shell
+python -m esptool -p <PORT> flash_id
+```
+
+**Option A – one file** (`…-controller-full.bin`): simplest, but resets the controller's settings (theme, brightness, sleep, SENSOR, VOICE).
+
+```shell
+python -m esptool --chip esp32s3 -p <PORT> -b 460800 write_flash 0 ButterBot-OVERKLOKING-v3-controller-full.bin
+```
+
+**Option B – keep settings** (`…-controller-parts.zip`): unzip, then run in the unzipped folder:
+
+```shell
+python -m esptool --chip esp32s3 -p <PORT> -b 460800 write_flash "@flash_args"
+```
+
+The controller restarts by itself. Flash the [robot](https://github.com/nuit-dev/ButterBot-Firmware-Public#flash-without-building) too – it needs its own steps. SHA-256 checksums are in `SHA256SUMS-controller.txt` in the release.
+
 ## Build & flash
 ESP-IDF 5.5.3: `idf.py build`, then `idf.py -p <PORT> flash` (fine for the controller).
 Copy `components/CMF/lib/glm` from the robot repo before building – it's missing here (git-ignored upstream).
