@@ -5,6 +5,13 @@ Fork of the [CircuitMess ButterBot controller](https://github.com/CircuitMess/Bu
 
 ## What's new
 
+### v3 – more characters
+- **Settings → VOICE:** new TALKIE TOASTER and YODA (VADER is now shown as DARTH VADER). The VOICE box is as wide as THEME and SLEEP.
+- **Action menu:** TALKIE TOASTER and YODA after HAL 9000, each in its own voice.
+- **Long quotes** (Ultron, Daisy) are shown in full and scroll along with the robot.
+- **Yoda / Talkie Toaster modes** change the lines on the controller too, the same way as on the robot.
+- Menu subtitles keep their padding when selected.
+
 ### v2 – voices
 - **Settings → VOICE:** NORMAL / HAWKING / VADER / HAL 9000 – the robot's voice for everything it says. Saved on the controller and sent to the robot on every connect. The Settings rows are a little slimmer so all five fit.
 - **Action menu:** DARTH OVERKLOKING (Darth Vader), OVERHAWKING (Stephen Hawking) and HAL 9000 right after OVERKLOKING – each in its own voice.

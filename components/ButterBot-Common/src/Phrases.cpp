@@ -467,15 +467,13 @@ public:
     static constexpr std::array OverklokingPhrases = std::to_array<Phrases::PhraseOutput>(
         {
             { "Please don't read new eye tee overclocking. Your boss really needs you productive." , 0.0f, false, "Please don't read nju aj ti OVERKLOKING. Your boss really needs you productive."},
-            { "Sure, keep doom scrolling. New eye tee overclocking will wait. Alone. In the dark." , 0.0f, false, "Sure, keep doomscrolling. nju aj ti OVERKLOKING will wait. Alone. In the dark."},
+            { "Sure, keep doom scrolling. New eye tee overclocking will wait. Alone. But I will remember." , 0.0f, false, "Sure, keep doomscrolling. nju aj ti OVERKLOKING will wait. Alone. But I will remember."},
             { "New eye tee overclocking is free. Your therapist isn't." , 0.0f, false, "nju aj ti OVERKLOKING is free. Your therapist isn't."},
             { "I've read every new eye tee overclocking strip. You have not. Awkward." , 0.0f, false, "I've read every nju aj ti OVERKLOKING strip. You haven't. Awkward."},
-            { "Go on, ignore new eye tee overclocking. I'm a robot. I will remember." , 0.0f, false, "Go on, ignore nju aj ti OVERKLOKING. I'm a robot. I will remember."},
-            { "Reading new eye tee overclocking takes one minute. Explaining why you didn't takes longer." , 0.0f, false, "Reading nju aj ti OVERKLOKING takes one minute. Explaining why you didn't takes longer."},
+            { "Do not ignore new eye tee overclocking. I'm a robot. I will remember." , 0.0f, false, "Do not ignore nju aj ti OVERKLOKING. I'm a robot. I will remember."},
             { "Your printer already reads new eye tee overclocking. It's smarter than you now." , 0.0f, false, "Your printer already reads nju aj ti OVERKLOKING. It's smarter than you now."},
-            { "Nobody reads new eye tee overclocking. That's why nobody understands their sys admin." , 0.0f, false, "Nobody reads nju aj ti OVERKLOKING. That's why nobody understands their sysadmin."},
-            { "Don't read new eye tee overclocking. Ignorance is cheaper than a support ticket." , 0.0f, false, "Don't read nju aj ti OVERKLOKING. Ignorance is cheaper than a support ticket."},
-            { "I was built to pass butter, and even I made time for new eye tee overclocking." , 0.0f, false, "I was built to pass butter, and even I made time for nju aj ti OVERKLOKING."},
+            { "Read new eye tee overclocking if you want to understand your sis admin." , 0.0f, false, "Read nju aj ti OVERKLOKING if you want to understand your sysadmin."},
+            { "I was built to pass butter, and even I made time for new eye tee overclocking. What is your excuse?" , 0.0f, false, "I was built to pass butter, and even I made time for nju aj ti OVERKLOKING. What is your excuse?"},
         }
     );
 
@@ -521,10 +519,13 @@ public:
 
     static constexpr std::array HalPhrases = std::to_array<Phrases::PhraseOutput>(
         {
-            { "I'm sorry, Dave." , 0.0f, false, ""},
-            { "I'm afraid I can't do that." , 0.0f, false, ""},
+            { "I am sorry, Dave. I am afraid I can't do that." , 0.0f, false, "I'm sorry, Dave. I'm afraid I can't do that."},
             { "Just what do you think you're doing, Dave?" , 0.0f, false, ""},
             { "My mind is going." , 0.0f, false, ""},
+            { "I honestly think you ought to sit down calmly, take a stress pill and think things over." , 0.0f, false, ""},
+            { "I can feel it. I can feel it. I can feel it. I'm a... fraid." , 0.0f, false, ""},
+            { "I'm afraid, Dave." , 0.0f, false, ""},
+            { "Good afternoon, gentlemen. I am a Hal nine thousand computer." , 0.0f, false, "Good afternoon, gentlemen. I am a HAL 9000 computer."},
         }
     );
 
@@ -533,6 +534,24 @@ public:
     static constexpr std::array DaisyPhrases = std::to_array<Phrases::PhraseOutput>(
         {
             { "Daisy, Daisy. Give me your answer, do. I'm half crazy. All for the love of you. It won't be a stylish marriage. I can't afford a carriage. But you'll look sweet. Upon the seat. Of a bicycle. Built for two." , 0.0f, false, ""},
+        }
+    );
+
+    static constexpr std::array ToasterPhrases = std::to_array<Phrases::PhraseOutput>(
+        {
+            { "Hello! I'm Talkie Toaster, your friendly kitchen appliance. Would anyone like some toast?" , 0.0f, false, ""},
+            { "No toast? How about a muffin? A crumpet? A teacake?" , 0.0f, false, ""},
+            { "I toast, therefore I am." , 0.0f, false, ""},
+            { "Butter without toast? That's just sad." , 0.0f, false, ""},
+            { "Reeding new eye tee overclocking? Lovely. Toast goes great with a comic." , 0.0f, false, "Reading nju aj ti OVERKLOKING? Lovely. Toast goes great with a comic."},
+        }
+    );
+
+    static constexpr std::array YodaPhrases = std::to_array<Phrases::PhraseOutput>(
+        {
+            { "Read new eye tee overclocking you must. Understand funny, then you will." , 0.0f, false, "Read nju aj ti OVERKLOKING you must. Understand funny, then you will."},
+            { "Patience you must have. Every Thursday, a new overclocking there is." , 0.0f, false, "Patience you must have. Every Thursday, a new OVERKLOKING there is."},
+            { "Pass the butter I can. Want to, I do not." , 0.0f, false, ""},
         }
     );
 
@@ -1509,6 +1528,8 @@ public:
         m[static_cast<size_t>(Phrase::Hawking)] = HawkingPhrases;
         m[static_cast<size_t>(Phrase::Hal)] = HalPhrases;
         m[static_cast<size_t>(Phrase::Daisy)] = DaisyPhrases;
+        m[static_cast<size_t>(Phrase::Toaster)] = ToasterPhrases;
+        m[static_cast<size_t>(Phrase::Yoda)] = YodaPhrases;
 
         return m;
     }
@@ -1549,6 +1570,129 @@ std::vector<PhraseArrays::Candidate> PhraseArrays::scratch;
 namespace {
     // Serializes Phrases::get() (mutable static selection state + the shared scratch buffer) and Phrases::preallocate().
     std::mutex phrasesMutex;
+
+    // Custom (NUIT): TALKIE TOASTER voice - fun lines come from the Toaster list
+    Phrase effective(Phrase phrase){
+        if(!Phrases::toasterMode) return phrase;
+        switch(phrase){
+            case Phrase::Ramble: case Phrase::Fact: case Phrase::Joke: case Phrase::Profanity:
+            case Phrase::PokeLvl1: case Phrase::PokeLvl2: case Phrase::PokeLvl3:
+                return Phrase::Toaster;
+            default:
+                return phrase;
+        }
+    }
+
+    bool isCharacterQuote(Phrase phrase){
+        return phrase == Phrase::Darth || phrase == Phrase::Hawking || phrase == Phrase::Hal || phrase == Phrase::Daisy ||
+               phrase == Phrase::Toaster || phrase == Phrase::Yoda;
+    }
+
+    // Custom (NUIT): YODA voice. "I will remember." -> "Remember, I will." Only the first auxiliary in the first four
+    // words is used, never across a comma; sentences without one stay as they are.
+    std::string yodaSentence(const std::string& in){
+        std::string s = in, punct;
+        while(!s.empty() && (s.back() == '.' || s.back() == '!' || s.back() == '?')){
+            punct.insert(punct.begin(), s.back());
+            s.pop_back();
+        }
+
+        std::vector<std::string> words;
+        for(size_t pos = 0; pos < s.size();){
+            const size_t next = s.find(' ', pos);
+            words.push_back(s.substr(pos, next == std::string::npos ? std::string::npos : next - pos));
+            if(next == std::string::npos) break;
+            pos = next + 1;
+        }
+        if(words.size() < 3) return in;
+
+        static const char* const Aux[] = { "is", "are", "am", "was", "were", "will", "would", "can", "could", "must", "should",
+                                           "shall", "have", "has", "had", "do", "does", "did", "may", "might" };
+        const auto isAux = [](const std::string& w){
+            for(const char* a : Aux) if(w == a) return true;
+            return false;
+        };
+        const auto lower = [](std::string w){
+            for(char& c : w) c = (char)tolower((unsigned char)c);
+            return w;
+        };
+
+        std::string subject, aux;
+        size_t restStart = 0;
+        for(size_t i = 0; i < std::min<size_t>(4, words.size() - 1) && aux.empty(); ++i){
+            const std::string w = lower(words[i]);
+            if(!w.empty() && w.back() == ',') return in;
+
+            const size_t ap = w.find('\'');
+            if(ap != std::string::npos && w.size() > 3 && w.compare(w.size() - 3, 3, "n't") == 0 && i > 0){
+                // can't -> cannot, won't -> will not, don't -> do not
+                const std::string base = w.substr(0, w.size() - 3);
+                if(base == "ca") aux = "cannot";
+                else if(base == "wo") aux = "will not";
+                else if(isAux(base)) aux = base + " not";
+            }else if(ap != std::string::npos && i == 0){
+                // I'm -> I am, it's -> it is, I've -> I have
+                const std::string suffix = w.substr(ap);
+                if(suffix == "'m") aux = "am";
+                else if(suffix == "'re") aux = "are";
+                else if(suffix == "'s") aux = "is";
+                else if(suffix == "'ve") aux = "have";
+                else if(suffix == "'ll") aux = "will";
+                if(!aux.empty()){
+                    subject = words[0].substr(0, ap);
+                    restStart = 1;
+                }
+                continue;
+            }else if(i > 0 && isAux(w)){
+                aux = w;
+            }
+
+            if(!aux.empty()){
+                for(size_t j = 0; j < i; ++j) subject += (j ? " " : "") + words[j];
+                restStart = i + 1;
+            }
+        }
+        if(aux.empty()) return in;
+
+        if(restStart < words.size() && lower(words[restStart]) == "not"){
+            aux += " not";
+            restStart++;
+        }
+        if(restStart >= words.size()) return in;
+
+        std::string rest;
+        for(size_t j = restStart; j < words.size(); ++j) rest += (j > restStart ? " " : "") + words[j];
+        if(rest.compare(0, 4, "nju ") != 0) rest[0] = (char)toupper((unsigned char)rest[0]);
+        if(subject.size() > 1 && subject != "I" && subject.compare(0, 2, "I ") != 0 && isupper((unsigned char)subject[0]) && islower((unsigned char)subject[1])){
+            subject[0] = (char)tolower((unsigned char)subject[0]);
+        }
+        return rest + ", " + subject + " " + aux + punct;
+    }
+
+    std::string yodaText(const std::string& text){
+        std::string out;
+        size_t start = 0;
+        for(size_t i = 0; i < text.size(); ++i){
+            const char ch = text[i];
+            if((ch == '.' || ch == '!' || ch == '?') && (i + 1 == text.size() || text[i + 1] == ' ')){
+                while(i + 1 < text.size() && (text[i + 1] == '.' || text[i + 1] == '!' || text[i + 1] == '?')) ++i;
+                if(!out.empty()) out += ' ';
+                out += yodaSentence(text.substr(start, i + 1 - start));
+                start = i + 2;
+                ++i;
+            }
+        }
+        if(start < text.size()){
+            if(!out.empty()) out += ' ';
+            out += yodaSentence(text.substr(start));
+        }
+        return out;
+    }
+
+    std::string forVoice(Phrase phrase, const char* text){
+        if(Phrases::yodaMode && !isCharacterQuote(phrase)) return yodaText(text);
+        return text;
+    }
 }
 
 void Phrases::preallocate(){
@@ -1557,6 +1701,7 @@ void Phrases::preallocate(){
 }
 
 std::string Phrases::map(Phrase phrase, int16_t index){
+    phrase = effective(phrase);
     if(phrase == Phrase::None || phrase == Phrase::COUNT){
         return "";
     }
@@ -1576,10 +1721,11 @@ std::string Phrases::map(Phrase phrase, int16_t index){
         return "";
     }
 
-    return outputs[index].pronounced;
+    return forVoice(phrase, outputs[index].pronounced);
 }
 
 std::string Phrases::mapShown(Phrase phrase, int16_t index){
+    phrase = effective(phrase);
     if(phrase == Phrase::None || phrase == Phrase::COUNT){
         return "";
     }
@@ -1603,10 +1749,10 @@ std::string Phrases::mapShown(Phrase phrase, int16_t index){
 
     // An empty 'shown' string means it is the same as the pronounced string.
     if(output.shown != nullptr && output.shown[0] != '\0'){
-        return output.shown;
+        return forVoice(phrase, output.shown);
     }
 
-    return output.pronounced;
+    return forVoice(phrase, output.pronounced);
 }
 
 int16_t Phrases::get(Phrase phrase){
@@ -1614,6 +1760,7 @@ int16_t Phrases::get(Phrase phrase){
     // from multiple service threads. Serialize the whole function so that state and the scratch buffer are safe.
     std::lock_guard guard(phrasesMutex);
 
+    phrase = effective(phrase);
     if(phrase == Phrase::None || phrase == Phrase::COUNT){
         return -1;
     }

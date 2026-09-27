@@ -16,6 +16,8 @@ constexpr std::pair<const char*, Action> ScenarioNameMap[] = {
 	{ "DARTH OVERKLOKING", { BB::Action::Scenario::DarthQuote, {} } },
 	{ "OVERHAWKING", { BB::Action::Scenario::HawkingQuote, {} } },
 	{ "HAL 9000", { BB::Action::Scenario::HalQuote, {} } },
+	{ "TALKIE TOASTER", { BB::Action::Scenario::ToasterQuote, {} } },
+	{ "YODA", { BB::Action::Scenario::YodaQuote, {} } },
 	{ "BENDER", { BB::Action::Scenario::BenderQuote, {} } },
 	{ "ULTRON", { BB::Action::Scenario::UltronQuote, {} } },
 	{ "Fact", { BB::Action::Scenario::Fact, {} } },

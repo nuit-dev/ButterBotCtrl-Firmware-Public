@@ -9,7 +9,7 @@ struct Ctrl {
 		// Custom (NUIT) - proximity sensor filter
 		SensorsAllOn, SensorsFrontOff, SensorsFloorOff, SensorsAllOff,
 		// Custom (NUIT) - TTS voice preset, keep LAST
-		VoiceNormal, VoiceHawking, VoiceVader, VoiceHal
+		VoiceNormal, VoiceHawking, VoiceVader, VoiceHal, VoiceToaster, VoiceYoda
 	} type;
 };
 

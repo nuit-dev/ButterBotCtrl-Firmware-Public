@@ -7,6 +7,7 @@
 
 #include "Themes.hpp"
 #include <CtrlData.h>
+#include <Phrases.h>
 
 enum class InactivityTimeout : uint8_t {
 	Min2 = 2, Min5 = 5, Min10 = 10, Min30 = 30, Off = 0xFF
@@ -29,7 +30,7 @@ inline Ctrl::Command sensorModeToCommand(SensorMode mode){
 
 // Custom (NUIT): robot TTS voice preset, stored separately like SensorMode
 enum class VoiceMode : uint8_t {
-	Normal = 0, Hawking = 1, Vader = 2, Hal = 3
+	Normal = 0, Hawking = 1, Vader = 2, Hal = 3, Toaster = 4, Yoda = 5
 };
 
 inline Ctrl::Command voiceModeToCommand(VoiceMode mode){
@@ -37,8 +38,16 @@ inline Ctrl::Command voiceModeToCommand(VoiceMode mode){
 		case VoiceMode::Hawking: return Ctrl::VoiceHawking;
 		case VoiceMode::Vader: return Ctrl::VoiceVader;
 		case VoiceMode::Hal: return Ctrl::VoiceHal;
+		case VoiceMode::Toaster: return Ctrl::VoiceToaster;
+		case VoiceMode::Yoda: return Ctrl::VoiceYoda;
 		default: return Ctrl::VoiceNormal;
 	}
+}
+
+// Custom (NUIT): TALKIE TOASTER / YODA also change which lines the controller shows (same as the robot)
+inline void applyVoiceModeToPhrases(VoiceMode mode){
+	Phrases::toasterMode = mode == VoiceMode::Toaster;
+	Phrases::yodaMode = mode == VoiceMode::Yoda;
 }
 
 struct SettingsStruct {

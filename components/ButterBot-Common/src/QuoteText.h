@@ -22,6 +22,8 @@ namespace QuoteText {
 			case QuoteData::Category::Hawking: return Phrase::Hawking;
 			case QuoteData::Category::Hal: return Phrase::Hal;
 			case QuoteData::Category::Daisy: return Phrase::Daisy;
+			case QuoteData::Category::Toaster: return Phrase::Toaster;
+			case QuoteData::Category::Yoda: return Phrase::Yoda;
 		}
 		return Phrase::None;
 	}
@@ -36,6 +38,8 @@ namespace QuoteText {
 			case QuoteData::Category::Hawking: return "OVERHAWKING";
 			case QuoteData::Category::Hal: return "HAL 9000";
 			case QuoteData::Category::Daisy: return "SHUTDOWN";
+			case QuoteData::Category::Toaster: return "TALKIE TOASTER";
+			case QuoteData::Category::Yoda: return "YODA";
 		}
 		return "";
 	}

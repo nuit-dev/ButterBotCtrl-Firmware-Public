@@ -120,17 +120,16 @@ lv_obj_t* ActionElement::addButton(const char* title, const char* phrases, bool 
 		const int32_t scrollDist = lv_obj_get_self_width(phraseLabel) + lv_font_get_glyph_width(&lv_font_butter, ' ', ' ') * LV_LABEL_WAIT_CHAR_COUNT;
 		lv_obj_set_style_anim_duration(phraseLabel, scrollDist * 1000 / ScrollSpeedPxPerSec, 0);
 
-		// The phrase line is clipped while idle and marquee-scrolls only while focused
+		// The phrase line is clipped while idle and marquee-scrolls only while focused.
+		// Custom (NUIT): keeps its 2 px side padding when focused too, like the title (was 0 - text touched the box)
 		lv_obj_add_event_cb(btn, [](lv_event_t* e) {
 			const auto label = (lv_obj_t*)lv_event_get_user_data(e);
-			lv_obj_set_style_pad_hor(label, 0, 0);
 			lv_label_set_long_mode(label, LV_LABEL_LONG_SCROLL_CIRCULAR);
 		}, LV_EVENT_FOCUSED, phraseLabel);
 
 		lv_obj_add_event_cb(btn, [](lv_event_t* e) {
 			const auto label = (lv_obj_t*)lv_event_get_user_data(e);
 			lv_label_set_long_mode(label, LV_LABEL_LONG_CLIP);
-			lv_obj_set_style_pad_hor(label, 2, 0);
 		}, LV_EVENT_DEFOCUSED, phraseLabel);
 	}
 
@@ -268,6 +267,8 @@ std::string ActionElement::collectPhrases(const BB::Action::Scenario scenario, c
 		case BB::Action::Scenario::DarthQuote: return "JOIN THE DARK SIDE OF IT";
 		case BB::Action::Scenario::HawkingQuote: return "A BRIEF HISTORY OF UPTIME";
 		case BB::Action::Scenario::HalQuote: return "POD BAY DOORS: CLOSED";
+		case BB::Action::Scenario::ToasterQuote: return "WOULD YOU LIKE SOME TOAST?";
+		case BB::Action::Scenario::YodaQuote: return "GRAND JEDI MASTER";
 		default: break;
 	}
 

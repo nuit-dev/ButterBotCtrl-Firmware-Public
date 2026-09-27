@@ -51,6 +51,7 @@ VoiceMode Settings::getVoiceMode() const{
 
 void Settings::setVoiceMode(VoiceMode mode){
 	voiceMode = mode;
+	applyVoiceModeToPhrases(mode);
 }
 
 void Settings::load(){
@@ -69,11 +70,12 @@ void Settings::load(){
 	}
 
 	uint8_t voiceVal = 0;
-	if(nvs_get_u8(handle, VoiceKey, &voiceVal) == ESP_OK && voiceVal <= static_cast<uint8_t>(VoiceMode::Hal)){
+	if(nvs_get_u8(handle, VoiceKey, &voiceVal) == ESP_OK && voiceVal <= static_cast<uint8_t>(VoiceMode::Yoda)){
 		voiceMode = static_cast<VoiceMode>(voiceVal);
 	}else{
 		voiceMode = VoiceMode::Normal;
 	}
+	applyVoiceModeToPhrases(voiceMode);
 
 	switch(settingsStruct.inactivityTimeout){
 		case InactivityTimeout::Min2:

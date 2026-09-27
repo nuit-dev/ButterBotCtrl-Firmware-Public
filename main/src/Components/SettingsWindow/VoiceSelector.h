@@ -21,18 +21,22 @@ private:
 	lv_obj_t* selectorLabel;
 
 	uint8_t currentIndex;
-	static constexpr uint8_t OptionsNum = 4;
+	static constexpr uint8_t OptionsNum = 6;
 	static constexpr std::array<VoiceMode, OptionsNum> OptionValueMap = {
 		VoiceMode::Normal,
 		VoiceMode::Hawking,
 		VoiceMode::Vader,
-		VoiceMode::Hal
+		VoiceMode::Hal,
+		VoiceMode::Toaster,
+		VoiceMode::Yoda
 	};
 	static constexpr std::array<const char*, OptionsNum> OptionNameMap = {
 		"NORMAL",
 		"HAWKING",
-		"VADER",
-		"HAL 9000"
+		"DARTH VADER",
+		"HAL 9000",
+		"TALKIE TOASTER",
+		"YODA"
 	};
 
 	std::function<void(uint32_t)> keyCb;

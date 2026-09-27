@@ -518,6 +518,8 @@ HomeWindow* HomeScreen::createActionWindow(const BB::State state, const BB::Acti
 			case BB::Action::Scenario::HawkingQuote:
 			case BB::Action::Scenario::HalQuote:
 			case BB::Action::Scenario::DaisySong:
+			case BB::Action::Scenario::ToasterQuote:
+			case BB::Action::Scenario::YodaQuote:
 				newWin = initActionWindow<QuoteWindow, QuoteData>(windowContainer, data);
 				break;
 			default:

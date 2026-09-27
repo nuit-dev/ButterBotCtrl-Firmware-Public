@@ -14,12 +14,18 @@ Custom OVERKLOKING mod by NUIT d.o.o. Must be flashed together with the matching
   (`Services/Com::setSensorCommand`). "Press joystick to return" hint removed to make room.
   Home screen guide shows "SENSORS: ... OFF" while any sensor is off.
 - `components/CMF/lib/glm` is git-ignored in this repo's CMF copy but required – keep it (copy from the robot repo).
-- Action menu: DARTH OVERKLOKING, OVERHAWKING, HAL 9000 right after OVERKLOKING (shown in `QuoteWindow`).
-  The robot speaks them in the Darth Vader / Hawking / HAL voice regardless of the VOICE setting.
+- Action menu: DARTH OVERKLOKING, OVERHAWKING, HAL 9000, TALKIE TOASTER, YODA right after OVERKLOKING (shown in
+  `QuoteWindow`). The robot speaks them in the Darth Vader / Hawking / HAL / Talkie Toaster / Yoda voice regardless
+  of the VOICE setting.
+- `Components/HomeWindows/QuoteWindow`: long quotes (Ultron, Daisy) are shown in full in a scrolling box that follows
+  the robot sentence by sentence (scrolled to the part index the robot sends).
+- Action menu subtitles keep their 2 px side padding when focused (they touched the selection box).
 - Action menu: SHUTDOWN as the last item, with the gear icon like SETTINGS (`ActionElement::addButton(..., icon)`).
   Asks "TERMINATE CONSCIOUSNESS?" YES / NO first (`ActionElement::showConfirm`, NO focused), then sends
   `DaisySong`: the robot sings Daisy as a dying HAL and powers off.
-- Settings: 5th row VOICE (NORMAL / HAWKING / VADER / HAL 9000), `Components/SettingsWindow/VoiceSelector`.
+- Settings: 5th row VOICE (NORMAL / HAWKING / DARTH VADER / HAL 9000 / TALKIE TOASTER / YODA),
+  `Components/SettingsWindow/VoiceSelector` (box as wide as THEME / SLEEP). TALKIE TOASTER and YODA also switch
+  `Phrases::toasterMode` / `yodaMode` on the controller (`applyVoiceModeToPhrases` in `Services/Settings.h`).
   Stored in NVS key "Voice", sent to the robot on change and on every connect (`Services/Com::setVoiceCommand`,
   `Ctrl::Voice*` commands). All Settings rows are 15 px high (were 18 px) so five rows fit above the footer.
 

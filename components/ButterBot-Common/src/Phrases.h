@@ -5,6 +5,7 @@
 #include <span>
 #include <string>
 #include <vector>
+#include <atomic>
 #include "Log/Log.h"
 
 DEFINE_LOG(Phrases)
@@ -183,6 +184,8 @@ enum class Phrase : uint16_t {
     Hawking,
     Hal,
     Daisy,
+    Toaster,
+    Yoda,
     // Add phrases here
     COUNT
 };
@@ -201,6 +204,13 @@ public:
     static std::string mapShown(Phrase phrase, int16_t index);
 
     static int16_t get(Phrase phrase);
+
+    // Custom (NUIT): set on robot and controller from the VOICE setting, so both pick and show the same line.
+    // Toaster: "fun" lines (Ramble, Fact, Joke, Poke, Profanity) come from the Toaster list instead.
+    // Yoda: map()/mapShown() reorder sentences Yoda style ("I will remember" -> "Remember, I will").
+    // Character quotes (Darth, Hawking, HAL, Daisy, Toaster, Yoda) are never changed.
+    static inline std::atomic<bool> toasterMode{ false };
+    static inline std::atomic<bool> yodaMode{ false };
 
 private:
     struct PhraseOutput {

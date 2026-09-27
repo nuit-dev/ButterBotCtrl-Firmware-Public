@@ -68,13 +68,13 @@ void VoiceSelector::buildUI(lv_obj_t* parent){
 	widgetLabel = lv_label_create(*this);
 	lv_obj_add_style(widgetLabel, labelDefaultStyle, 0);
 	lv_label_set_text(widgetLabel, "VOICE");
-	lv_obj_set_width(widgetLabel, 32);
+	lv_obj_set_width(widgetLabel, 24);
 	lv_obj_set_pos(widgetLabel, 2, 4);
 
 	// Selector container
 	lv_obj_t* selector = lv_obj_create(*this);
-	lv_obj_set_size(selector, 77, 15);
-	lv_obj_set_pos(selector, 34, 0);
+	lv_obj_set_size(selector, 83, 15); // same as THEME / SLEEP, TALKIE TOASTER fits
+	lv_obj_set_pos(selector, 28, 0);
 	lv_obj_set_style_border_width(selector, 1, 0);
 	lv_obj_set_style_border_color(selector, colorPrim, 0);
 	lv_obj_set_style_bg_color(selector, colorTert, 0);
@@ -85,7 +85,7 @@ void VoiceSelector::buildUI(lv_obj_t* parent){
 	selectorLabel = lv_label_create(selector);
 	lv_obj_add_style(selectorLabel, labelDefaultStyle, 0);
 	lv_label_set_text(selectorLabel, OptionNameMap.at(currentIndex));
-	lv_obj_set_width(selectorLabel, 63);
+	lv_obj_set_width(selectorLabel, 69);
 	lv_obj_set_pos(selectorLabel, 7, 3);
 	lv_obj_set_style_text_align(selectorLabel, LV_TEXT_ALIGN_CENTER, 0);
 	lv_obj_set_style_bg_opa(selectorLabel, LV_OPA_TRANSP, 0);
@@ -100,5 +100,5 @@ void VoiceSelector::buildUI(lv_obj_t* parent){
 	lv_obj_t* selectorRight = lv_image_create(selector);
 	lv_image_set_src(selectorRight, theme->getAsset(Asset::SettingsRight));
 	lv_obj_set_style_bg_opa(selectorRight, LV_OPA_TRANSP, 0);
-	lv_obj_set_pos(selectorRight, 67, 2);
+	lv_obj_set_pos(selectorRight, 73, 2);
 }
