@@ -44,6 +44,13 @@ inline Ctrl::Command voiceModeToCommand(VoiceMode mode){
 	}
 }
 
+// Custom (NUIT): how much of the controller's startup is skipped. Stored separately like SensorMode, read at boot.
+// FAST: connect to the robot while the intro plays. BOOST: + no CircuitMess intro. OVERKLOKING: + no pairing
+// animation (static CONNECTING screen, theme assets load while connecting) and a continuous BLE scan.
+enum class FastStart : uint8_t {
+	Off = 0, Fast = 1, Boost = 2, Overkloking = 3
+};
+
 // Custom (NUIT): TALKIE TOASTER / YODA also change which lines the controller shows (same as the robot)
 inline void applyVoiceModeToPhrases(VoiceMode mode){
 	Phrases::toasterMode = mode == VoiceMode::Toaster;
@@ -72,12 +79,17 @@ public:
 	VoiceMode getVoiceMode() const;
 	void setVoiceMode(VoiceMode mode);
 
+	FastStart getFastStart() const;
+	void setFastStart(FastStart level);
+
 private:
 	SettingsStruct settingsStruct;
 	SensorMode sensorMode = SensorMode::AllOn;
 	static constexpr const char* SensorKey = "Sensors";
 	VoiceMode voiceMode = VoiceMode::Normal;
 	static constexpr const char* VoiceKey = "Voice";
+	FastStart fastStart = FastStart::Off;
+	static constexpr const char* FastStartKey = "FastStart";
 
 	static constexpr const char* BlobName = "Settings";
 	static constexpr const char* NVSNamespace = "ButterbotCtrl";

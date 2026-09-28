@@ -22,10 +22,8 @@ private:
 	TopBar* topBar = nullptr;
 	SettingsWindow* settingsWindow = nullptr;
 
-	LVStyle labelDefaultStyle;
 
 	static constexpr const char* JoystickText = "Press joystick to return";
-	static constexpr const char* FccText = "FCC ID: 2AVZ4-BUTTER-BOT";
 
 	void loop() override;
 

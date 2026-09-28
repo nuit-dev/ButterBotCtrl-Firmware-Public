@@ -65,7 +65,6 @@ void SettingsScreen::switchTheme(const Theme& newTheme){
 }
 
 void SettingsScreen::buildUI(){
-	const lv_color_t colorPrim = theme->getPrimaryColor();
 	const lv_color_t bgColor = theme->getTertiaryColor();
 
 	topBar = new TopBar(*this);
@@ -74,14 +73,6 @@ void SettingsScreen::buildUI(){
 	settingsWindow = new SettingsWindow(windowContainer, inputGroup, [this](const Theme &newTheme) {
 		switchTheme(newTheme);
 	});
-
-	// LABEL DEFAULT STYLE
-	lv_style_set_text_font(labelDefaultStyle, &lv_font_butter);
-	lv_style_set_text_line_space(labelDefaultStyle, 3);
-	lv_style_set_text_color(labelDefaultStyle, colorPrim);
-	lv_style_set_size(labelDefaultStyle, 80, LV_SIZE_CONTENT);
-	lv_style_set_pad_all(labelDefaultStyle, 2);
-	lv_style_set_bg_opa(labelDefaultStyle, LV_OPA_TRANSP);
 
 	// Settings window container
 	lv_obj_set_pos(windowContainer, 0, 8);
@@ -95,29 +86,5 @@ void SettingsScreen::buildUI(){
 	lv_obj_set_style_bg_opa(windowContainer, LV_OPA_COVER, 0);
 	lv_obj_set_style_bg_image_src(windowContainer, theme->getAsset(Asset::Grid), 0);
 
-	// Custom (NUIT): "Press joystick to return" hint removed to make room for the SENSOR row
-
-	// Footer container
-	lv_obj_t* footerContainer = lv_obj_create(*this);
-	lv_obj_set_style_bg_color(footerContainer, bgColor, 0);
-	lv_obj_set_size(footerContainer, 128, 31);
-	lv_obj_set_pos(footerContainer, 0, 98);
-
-	// Footer - top line
-	lv_obj_t* footerTopLinie = lv_obj_create(footerContainer);
-	lv_obj_set_style_bg_color(footerTopLinie, colorPrim, 0);
-	lv_obj_set_size(footerTopLinie, 128, 1);
-	lv_obj_set_pos(footerTopLinie, 0, 0);
-
-	// Footer - TELEC image
-	lv_obj_t* telecImg = lv_image_create(footerContainer);
-	lv_image_set_src(telecImg, theme->getAsset(Asset::TELEC));
-	lv_obj_set_pos(telecImg, 17, 3);
-
-	// Footer - FCC text
-	lv_obj_t* fccLabel = lv_label_create(footerContainer);
-	lv_obj_add_style(fccLabel, labelDefaultStyle, 0);
-	lv_label_set_text(fccLabel, FccText);
-	lv_obj_set_width(fccLabel, 120);
-	lv_obj_set_pos(fccLabel, 8, 18);
+	// Custom (NUIT): "Press joystick to return" hint and the FCC ID / TELEC footer removed - all six rows fit
 }

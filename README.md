@@ -5,6 +5,13 @@ Fork of the [CircuitMess ButterBot controller](https://github.com/CircuitMess/Bu
 
 ## What's new
 
+### v3.3 – STARTUP
+- **Settings → STARTUP:** OFF / FAST / BOOST / OVERKLOKING – how much of the controller's startup is skipped, from the next boot on. OFF is stock. FAST connects to the robot while the intro plays. BOOST also skips the CircuitMess intro. OVERKLOKING also skips the pairing animation and scans continuously – home screen in about 4 s instead of 9.5 s.
+- Faster boot on every level (no PSRAM memory test, fewer boot logs).
+- The controller no longer gets stuck on the pairing screen when a connection drops while it is being set up (e.g. after restarting the controller while connected).
+- The FCC ID / TELEC footer was removed from the Settings screen, so all six rows fit.
+- Works with the [robot mod v3.2](https://github.com/nuit-dev/ButterBot-Firmware-Public/releases/tag/v3.2) – no robot changes.
+
 ### v3.2 – HRVATSKI
 - **HRVATSKI** menu item after YODA ("BUTTER BOT ZNA I HRVATSKI"): the robot speaks Croatian lines, shown on the controller.
 
@@ -55,25 +62,31 @@ Ready-made images are attached to releases from [v3](https://github.com/nuit-dev
 python -m esptool -p <PORT> flash_id
 ```
 
-**Option A – one file** (`…-controller-full.bin`): simplest, but resets the controller's settings (theme, brightness, sleep, SENSOR, VOICE).
+**Option A – one file** (`…-controller-full.bin`): simplest, but resets the controller's settings (theme, brightness, sleep, SENSOR, VOICE, STARTUP).
 
 ```shell
-python -m esptool --chip esp32s3 -p <PORT> -b 460800 write_flash 0 ButterBot-OVERKLOKING-v3.2-controller-full.bin
+python -m esptool --chip esp32s3 -p <PORT> -b 460800 --before default_reset --after no_reset write_flash 0 ButterBot-OVERKLOKING-v3.3-controller-full.bin
 ```
 
 **Option B – keep settings** (`…-controller-parts.zip`): unzip, then run in the unzipped folder:
 
 ```shell
-python -m esptool --chip esp32s3 -p <PORT> -b 460800 write_flash "@flash_args"
+python -m esptool --chip esp32s3 -p <PORT> -b 460800 --before default_reset --after no_reset write_flash "@flash_args"
 ```
 
-The controller restarts by itself. Flash the [robot](https://github.com/nuit-dev/ButterBot-Firmware-Public#flash-without-building) too – it needs its own steps. SHA-256 checksums are in `SHA256SUMS-controller.txt` in the release.
+After either option, reset the controller over USB:
+
+```shell
+python -c "import serial,time; s=serial.Serial(); s.port='<PORT>'; s.dtr=False; s.rts=False; s.open(); s.rts=True; time.sleep(0.1); s.rts=False"
+```
+
+Don't use `--after hard_reset` (esptool's default) – it left the controller stuck once, like the robot. Flash the [robot](https://github.com/nuit-dev/ButterBot-Firmware-Public#flash-without-building) too – it needs its own steps. SHA-256 checksums are in `SHA256SUMS-controller.txt` in the release.
 
 ## Build & flash
-ESP-IDF 5.5.3: `idf.py build`, then `idf.py -p <PORT> flash` (fine for the controller).
+ESP-IDF 5.5.3: `idf.py build`, then flash from the `build` directory with the Option B command above (`--after no_reset` + reset over USB) – plain `idf.py flash` ends with `--after hard_reset`.
 Copy `components/CMF/lib/glm` from the robot repo before building – it's missing here (git-ignored upstream).
 The controller has 4 MB flash, the robot 16 MB – check with `esptool.py -p <PORT> flash_id` and don't mix up the firmwares.
-⚠️ The **robot** must not be flashed with plain `idf.py flash` – see [Build & flash in the robot repo](https://github.com/nuit-dev/ButterBot-Firmware-Public#build--flash).
+⚠️ The **robot** needs its own steps – see [Build & flash in the robot repo](https://github.com/nuit-dev/ButterBot-Firmware-Public#build--flash).
 Full change list: [NUIT-CHANGES.md](NUIT-CHANGES.md).
 
 ## Credits

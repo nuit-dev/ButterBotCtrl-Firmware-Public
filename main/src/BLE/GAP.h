@@ -22,6 +22,9 @@ public:
 	bool isConnecting();
 	void connect();
 
+	// Custom (NUIT): FAST START OVERKLOKING - scan all the time (window = interval) instead of 30 of every 50 ms
+	void setContinuousScan(bool continuous);
+
 	enum class ConnEvent { Connected, Failed };
 	DECLARE_EVENT(OnConnEvent, GAP, ConnEvent);
 	OnConnEvent onConnEvent{ this };
@@ -51,6 +54,15 @@ private:
 	} state = Idle;
 
 	static constexpr const char* Name = "CircuitMess Butter Bot";
+
+	bool continuousScan = false;
+
+	// Custom (NUIT): FAST START connects right after boot - wait until local privacy (RPA) is set up, else the scan
+	// can fail to start. Falls back to connecting anyway after PrivacyWaitMaxUs.
+	bool privacyReady = false;
+	bool connectPending = false;
+	int64_t createdAtUs = 0;
+	static constexpr int64_t PrivacyWaitMaxUs = 2000000;
 
 };
 

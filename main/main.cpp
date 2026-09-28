@@ -32,6 +32,7 @@
 #include "Services/RobotState.h"
 #include "Services/Settings.h"
 #include "Screens/IntroScreen.h"
+#include "Screens/PairingScreen.h"
 #include "JigHWTest/JigHWTest.h"
 
 class ButterBotController : public Application {
@@ -172,6 +173,14 @@ protected:
 			com->setVoiceCommand(voiceModeToCommand(settings->getVoiceMode())); // Custom (NUIT)
 		}
 
+		// Custom (NUIT): FAST START - start connecting to the robot now instead of after the intro animation
+		const FastStart fastStart = settings != nullptr ? settings->getFastStart() : FastStart::Off;
+		ESP_LOGW("FastStart", "level %d", (int)fastStart);
+		if(fastStart >= FastStart::Fast){
+			gap->setContinuousScan(fastStart == FastStart::Overkloking);
+			gap->connect();
+		}
+
 		if(!SPIFFS::init()){
 			return;
 		}
@@ -190,7 +199,11 @@ protected:
 
 		registerService<JoystickInputLVGL>(joystick, buttonInput, Enum<int>(Button::Joystick));
 
-		lvgl->startScreen([]() {
+		lvgl->startScreen([fastStart]() -> std::unique_ptr<LVScreen> {
+			// Custom (NUIT): BOOST and up skip the CircuitMess intro
+			if(fastStart >= FastStart::Boost){
+				return std::make_unique<PairingScreen>();
+			}
 			return std::make_unique<IntroScreen>();
 		});
 		lvgl->startThread();

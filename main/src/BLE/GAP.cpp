@@ -3,6 +3,7 @@
 #include "ConMan.h"
 #include <esp_log.h>
 #include <esp_gatt_common_api.h>
+#include <esp_timer.h>
 
 static const char* TAG = "BLE::GAP";
 
@@ -10,6 +11,7 @@ BLE::GAP* BLE::GAP::self = nullptr;
 
 BLE::GAP::GAP(){ // TODO: send failed event if connection failed (after a successful scan)
 	self = this;
+	createdAtUs = esp_timer_get_time();
 
 	esp_ble_gatt_set_local_mtu(500);
 
@@ -30,6 +32,12 @@ BLE::GAP::~GAP(){
 void BLE::GAP::connect(){
 	if(state != Idle) return;
 
+	if(!privacyReady && esp_timer_get_time() - createdAtUs < PrivacyWaitMaxUs){
+		connectPending = true; // started from ESP_GAP_BLE_SET_LOCAL_PRIVACY_COMPLETE_EVT
+		return;
+	}
+	connectPending = false;
+
 	state = Scanning;
 	result.found = false;
 
@@ -38,10 +46,14 @@ void BLE::GAP::connect(){
 			.own_addr_type = BLE_ADDR_TYPE_RPA_PUBLIC,
 			.scan_filter_policy = BLE_SCAN_FILTER_ALLOW_ALL,
 			.scan_interval = ESP_BLE_GAP_SCAN_ITVL_MS(50),
-			.scan_window = ESP_BLE_GAP_SCAN_WIN_MS(30),
+			.scan_window = continuousScan ? ESP_BLE_GAP_SCAN_WIN_MS(50) : ESP_BLE_GAP_SCAN_WIN_MS(30),
 			.scan_duplicate = BLE_SCAN_DUPLICATE_ENABLE
 	};
 	ESP_ERROR_CHECK(esp_ble_gap_set_scan_params(&ScanParams));
+}
+
+void BLE::GAP::setContinuousScan(bool continuous){
+	continuousScan = continuous;
 }
 
 void BLE::GAP::setClient(Client* client){
@@ -102,6 +114,19 @@ void BLE::GAP::ble_GAP_cb(esp_gap_ble_cb_event_t event, esp_ble_gap_cb_param_t* 
 
 		case ESP_GAP_BLE_SCAN_START_COMPLETE_EVT:
 			ESP_LOGI(TAG, "BLE scan started, status: %d", param->scan_start_cmpl.status);
+			// Custom (NUIT): a scan that never started would leave us "Scanning" forever - report it so it's retried
+			if(param->scan_start_cmpl.status != ESP_BT_STATUS_SUCCESS && state == Scanning){
+				ESP_LOGW(TAG, "BLE scan failed to start: %d", param->scan_start_cmpl.status);
+				state = Idle;
+				onConnEvent.broadcast(ConnEvent::Failed);
+			}
+			break;
+
+		case ESP_GAP_BLE_SET_LOCAL_PRIVACY_COMPLETE_EVT:
+			privacyReady = true;
+			if(connectPending){
+				connect();
+			}
 			break;
 
 		case ESP_GAP_BLE_SCAN_RESULT_EVT:

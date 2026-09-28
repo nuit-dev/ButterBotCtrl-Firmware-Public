@@ -19,6 +19,7 @@ SettingsWindow::~SettingsWindow(){
 	lv_anim_delete(brightnessSlider, nullptr);
 	lv_anim_delete(sensorSelector, nullptr);
 	lv_anim_delete(voiceSelector, nullptr);
+	lv_anim_delete(fastStartSelector, nullptr);
 }
 
 void SettingsWindow::buildUI(lv_obj_t* parent){
@@ -103,11 +104,13 @@ void SettingsWindow::buildUI(lv_obj_t* parent){
 		lv_anim_delete(brightnessSlider->widgetLabel, nullptr);
 		lv_anim_delete(sensorSelector->widgetLabel, nullptr);
 		lv_anim_delete(voiceSelector->widgetLabel, nullptr);
+		lv_anim_delete(fastStartSelector->widgetLabel, nullptr);
 		lv_obj_set_style_opa(themeSelector->widgetLabel, LV_OPA_COVER, 0);
 		lv_obj_set_style_opa(sleepSelector->widgetLabel, LV_OPA_COVER, 0);
 		lv_obj_set_style_opa(brightnessSlider->widgetLabel, LV_OPA_COVER, 0);
 		lv_obj_set_style_opa(sensorSelector->widgetLabel, LV_OPA_COVER, 0);
 		lv_obj_set_style_opa(voiceSelector->widgetLabel, LV_OPA_COVER, 0);
+		lv_obj_set_style_opa(fastStartSelector->widgetLabel, LV_OPA_COVER, 0);
 
 		if(key == LV_KEY_DOWN){
 			currentFocusIndex = (currentFocusIndex + 1) % RowCount;
@@ -123,8 +126,10 @@ void SettingsWindow::buildUI(lv_obj_t* parent){
 			lv_anim_set_var(&blinkAnim, brightnessSlider->widgetLabel);
 		} else if(currentFocusIndex == 3){
 			lv_anim_set_var(&blinkAnim, sensorSelector->widgetLabel);
-		} else{
+		} else if(currentFocusIndex == 4){
 			lv_anim_set_var(&blinkAnim, voiceSelector->widgetLabel);
+		} else{
+			lv_anim_set_var(&blinkAnim, fastStartSelector->widgetLabel);
 		}
 		lv_anim_start(&blinkAnim);
 		lv_group_focus_obj(lv_obj_get_child(innerContent, currentFocusIndex));
@@ -178,8 +183,16 @@ void SettingsWindow::buildUI(lv_obj_t* parent){
 		}
 	};
 	voiceSelector = new VoiceSelector(innerContent, settings->getVoiceMode(), switchCb, voiceValCb);
-	lv_obj_set_pos(*voiceSelector, 2, 58); // 1 px above the bottom border, like the top row
+	lv_obj_set_pos(*voiceSelector, 2, 58);
 	lv_group_add_obj(inputGroup, *voiceSelector);
+
+	// Custom (NUIT): startup speed, read at the next boot
+	auto fastStartValCb = [this](const FastStart level) {
+		settings->setFastStart(level);
+	};
+	fastStartSelector = new FastStartSelector(innerContent, settings->getFastStart(), switchCb, fastStartValCb);
+	lv_obj_set_pos(*fastStartSelector, 2, 74); // 1 px above the bottom border, like the top row
+	lv_group_add_obj(inputGroup, *fastStartSelector);
 
 	lv_group_set_editing(inputGroup, true);
 

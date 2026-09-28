@@ -34,6 +34,10 @@ void Settings::store() const{
 	if(err != ESP_OK){
 		CMF_LOG(Settings, LogLevel::Error, "Error storing voice mode: %s", esp_err_to_name(err));
 	}
+	err = nvs_set_u8(handle, FastStartKey, static_cast<uint8_t>(fastStart));
+	if(err != ESP_OK){
+		CMF_LOG(Settings, LogLevel::Error, "Error storing fast start: %s", esp_err_to_name(err));
+	}
 	nvs_commit(handle);
 }
 
@@ -52,6 +56,14 @@ VoiceMode Settings::getVoiceMode() const{
 void Settings::setVoiceMode(VoiceMode mode){
 	voiceMode = mode;
 	applyVoiceModeToPhrases(mode);
+}
+
+FastStart Settings::getFastStart() const{
+	return fastStart;
+}
+
+void Settings::setFastStart(FastStart level){
+	fastStart = level;
 }
 
 void Settings::load(){
@@ -76,6 +88,13 @@ void Settings::load(){
 		voiceMode = VoiceMode::Normal;
 	}
 	applyVoiceModeToPhrases(voiceMode);
+
+	uint8_t fastVal = 0;
+	if(nvs_get_u8(handle, FastStartKey, &fastVal) == ESP_OK && fastVal <= static_cast<uint8_t>(FastStart::Overkloking)){
+		fastStart = static_cast<FastStart>(fastVal);
+	}else{
+		fastStart = FastStart::Off;
+	}
 
 	switch(settingsStruct.inactivityTimeout){
 		case InactivityTimeout::Min2:

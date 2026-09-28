@@ -16,6 +16,10 @@ private:
 	Com* com;
 	LEDController* ledController;
 
+	// Custom (NUIT): FAST START may connect before this screen exists, so loop() also checks the status
+	bool leaving = false;
+	void goHome();
+
 	void loop() override;
 };
 
