@@ -6,7 +6,7 @@ Fork of the [CircuitMess ButterBot controller](https://github.com/CircuitMess/Bu
 ## What's new
 
 ### v3.3 – STARTUP
-- **Settings → STARTUP:** OFF / FAST / BOOST / OVERKLOKING – how much of the controller's startup is skipped, from the next boot on. OFF is stock. FAST connects to the robot while the intro plays. BOOST also skips the CircuitMess intro. OVERKLOKING also skips the pairing animation and scans continuously – home screen in about 4 s instead of 9.5 s.
+- **Settings → STARTUP:** OFF / FAST / BOOST / OVERKLOKING – how much of the controller's startup is skipped, from the next boot on. OFF is stock. FAST connects to the robot while the intro plays. BOOST also skips the intro animation. OVERKLOKING also skips the pairing animation and scans continuously – home screen in about 4 s instead of 9.5 s.
 - Faster boot on every level (no PSRAM memory test, fewer boot logs).
 - The controller no longer gets stuck on the pairing screen when a connection drops while it is being set up (e.g. after restarting the controller while connected).
 - The FCC ID / TELEC footer was removed from the Settings screen, so all six rows fit.

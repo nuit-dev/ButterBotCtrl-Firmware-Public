@@ -45,7 +45,7 @@ inline Ctrl::Command voiceModeToCommand(VoiceMode mode){
 }
 
 // Custom (NUIT): how much of the controller's startup is skipped. Stored separately like SensorMode, read at boot.
-// FAST: connect to the robot while the intro plays. BOOST: + no CircuitMess intro. OVERKLOKING: + no pairing
+// FAST: connect to the robot while the intro plays. BOOST: + no intro animation. OVERKLOKING: + no pairing
 // animation (static CONNECTING screen, theme assets load while connecting) and a continuous BLE scan.
 enum class FastStart : uint8_t {
 	Off = 0, Fast = 1, Boost = 2, Overkloking = 3

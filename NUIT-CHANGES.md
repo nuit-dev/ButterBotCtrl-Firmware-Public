@@ -33,7 +33,7 @@ Custom OVERKLOKING mod by NUIT d.o.o. Must be flashed together with the matching
   key "FastStart", read at the next boot (`main.cpp`):
   - FAST: `gap->connect()` right after boot instead of after the intro; if connected when the intro ends,
     `IntroScreen` goes straight to `HomeScreen`
-  - BOOST: + no CircuitMess intro (starts on `PairingScreen`)
+  - BOOST: + no intro animation (starts on `PairingScreen`)
   - OVERKLOKING: + no pairing animation (static "CONNECTING..." screen that loads the theme while BLE connects)
     and a continuous BLE scan (`GAP::setContinuousScan`, window = interval)
   - `GAP::connect()` waits for `ESP_GAP_BLE_SET_LOCAL_PRIVACY_COMPLETE_EVT` (max 2 s) - scanning right after

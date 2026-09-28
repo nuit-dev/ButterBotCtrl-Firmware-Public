@@ -200,7 +200,7 @@ protected:
 		registerService<JoystickInputLVGL>(joystick, buttonInput, Enum<int>(Button::Joystick));
 
 		lvgl->startScreen([fastStart]() -> std::unique_ptr<LVScreen> {
-			// Custom (NUIT): BOOST and up skip the CircuitMess intro
+			// Custom (NUIT): BOOST and up skip the intro animation
 			if(fastStart >= FastStart::Boost){
 				return std::make_unique<PairingScreen>();
 			}
