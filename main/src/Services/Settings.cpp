@@ -38,6 +38,9 @@ void Settings::store() const{
 	if(err != ESP_OK){
 		CMF_LOG(Settings, LogLevel::Error, "Error storing fast start: %s", esp_err_to_name(err));
 	}
+	nvs_set_u8(handle, VolumeKey, robotConfig.volume);
+	nvs_set_u8(handle, NightModeKey, robotConfig.nightMode);
+	nvs_set_u8(handle, NightVolumeKey, robotConfig.nightVolume);
 	nvs_commit(handle);
 }
 
@@ -64,6 +67,14 @@ FastStart Settings::getFastStart() const{
 
 void Settings::setFastStart(FastStart level){
 	fastStart = level;
+}
+
+RobotConfigData Settings::getRobotConfig() const{
+	return robotConfig;
+}
+
+void Settings::setRobotConfig(const RobotConfigData& config){
+	robotConfig = config;
 }
 
 void Settings::load(){
@@ -95,6 +106,11 @@ void Settings::load(){
 	}else{
 		fastStart = FastStart::Off;
 	}
+
+	uint8_t val = 0;
+	if(nvs_get_u8(handle, VolumeKey, &val) == ESP_OK && val >= 10 && val <= 100) robotConfig.volume = val;
+	if(nvs_get_u8(handle, NightModeKey, &val) == ESP_OK && val <= static_cast<uint8_t>(NightMode::From00)) robotConfig.nightMode = val;
+	if(nvs_get_u8(handle, NightVolumeKey, &val) == ESP_OK && val >= 10 && val <= 100) robotConfig.nightVolume = val;
 
 	switch(settingsStruct.inactivityTimeout){
 		case InactivityTimeout::Min2:

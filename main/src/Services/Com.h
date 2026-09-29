@@ -8,6 +8,8 @@
 #include <Entity/AsyncEntity.h>
 #include <Event/EventBroadcaster.h>
 #include <atomic>
+#include <cstring>
+#include <vector>
 
 class Com : public AsyncEntity {
 	GENERATED_BODY(Com, AsyncEntity, CONSTRUCTOR_PACK(BLE::Client * ))
@@ -34,6 +36,10 @@ public:
 	void setSensorCommand(Ctrl::Command command);
 	// Custom (NUIT): robot TTS voice preset, same behaviour as setSensorCommand
 	void setVoiceCommand(Ctrl::Command command);
+	// Custom (NUIT): robot volume / night mode, same behaviour as setSensorCommand
+	void setRobotConfig(const RobotConfigData& config);
+	// Custom (NUIT): sets the robot's clock (only if connected). Call from the UI thread.
+	void sendSetTime(const SetTimeData& data);
 
 protected:
 	void tick(float deltaTime) noexcept override;
@@ -66,7 +72,18 @@ private:
 
 	std::atomic<Ctrl::Command> sensorCommand{ Ctrl::SensorsAllOn };
 	std::atomic<Ctrl::Command> voiceCommand{ Ctrl::VoiceNormal };
-	std::atomic<bool> sensorSyncPending{ false }; // sensor + voice
+	std::atomic<bool> sensorSyncPending{ false }; // sensor + voice + robot config
+	std::atomic<uint32_t> robotConfigPacked{ 0 }; // RobotConfigData, 0 = not set yet
+
+	template<typename T>
+	static std::vector<uint8_t> packet(Ctrl::Command command, const T& data){
+		std::vector<uint8_t> buf(sizeof(Ctrl::Command) + sizeof(T));
+		memcpy(buf.data(), &command, sizeof(Ctrl::Command));
+		memcpy(buf.data() + sizeof(Ctrl::Command), &data, sizeof(T));
+		return buf;
+	}
+	static uint32_t pack(const RobotConfigData& c){ return 0x1000000u | (c.volume << 16) | (c.nightMode << 8) | c.nightVolume; }
+	static RobotConfigData unpack(uint32_t p){ return { (uint8_t)(p >> 16), (uint8_t)(p >> 8), (uint8_t)p }; }
 
 };
 

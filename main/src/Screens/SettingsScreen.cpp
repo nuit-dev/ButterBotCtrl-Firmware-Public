@@ -28,6 +28,11 @@ SettingsScreen::~SettingsScreen(){
 
 void SettingsScreen::handleButtonEvent(const Button btn, const ButtonInput::Action action){
 	if (btn == Button::Joystick && action == ButtonInput::Action::Release){
+		// Custom (NUIT): on DATE / TIME the press edits the robot's clock instead of closing Settings
+		if(settingsWindow != nullptr && settingsWindow->onJoystickPress()){
+			return;
+		}
+
 		// Save current settings
 		settings->store();
 		// Return to home screen
@@ -39,6 +44,7 @@ void SettingsScreen::handleButtonEvent(const Button btn, const ButtonInput::Acti
 
 void SettingsScreen::loop(){
 	topBar->loop();
+	if(settingsWindow != nullptr) settingsWindow->loop(); // Custom (NUIT): DATE / TIME
 }
 
 template<typename T_Window, typename T_Data>

@@ -1,6 +1,7 @@
 #include "RambleWindow.h"
 
 #include <Phrases.h>
+#include <QuoteText.h>
 
 RambleWindow::RambleWindow(lv_obj_t* parent, const RambleData* params) : HomeWindow(parent, TITLE){
 	sentenceLabel = lv_label_create(innerContent);
@@ -9,7 +10,8 @@ RambleWindow::RambleWindow(lv_obj_t* parent, const RambleData* params) : HomeWin
 }
 
 void RambleWindow::buildUI(const RambleData data){
-	lv_label_set_text(sentenceLabel, Phrases::mapShown(Phrase::Ramble, data.id).c_str());
+	// Custom (NUIT): kind picks the list (time-of-day / Thursday lines)
+	lv_label_set_text(sentenceLabel, Phrases::mapShown(rambleKindPhrase(static_cast<RambleKind>(data.kind)), data.id).c_str());
 
 	// Sentence label
 	lv_label_set_long_mode(sentenceLabel, LV_LABEL_LONG_WRAP);

@@ -42,6 +42,18 @@ void Com::setVoiceCommand(Ctrl::Command command){
 	}
 }
 
+void Com::setRobotConfig(const RobotConfigData& config){
+	robotConfigPacked = pack(config);
+	if(status == ConnStatus::Connected){
+		txChar->write(packet(Ctrl::RobotConfig, config));
+	}
+}
+
+void Com::sendSetTime(const SetTimeData& data){
+	if(status != ConnStatus::Connected) return;
+	txChar->write(packet(Ctrl::SetTime, data));
+}
+
 Com::ConnStatus Com::getStatus() const{
 	return status;
 }
@@ -105,6 +117,9 @@ void Com::tick(float deltaTime) noexcept{
 			std::vector<uint8_t> buf(sizeof(Ctrl::Command));
 			memcpy(buf.data(), &cmd, sizeof(Ctrl::Command));
 			txChar->write(buf);
+		}
+		if(const uint32_t config = robotConfigPacked.load()){
+			txChar->write(packet(Ctrl::RobotConfig, unpack(config)));
 		}
 	}
 

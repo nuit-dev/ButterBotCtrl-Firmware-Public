@@ -141,6 +141,14 @@ protected:
 		auto com = registerService<Com>(client, false);
 
 		com->onData.bind(this, [robotState](BB::State state, BB::Action action, std::vector<uint8_t> data) {
+			// Custom (NUIT): the robot's clock, shown in Settings DATE / TIME
+			if(state == BB::State::Idle && action.idle == BB::Action::Idle::TimeInfo){
+				if(data.size() == sizeof(TimeInfoData)){
+					robotState->setRobotTime(*(const TimeInfoData*)data.data());
+				}
+				return;
+			}
+
 			// BatteryLevel is a status side-channel, not an action; consume it and leave idle tracking untouched
 			if(state == BB::State::Idle && action.idle == BB::Action::Idle::BatteryLevel){
 				if(data.size() != sizeof(BatteryLevelData)){
@@ -171,6 +179,7 @@ protected:
 			ledService->on(LEDs::TftBacklight, settings->get().screenBrightness);
 			com->setSensorCommand(sensorModeToCommand(settings->getSensorMode())); // Custom (NUIT)
 			com->setVoiceCommand(voiceModeToCommand(settings->getVoiceMode())); // Custom (NUIT)
+			com->setRobotConfig(settings->getRobotConfig()); // Custom (NUIT)
 		}
 
 		// Custom (NUIT): FAST START - start connecting to the robot now instead of after the intro animation

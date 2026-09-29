@@ -330,7 +330,8 @@ void HomeScreen::handleDataEvent(const BB::State state, const BB::Action action,
 
 	// Battery level packets are consumed by RobotState/TopBar; not a window action.
 	// Custom (NUIT): same for the mute state (RobotState, main.cpp) - it had no window and logged an error
-	if(state == BB::State::Idle && (action.idle == BB::Action::Idle::BatteryLevel || action.idle == BB::Action::Idle::ShutUp)){
+	if(state == BB::State::Idle && (action.idle == BB::Action::Idle::BatteryLevel || action.idle == BB::Action::Idle::ShutUp ||
+									action.idle == BB::Action::Idle::TimeInfo)){
 		return;
 	}
 

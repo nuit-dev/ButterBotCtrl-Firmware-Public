@@ -187,6 +187,15 @@ enum class Phrase : uint16_t {
     Toaster,
     Yoda,
     Croatian,
+    GreetingMorning,
+    GreetingAfternoon,
+    GreetingEvening,
+    GreetingNight,
+    Thursday,
+    RambleMorning,
+    RambleAfternoon,
+    RambleEvening,
+    RambleNight,
     // Add phrases here
     COUNT
 };

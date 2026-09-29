@@ -8,6 +8,26 @@
 #include "BBData.h"
 #include "Phrases.h"
 
+// Custom (NUIT): RambleData::kind -> phrase list (robot picks, controller shows)
+inline Phrase rambleKindPhrase(RambleKind kind){
+	switch(kind){
+		case RambleKind::Morning: return Phrase::RambleMorning;
+		case RambleKind::Afternoon: return Phrase::RambleAfternoon;
+		case RambleKind::Evening: return Phrase::RambleEvening;
+		case RambleKind::Night: return Phrase::RambleNight;
+		case RambleKind::Thursday: return Phrase::Thursday;
+		default: return Phrase::Ramble;
+	}
+}
+
+// Custom (NUIT): part of the day for greetings and idle comments. Morning 5-12, afternoon 12-18, evening 18-22.
+inline RambleKind dayPeriod(int hour){
+	if(hour >= 5 && hour < 12) return RambleKind::Morning;
+	if(hour >= 12 && hour < 18) return RambleKind::Afternoon;
+	if(hour >= 18 && hour < 22) return RambleKind::Evening;
+	return RambleKind::Night;
+}
+
 namespace QuoteText {
 	// Quotes longer than this are spoken and shown one sentence at a time
 	inline constexpr size_t SplitThreshold = 140;

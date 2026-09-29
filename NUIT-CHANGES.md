@@ -46,6 +46,15 @@ Custom OVERKLOKING mod by NUIT d.o.o. Must be flashed together with the matching
   "Idle action not recognised").
 - `sdkconfig`: PSRAM memory test off, bootloader and default log level WARN (~0.4 s faster boot). App image
   validation on boot stays on.
+- v4 - Settings has 11 rows and scrolls (`SettingsWindow::RowY`, `scrollToRow`, 2 px scrollbar at the right edge):
+  - VOLUME and NIGHT VOLUME (`Components/SettingsWindow/PercentSlider`, 10-100 %), NIGHT MODE
+    (`NightModeSelector`: OFF / 22-07 / 23-07 / 00-07). NVS keys "Volume", "NightMode", "NightVol"; sent with
+    `Com::setRobotConfig` on change and on every connect (`Ctrl::RobotConfig`).
+  - DATE and TIME (`DateTimeRow`) show the robot's clock (`RobotState::getRobotTime`, from `Idle::TimeInfo`).
+    The joystick press on these rows starts / confirms editing (`SettingsWindow::onJoystickPress`, called from
+    `SettingsScreen` before it closes Settings) and sends `Ctrl::SetTime` (`Com::sendSetTime`).
+  - `HomeScreen` ignores `Idle::TimeInfo`; `RambleWindow` shows the list from `RambleData::kind`;
+    `CurrentTimeWindow` shows 14:05 instead of 14:5.
 
 ## Flashing
 

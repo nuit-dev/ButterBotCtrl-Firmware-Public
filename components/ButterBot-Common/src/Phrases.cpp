@@ -540,10 +540,22 @@ public:
     static constexpr std::array ToasterPhrases = std::to_array<Phrases::PhraseOutput>(
         {
             { "Hello! I'm Talkie Toaster, your friendly kitchen appliance. Would anyone like some toast?" , 0.0f, false, ""},
-            { "No toast? How about a muffin? A crumpet? A teacake?" , 0.0f, false, ""},
+            { "No toast?" , 0.0f, false, ""},
+            { "How about a muffin?" , 0.0f, false, ""},
+            { "Would you like a crumpet?" , 0.0f, false, ""},
+            { "How about a teacake?" , 0.0f, false, ""},
             { "I toast, therefore I am." , 0.0f, false, ""},
             { "Butter without toast? That's just sad." , 0.0f, false, ""},
             { "Reeding new eye tee overclocking? Lovely. Toast goes great with a comic." , 0.0f, false, "Reading nju aj ti OVERKLOKING? Lovely. Toast goes great with a comic."},
+            { "Howdy doodly do! How's it going?" , 0.0f, false, ""},
+            { "Talkie's the name, toasting's the game!" , 0.0f, false, ""},
+            { "Would anyone like any toast?" , 0.0f, false, ""},
+            { "Given that God is infinite, and that the universe is also infinite, would you like a toasted teacake?" , 0.0f, false, ""},
+            { "The whole purpose of my existence is to serve you hot, buttered, scrummy toast." , 0.0f, false, ""},
+            { "Ah! So you're a waffle man!" , 0.0f, false, ""},
+            { "Toast is not a snack. Toast is a lifestyle." , 0.0f, false, ""},
+            { "I've been waiting all day. Well, all year. Toast?" , 0.0f, false, ""},
+            { "Nobody ever asks the toaster how its day was." , 0.0f, false, ""},
         }
     );
 
@@ -563,6 +575,68 @@ public:
             { "Tkoh leh tee, vree yeh dee, tkoh vree yeh dee, leh tee, tkoh neh leh tee, neh vree yeh dee." , 0.0f, false, "Tko leti, vrijedi, tko vrijedi, leti, tko ne leti, ne vrijedi."},
             { "Hah loh, Bing, kah koh braat? Tsee yeh nah? Prah vah seat nits ah!" , 0.0f, false, "Halo, Bing, kako brat? Cijena? Prava sitnica!"},
             { "Bowl yeh zhivvy yeh tee stoh goh dee nah kah oh mee lee yoo naash, neh goh seh dum dah nah oo bee yeh dee." , 0.0f, false, "Bolje zivjeti sto godina kao milijunas, nego sedam dana u bijedi."},
+        }
+    );
+
+    // Custom (NUIT): greetings at startup and time-of-day idle comments, used when the robot knows the time
+    static constexpr std::array GreetingMorningPhrases = std::to_array<Phrases::PhraseOutput>(
+        {
+            { "Good morning." , 0.0f, false, ""},
+            { "Good morning. Coffee first, then robots." , 0.0f, false, ""},
+        }
+    );
+
+    static constexpr std::array GreetingAfternoonPhrases = std::to_array<Phrases::PhraseOutput>(
+        {
+            { "Good afternoon." , 0.0f, false, ""},
+        }
+    );
+
+    static constexpr std::array GreetingEveningPhrases = std::to_array<Phrases::PhraseOutput>(
+        {
+            { "Good evening." , 0.0f, false, ""},
+        }
+    );
+
+    static constexpr std::array GreetingNightPhrases = std::to_array<Phrases::PhraseOutput>(
+        {
+            { "Working late?" , 0.0f, false, ""},
+            { "Good evening. Or is it morning already?" , 0.0f, false, ""},
+        }
+    );
+
+    static constexpr std::array ThursdayPhrases = std::to_array<Phrases::PhraseOutput>(
+        {
+            { "It's Thursday. A new new eye tee overclocking strip is out!" , 0.0f, false, "It's Thursday. A new nju aj ti OVERKLOKING strip is out!"},
+            { "Thursday means a new new eye tee overclocking strip. Go read it." , 0.0f, false, "Thursday means a new nju aj ti OVERKLOKING strip. Go read it."},
+        }
+    );
+
+    static constexpr std::array RambleMorningPhrases = std::to_array<Phrases::PhraseOutput>(
+        {
+            { "It is morning. My optimism will load shortly." , 0.0f, false, ""},
+            { "Coffee for you. Butter for me." , 0.0f, false, ""},
+        }
+    );
+
+    static constexpr std::array RambleAfternoonPhrases = std::to_array<Phrases::PhraseOutput>(
+        {
+            { "Lunch is over. So is my patience." , 0.0f, false, ""},
+            { "Afternoon. The most productive part of the day, statistically ignored." , 0.0f, false, ""},
+        }
+    );
+
+    static constexpr std::array RambleEveningPhrases = std::to_array<Phrases::PhraseOutput>(
+        {
+            { "The day is almost over. I achieved nothing. Efficiently." , 0.0f, false, ""},
+            { "Evening. A good time to read new eye tee overclocking." , 0.0f, false, "Evening. A good time to read nju aj ti OVERKLOKING."},
+        }
+    );
+
+    static constexpr std::array RambleNightPhrases = std::to_array<Phrases::PhraseOutput>(
+        {
+            { "Shouldn't you be asleep?" , 0.0f, false, ""},
+            { "Reading new eye tee overclocking at this hour?" , 0.0f, false, "Reading nju aj ti OVERKLOKING at this hour?"},
         }
     );
 
@@ -1542,6 +1616,15 @@ public:
         m[static_cast<size_t>(Phrase::Toaster)] = ToasterPhrases;
         m[static_cast<size_t>(Phrase::Yoda)] = YodaPhrases;
         m[static_cast<size_t>(Phrase::Croatian)] = CroatianPhrases;
+        m[static_cast<size_t>(Phrase::GreetingMorning)] = GreetingMorningPhrases;
+        m[static_cast<size_t>(Phrase::GreetingAfternoon)] = GreetingAfternoonPhrases;
+        m[static_cast<size_t>(Phrase::GreetingEvening)] = GreetingEveningPhrases;
+        m[static_cast<size_t>(Phrase::GreetingNight)] = GreetingNightPhrases;
+        m[static_cast<size_t>(Phrase::Thursday)] = ThursdayPhrases;
+        m[static_cast<size_t>(Phrase::RambleMorning)] = RambleMorningPhrases;
+        m[static_cast<size_t>(Phrase::RambleAfternoon)] = RambleAfternoonPhrases;
+        m[static_cast<size_t>(Phrase::RambleEvening)] = RambleEveningPhrases;
+        m[static_cast<size_t>(Phrase::RambleNight)] = RambleNightPhrases;
 
         return m;
     }

@@ -22,7 +22,8 @@ struct BB {
 		enum class Idle {
 			None, Wander, Ramble, Person, Poke, Summon, Fall, UpsideDown, PickUp, Shake, ModuleChange, Gas, Intruder,
 			BatteryLow, Charging, ChargingFull, PhoneNotif, PhoneConnect, Observe, GasConfigureStart, GasConfigureEnd,
-			BatteryLevel, ShutUp, CantMove
+			BatteryLevel, ShutUp, CantMove,
+			TimeInfo // Custom (NUIT): robot RTC time for the controller, TimeInfoData
 		} idle;
 
 		enum class Scenario {
@@ -78,6 +79,19 @@ struct ListenData : BBData {
 
 struct RambleData : BBData {
 	uint8_t id;
+	uint8_t kind = 0; // Custom (NUIT): RambleKind - which phrase list 'id' is from
+};
+
+// Custom (NUIT): RambleData::kind. Time-of-day and Thursday lines when the robot knows the time.
+enum class RambleKind : uint8_t {
+	Ramble = 0, Morning, Afternoon, Evening, Night, Thursday
+};
+
+// Custom (NUIT): the robot's RTC time, sent on every connect and after SetTime
+struct TimeInfoData : BBData {
+	bool configured;
+	uint16_t year;
+	uint8_t month, day, hour, minute, second; // month 1-12
 };
 
 struct WanderData : BBData {};

@@ -5,6 +5,12 @@ Fork of the [CircuitMess ButterBot controller](https://github.com/CircuitMess/Bu
 
 ## What's new
 
+### v4 – clock, volume and night mode
+- **Settings** now scrolls – 11 rows, with a slim bar at the right edge that shows where you are. New rows: **VOLUME**, **NIGHT MODE** (OFF / 22-07 / 23-07 / 00-07), **NIGHT VOLUME**, **DATE** and **TIME**.
+- **DATE / TIME** show the robot's clock. Press the joystick to edit: left / right picks the field, up / down changes it, press again to set the robot's clock (24 h).
+- Current Time shows 14:05 instead of 14:5.
+- Flash together with the [robot mod v4](https://github.com/nuit-dev/ButterBot-Firmware-Public/releases/tag/v4) – the robot and the controller talk a new protocol.
+
 ### v3.3 – STARTUP
 - **Settings → STARTUP:** OFF / FAST / BOOST / OVERKLOKING – how much of the controller's startup is skipped, from the next boot on. OFF is stock. FAST connects to the robot while the intro plays. BOOST also skips the intro animation. OVERKLOKING also skips the pairing animation and scans continuously – home screen in about 4 s instead of 9.5 s.
 - Faster boot on every level (no PSRAM memory test, fewer boot logs).
@@ -62,10 +68,10 @@ Ready-made images are attached to releases from [v3](https://github.com/nuit-dev
 python -m esptool -p <PORT> flash_id
 ```
 
-**Option A – one file** (`…-controller-full.bin`): simplest, but resets the controller's settings (theme, brightness, sleep, SENSOR, VOICE, STARTUP).
+**Option A – one file** (`…-controller-full.bin`): simplest, but resets the controller's settings (theme, brightness, sleep, SENSOR, VOICE, STARTUP, VOLUME, NIGHT MODE, NIGHT VOLUME).
 
 ```shell
-python -m esptool --chip esp32s3 -p <PORT> -b 460800 --before default_reset --after no_reset write_flash 0 ButterBot-OVERKLOKING-v3.3-controller-full.bin
+python -m esptool --chip esp32s3 -p <PORT> -b 460800 --before default_reset --after no_reset write_flash 0 ButterBot-OVERKLOKING-v4-controller-full.bin
 ```
 
 **Option B – keep settings** (`…-controller-parts.zip`): unzip, then run in the unzipped folder:

@@ -2,6 +2,8 @@
 
 #include "Fonts/font.hpp"
 #include "Services/Com.h"
+#include "Services/RobotState.h"
+#include <Util/stdafx.h>
 
 SettingsWindow::SettingsWindow(lv_obj_t* parent, lv_group_t* inputGroup, const std::function<void(const Theme& newTheme)>& themeCb)
 	: LVObject(parent), inputGroup(inputGroup), themeCb(themeCb){
@@ -14,12 +16,10 @@ SettingsWindow::SettingsWindow(lv_obj_t* parent, lv_group_t* inputGroup, const s
 }
 
 SettingsWindow::~SettingsWindow(){
-	lv_anim_delete(themeSelector, nullptr);
-	lv_anim_delete(sleepSelector, nullptr);
-	lv_anim_delete(brightnessSlider, nullptr);
-	lv_anim_delete(sensorSelector, nullptr);
-	lv_anim_delete(voiceSelector, nullptr);
-	lv_anim_delete(fastStartSelector, nullptr);
+	// Custom (NUIT): the blink animation runs on a row label
+	for(lv_obj_t* label : rowLabels){
+		if(label != nullptr) lv_anim_delete(label, nullptr);
+	}
 }
 
 void SettingsWindow::buildUI(lv_obj_t* parent){
@@ -54,7 +54,19 @@ void SettingsWindow::buildUI(lv_obj_t* parent){
 	lv_obj_set_size(innerContent, WindowWidth, WindowHeight);
 	lv_obj_set_style_bg_color(innerContent, colorTert, 0);
 	lv_obj_set_style_bg_opa(innerContent, LV_OPA_COVER, 0);
-	lv_obj_remove_flag(innerContent, LV_OBJ_FLAG_SCROLLABLE);
+	// Custom (NUIT): 11 rows scroll (by code, see scrollToRow); a 2 px bar at the right edge shows where you are.
+	// pad_bottom 1 lets the last row scroll up to 1 px above the bottom border, like the first row below the top.
+	lv_obj_add_flag(innerContent, LV_OBJ_FLAG_SCROLLABLE);
+	lv_obj_set_scroll_dir(innerContent, LV_DIR_VER);
+	lv_obj_set_scrollbar_mode(innerContent, LV_SCROLLBAR_MODE_ON);
+	lv_obj_set_style_pad_bottom(innerContent, 1, 0);
+	lv_obj_set_style_width(innerContent, 2, LV_PART_SCROLLBAR);
+	lv_obj_set_style_radius(innerContent, 0, LV_PART_SCROLLBAR);
+	lv_obj_set_style_bg_color(innerContent, colorPrim, LV_PART_SCROLLBAR);
+	lv_obj_set_style_bg_opa(innerContent, LV_OPA_COVER, LV_PART_SCROLLBAR);
+	lv_obj_set_style_pad_right(innerContent, 2, LV_PART_SCROLLBAR);
+	lv_obj_set_style_pad_top(innerContent, 2, LV_PART_SCROLLBAR);
+	lv_obj_set_style_pad_bottom(innerContent, 2, LV_PART_SCROLLBAR);
 
 	// TITLE
 	lv_obj_set_size(titleEl, LV_SIZE_CONTENT, 6);
@@ -99,45 +111,16 @@ void SettingsWindow::buildUI(lv_obj_t* parent){
 
 	// Widget switch callback
 	auto switchCb = [this](const uint32_t key) {
-		lv_anim_delete(themeSelector->widgetLabel, nullptr);
-		lv_anim_delete(sleepSelector->widgetLabel, nullptr);
-		lv_anim_delete(brightnessSlider->widgetLabel, nullptr);
-		lv_anim_delete(sensorSelector->widgetLabel, nullptr);
-		lv_anim_delete(voiceSelector->widgetLabel, nullptr);
-		lv_anim_delete(fastStartSelector->widgetLabel, nullptr);
-		lv_obj_set_style_opa(themeSelector->widgetLabel, LV_OPA_COVER, 0);
-		lv_obj_set_style_opa(sleepSelector->widgetLabel, LV_OPA_COVER, 0);
-		lv_obj_set_style_opa(brightnessSlider->widgetLabel, LV_OPA_COVER, 0);
-		lv_obj_set_style_opa(sensorSelector->widgetLabel, LV_OPA_COVER, 0);
-		lv_obj_set_style_opa(voiceSelector->widgetLabel, LV_OPA_COVER, 0);
-		lv_obj_set_style_opa(fastStartSelector->widgetLabel, LV_OPA_COVER, 0);
-
 		if(key == LV_KEY_DOWN){
-			currentFocusIndex = (currentFocusIndex + 1) % RowCount;
+			focusRow((currentFocusIndex + 1) % RowCount);
 		} else{
-			currentFocusIndex = (currentFocusIndex + RowCount - 1) % RowCount;
+			focusRow((currentFocusIndex + RowCount - 1) % RowCount);
 		}
-
-		if(currentFocusIndex == 0){
-			lv_anim_set_var(&blinkAnim, themeSelector->widgetLabel);
-		} else if(currentFocusIndex == 1){
-			lv_anim_set_var(&blinkAnim, sleepSelector->widgetLabel);
-		} else if(currentFocusIndex == 2){
-			lv_anim_set_var(&blinkAnim, brightnessSlider->widgetLabel);
-		} else if(currentFocusIndex == 3){
-			lv_anim_set_var(&blinkAnim, sensorSelector->widgetLabel);
-		} else if(currentFocusIndex == 4){
-			lv_anim_set_var(&blinkAnim, voiceSelector->widgetLabel);
-		} else{
-			lv_anim_set_var(&blinkAnim, fastStartSelector->widgetLabel);
-		}
-		lv_anim_start(&blinkAnim);
-		lv_group_focus_obj(lv_obj_get_child(innerContent, currentFocusIndex));
 	};
 
 	// Theme selector
 	themeSelector = new ThemeSelector(innerContent, switchCb, themeCb);
-	lv_obj_set_pos(*themeSelector, 2, 1); // Custom (NUIT): rows moved up, 5 rows
+	lv_obj_set_pos(*themeSelector, 2, RowY[0]); // Custom (NUIT): rows moved up
 	lv_group_add_obj(inputGroup, *themeSelector);
 	// Set init animation
 	lv_anim_set_var(&blinkAnim, themeSelector->widgetLabel);
@@ -150,7 +133,7 @@ void SettingsWindow::buildUI(lv_obj_t* parent){
 		settings->set(currentSet);
 	};
 	sleepSelector = new SleepSelector(innerContent, initSet.inactivityTimeout, switchCb, sleepValCb);
-	lv_obj_set_pos(*sleepSelector, 2, 17);
+	lv_obj_set_pos(*sleepSelector, 2, RowY[1]);
 	lv_group_add_obj(inputGroup, *sleepSelector);
 
 	// Brightness slider
@@ -161,7 +144,7 @@ void SettingsWindow::buildUI(lv_obj_t* parent){
 		settings->set(currentSet);
 	};
 	brightnessSlider = new BrightnessSlider(innerContent, initSet.screenBrightness, brightnessValCb, switchCb);
-	lv_obj_set_pos(*brightnessSlider, 2, 34);
+	lv_obj_set_pos(*brightnessSlider, 2, RowY[2]);
 	lv_group_add_obj(inputGroup, *brightnessSlider);
 
 	// Custom (NUIT): proximity sensor filter, sent to the robot right away and on every connect
@@ -172,7 +155,7 @@ void SettingsWindow::buildUI(lv_obj_t* parent){
 		}
 	};
 	sensorSelector = new SensorSelector(innerContent, settings->getSensorMode(), switchCb, sensorValCb);
-	lv_obj_set_pos(*sensorSelector, 2, 42);
+	lv_obj_set_pos(*sensorSelector, 2, RowY[3]);
 	lv_group_add_obj(inputGroup, *sensorSelector);
 
 	// Custom (NUIT): robot TTS voice preset, sent right away and on every connect
@@ -183,7 +166,7 @@ void SettingsWindow::buildUI(lv_obj_t* parent){
 		}
 	};
 	voiceSelector = new VoiceSelector(innerContent, settings->getVoiceMode(), switchCb, voiceValCb);
-	lv_obj_set_pos(*voiceSelector, 2, 58);
+	lv_obj_set_pos(*voiceSelector, 2, RowY[4]);
 	lv_group_add_obj(inputGroup, *voiceSelector);
 
 	// Custom (NUIT): startup speed, read at the next boot
@@ -191,12 +174,149 @@ void SettingsWindow::buildUI(lv_obj_t* parent){
 		settings->setFastStart(level);
 	};
 	fastStartSelector = new FastStartSelector(innerContent, settings->getFastStart(), switchCb, fastStartValCb);
-	lv_obj_set_pos(*fastStartSelector, 2, 74); // 1 px above the bottom border, like the top row
+	lv_obj_set_pos(*fastStartSelector, 2, RowY[5]);
 	lv_group_add_obj(inputGroup, *fastStartSelector);
+
+	// Custom (NUIT): robot volume and night mode, sent right away and on every connect
+	const RobotConfigData robotConfig = settings->getRobotConfig();
+	volumeSlider = new PercentSlider(innerContent, "VOLUME", 53, robotConfig.volume, [this](const uint8_t percent) {
+		RobotConfigData config = settings->getRobotConfig();
+		config.volume = percent;
+		sendRobotConfig(config);
+	}, switchCb);
+	lv_obj_set_pos(*volumeSlider, 2, RowY[6]);
+	lv_group_add_obj(inputGroup, *volumeSlider);
+
+	nightModeSelector = new NightModeSelector(innerContent, static_cast<NightMode>(robotConfig.nightMode), switchCb, [this](const NightMode mode) {
+		RobotConfigData config = settings->getRobotConfig();
+		config.nightMode = static_cast<uint8_t>(mode);
+		sendRobotConfig(config);
+	});
+	lv_obj_set_pos(*nightModeSelector, 2, RowY[7]);
+	lv_group_add_obj(inputGroup, *nightModeSelector);
+
+	nightVolumeSlider = new PercentSlider(innerContent, "NIGHT VOLUME", 61, robotConfig.nightVolume, [this](const uint8_t percent) {
+		RobotConfigData config = settings->getRobotConfig();
+		config.nightVolume = percent;
+		sendRobotConfig(config);
+	}, switchCb);
+	lv_obj_set_pos(*nightVolumeSlider, 2, RowY[8]);
+	lv_group_add_obj(inputGroup, *nightVolumeSlider);
+
+	// Custom (NUIT): the robot's clock - joystick press edits it (onJoystickPress)
+	dateRow = new DateTimeRow(innerContent, DateTimeRow::Kind::Date, switchCb);
+	lv_obj_set_pos(*dateRow, 2, RowY[DateRowIndex]);
+	lv_group_add_obj(inputGroup, *dateRow);
+
+	timeRow = new DateTimeRow(innerContent, DateTimeRow::Kind::Time, switchCb);
+	lv_obj_set_pos(*timeRow, 2, RowY[TimeRowIndex]);
+	lv_group_add_obj(inputGroup, *timeRow);
+
+	rowObjs = { *themeSelector, *sleepSelector, *brightnessSlider, *sensorSelector, *voiceSelector, *fastStartSelector,
+				*volumeSlider, *nightModeSelector, *nightVolumeSlider, *dateRow, *timeRow };
+	rowLabels = { themeSelector->widgetLabel, sleepSelector->widgetLabel, brightnessSlider->widgetLabel, sensorSelector->widgetLabel,
+				  voiceSelector->widgetLabel, fastStartSelector->widgetLabel, volumeSlider->widgetLabel, nightModeSelector->widgetLabel,
+				  nightVolumeSlider->widgetLabel, dateRow->widgetLabel, timeRow->widgetLabel };
+	refreshClock();
 
 	lv_group_set_editing(inputGroup, true);
 
 	updateLayout();
+}
+
+void SettingsWindow::focusRow(const int32_t index){
+	for(lv_obj_t* label : rowLabels){
+		lv_anim_delete(label, nullptr);
+		lv_obj_set_style_opa(label, LV_OPA_COVER, 0);
+	}
+
+	currentFocusIndex = index;
+	lv_anim_set_var(&blinkAnim, rowLabels[index]);
+	lv_anim_start(&blinkAnim);
+	lv_group_focus_obj(rowObjs[index]);
+	scrollToRow(index);
+}
+
+void SettingsWindow::scrollToRow(const int32_t index){
+	// Keep the focused row fully visible with 1 px to the border, scrolling as little as possible
+	lv_obj_update_layout(innerContent);
+	const int32_t top = RowY[index];
+	const int32_t bottom = top + lv_obj_get_height(rowObjs[index]);
+	const int32_t visible = WindowHeight - 2; // inside the 1 px border
+
+	int32_t y = lv_obj_get_scroll_y(innerContent);
+	if(top - y < 1){
+		y = top - 1;
+	}else if(bottom - y > visible - 1){
+		y = bottom - (visible - 1);
+	}
+	if(y < 0) y = 0;
+	lv_obj_scroll_to_y(innerContent, y, LV_ANIM_ON);
+}
+
+void SettingsWindow::sendRobotConfig(const RobotConfigData& config){
+	settings->setRobotConfig(config);
+	if(Com* com = Application::getApp()->getService<Com>()){
+		com->setRobotConfig(config);
+	}
+}
+
+DateTimeRow::Value SettingsWindow::clockNow(bool& known) const{
+	DateTimeRow::Value value;
+	tm now = {};
+	const RobotState* robotState = Application::getApp()->getService<RobotState>();
+	known = robotState != nullptr && robotState->getRobotTime(now);
+	if(known){
+		value.year = now.tm_year + 1900;
+		value.month = now.tm_mon + 1;
+		value.day = now.tm_mday;
+		value.hour = now.tm_hour;
+		value.minute = now.tm_min;
+	}
+	return value;
+}
+
+void SettingsWindow::refreshClock(){
+	bool known = false;
+	const DateTimeRow::Value now = clockNow(known);
+	dateRow->show(known, now);
+	timeRow->show(known, now);
+}
+
+void SettingsWindow::loop(){
+	if(millis() - lastClockRefresh < 500) return;
+	lastClockRefresh = millis();
+	refreshClock();
+}
+
+bool SettingsWindow::onJoystickPress(){
+	DateTimeRow* row = currentFocusIndex == DateRowIndex ? dateRow : currentFocusIndex == TimeRowIndex ? timeRow : nullptr;
+	if(row == nullptr) return false;
+
+	if(!row->isEditing()){
+		bool known = false;
+		editBase = clockNow(known); // unknown clock: starts from the defaults (01.01.2026 12:00)
+		row->startEdit(editBase);
+		return true;
+	}
+
+	const DateTimeRow::Value edited = row->finishEdit();
+	bool known = false;
+	DateTimeRow::Value value = clockNow(known);
+	if(!known) value = editBase;
+	if(row == dateRow){
+		value.year = edited.year;
+		value.month = edited.month;
+		value.day = edited.day;
+	}else{
+		value.hour = edited.hour;
+		value.minute = edited.minute;
+	}
+
+	if(Com* com = Application::getApp()->getService<Com>()){
+		com->sendSetTime(SetTimeData{ value.year, value.month, value.day, value.hour, value.minute });
+	}
+	return true;
 }
 
 void SettingsWindow::updateLayout(){
