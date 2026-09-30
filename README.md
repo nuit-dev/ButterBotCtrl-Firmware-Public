@@ -3,7 +3,14 @@
 Fork of the [CircuitMess ButterBot controller](https://github.com/CircuitMess/ButterBotCtrl-Firmware-Public) firmware by **NUIT d.o.o.** ([nuit.hr](https://nuit.hr)).
 ⚠️ Use together with the [robot mod](https://github.com/nuit-dev/ButterBot-Firmware-Public) – flash both.
 
+**What can I say to it?** [Voice commands](https://github.com/nuit-dev/ButterBot-Firmware-Public/blob/nuit-overkloking/docs/VOICE-COMMANDS.md) · **What does it recognise?** [Objects and faces](https://github.com/nuit-dev/ButterBot-Firmware-Public/blob/nuit-overkloking/docs/VISION.md)
+
 ## What's new
+
+### v4.1 – talking to ButterBot
+- **[Voice commands](https://github.com/nuit-dev/ButterBot-Firmware-Public/blob/nuit-overkloking/docs/VOICE-COMMANDS.md)** and **[vision](https://github.com/nuit-dev/ButterBot-Firmware-Public/blob/nuit-overkloking/docs/VISION.md)** reference (in the robot repo): every phrase the robot understands, and the objects and faces its camera recognises.
+- **Yoda mode:** the controller shows the reordered sentences exactly as the robot v4.1 says them (questions and sentences starting with why / if / but stay as they are).
+- Flash together with the [robot mod v4.1](https://github.com/nuit-dev/ButterBot-Firmware-Public/releases/tag/v4.1). The protocol did not change.
 
 ### v4 – clock, volume and night mode
 - **Settings** now scrolls – 11 rows, with a slim bar at the right edge that shows where you are. New rows: **VOLUME**, **NIGHT MODE** (OFF / 22-07 / 23-07 / 00-07), **NIGHT VOLUME**, **DATE** and **TIME**.
@@ -71,7 +78,7 @@ python -m esptool -p <PORT> flash_id
 **Option A – one file** (`…-controller-full.bin`): simplest, but resets the controller's settings (theme, brightness, sleep, SENSOR, VOICE, STARTUP, VOLUME, NIGHT MODE, NIGHT VOLUME).
 
 ```shell
-python -m esptool --chip esp32s3 -p <PORT> -b 460800 --before default_reset --after no_reset write_flash 0 ButterBot-OVERKLOKING-v4-controller-full.bin
+python -m esptool --chip esp32s3 -p <PORT> -b 460800 --before default_reset --after no_reset write_flash 0 ButterBot-OVERKLOKING-v4.1-controller-full.bin
 ```
 
 **Option B – keep settings** (`…-controller-parts.zip`): unzip, then run in the unzipped folder:

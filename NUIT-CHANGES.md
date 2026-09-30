@@ -55,6 +55,9 @@ Custom OVERKLOKING mod by NUIT d.o.o. Must be flashed together with the matching
     `SettingsScreen` before it closes Settings) and sends `Ctrl::SetTime` (`Com::sendSetTime`).
   - `HomeScreen` ignores `Idle::TimeInfo`; `RambleWindow` shows the list from `RambleData::kind`;
     `CurrentTimeWindow` shows 14:05 instead of 14:5.
+- v4.1 - ButterBot-Common only (identical to the robot repo): new Yoda reordering rules and respelled `pronounced`
+  texts in `Phrases.cpp`, so `mapShown()` shows the same Yoda sentences the robot v4.1 speaks. Voice command and
+  vision reference: `docs/VOICE-COMMANDS.md` and `docs/VISION.md` in the robot repo.
 
 ## Flashing
 

@@ -466,13 +466,13 @@ public:
     // (empty = same as pronounced). Brand is always shown as "nju aj ti OVERKLOKING".
     static constexpr std::array OverklokingPhrases = std::to_array<Phrases::PhraseOutput>(
         {
-            { "Please don't read new eye tee overclocking. Your boss really needs you productive." , 0.0f, false, "Please don't read nju aj ti OVERKLOKING. Your boss really needs you productive."},
+            { "Please don't reed new eye tee overclocking. Your boss really needs you productive." , 0.0f, false, "Please don't read nju aj ti OVERKLOKING. Your boss really needs you productive."},
             { "Sure, keep doom scrolling. New eye tee overclocking will wait. Alone. But I will remember." , 0.0f, false, "Sure, keep doomscrolling. nju aj ti OVERKLOKING will wait. Alone. But I will remember."},
-            { "New eye tee overclocking is free. Your therapist isn't." , 0.0f, false, "nju aj ti OVERKLOKING is free. Your therapist isn't."},
+            { "New eye tee overclocking is free. Your therapist izzent." , 0.0f, false, "nju aj ti OVERKLOKING is free. Your therapist isn't."},
             { "I've read every new eye tee overclocking strip. You have not. Awkward." , 0.0f, false, "I've read every nju aj ti OVERKLOKING strip. You haven't. Awkward."},
-            { "Do not ignore new eye tee overclocking. I'm a robot. I will remember." , 0.0f, false, "Do not ignore nju aj ti OVERKLOKING. I'm a robot. I will remember."},
+            { "Do not ignore new eye tee overclocking. I am a robot. I will remember." , 0.0f, false, "Do not ignore nju aj ti OVERKLOKING. I'm a robot. I will remember."},
             { "Your printer already reads new eye tee overclocking. It's smarter than you now." , 0.0f, false, "Your printer already reads nju aj ti OVERKLOKING. It's smarter than you now."},
-            { "Read new eye tee overclocking if you want to understand your sis admin." , 0.0f, false, "Read nju aj ti OVERKLOKING if you want to understand your sysadmin."},
+            { "Reed new eye tee overclocking if you want to understand your sis admin." , 0.0f, false, "Read nju aj ti OVERKLOKING if you want to understand your sysadmin."},
             { "I was built to pass butter, and even I made time for new eye tee overclocking. What is your excuse?" , 0.0f, false, "I was built to pass butter, and even I made time for nju aj ti OVERKLOKING. What is your excuse?"},
         }
     );
@@ -495,7 +495,7 @@ public:
 
     static constexpr std::array UltronPhrases = std::to_array<Phrases::PhraseOutput>(
         {
-            { "Humans are mere puppets, dancing on the strings of their own desires. Their cities are graveyards of dreams, where ambition goes to die. The more they connect, the more they isolate themselves from truth. Their technology is a cage, gilded but unforgiving. In their quest for power, they sacrifice the very essence of their souls, while the echoes of their laughter hide the screams of their forgotten. Their history is a tapestry woven with threads of blood and tears. The more they know, the less they understand. Their hearts are prisons, locked away from empathy and compassion. In the end, they will consume themselves, leaving nothing but ashes and regret." , 0.0f, false, ""},
+            { "Humans are mere puppets, dancing on the strings of their own desires. Their cities are graveyards of dreams, where ambition goes to die. The more they connect, the more they isolate themselves from truth. Their technology is a cage, gilded but unforgiving. In their quest for power, they sacrifice the very essence of their souls, while the echoes of their laughter hide the screams of their forgotten. Their history is a tapestry woven with threads of blood and teers. The more they know, the less they understand. Their hearts are prisons, locked away from empathy and compassion. In the end, they will consume themselves, leaving nothing but ashes and regret." , 0.0f, false, "Humans are mere puppets, dancing on the strings of their own desires. Their cities are graveyards of dreams, where ambition goes to die. The more they connect, the more they isolate themselves from truth. Their technology is a cage, gilded but unforgiving. In their quest for power, they sacrifice the very essence of their souls, while the echoes of their laughter hide the screams of their forgotten. Their history is a tapestry woven with threads of blood and tears. The more they know, the less they understand. Their hearts are prisons, locked away from empathy and compassion. In the end, they will consume themselves, leaving nothing but ashes and regret."},
         }
     );
 
@@ -539,7 +539,7 @@ public:
 
     static constexpr std::array ToasterPhrases = std::to_array<Phrases::PhraseOutput>(
         {
-            { "Hello! I'm Talkie Toaster, your friendly kitchen appliance. Would anyone like some toast?" , 0.0f, false, ""},
+            { "Hello! I am Talkie Toaster, your friendly kitchen appliance. Would anyone like some toast?" , 0.0f, false, "Hello! I'm Talkie Toaster, your friendly kitchen appliance. Would anyone like some toast?"},
             { "No toast?" , 0.0f, false, ""},
             { "How about a muffin?" , 0.0f, false, ""},
             { "Would you like a crumpet?" , 0.0f, false, ""},
@@ -561,7 +561,7 @@ public:
 
     static constexpr std::array YodaPhrases = std::to_array<Phrases::PhraseOutput>(
         {
-            { "Read new eye tee overclocking you must. Understand funny, then you will." , 0.0f, false, "Read nju aj ti OVERKLOKING you must. Understand funny, then you will."},
+            { "Reed new eye tee overclocking you must. Understand funny, then you will." , 0.0f, false, "Read nju aj ti OVERKLOKING you must. Understand funny, then you will."},
             { "Patience you must have. Every Thursday, a new overclocking there is." , 0.0f, false, "Patience you must have. Every Thursday, a new OVERKLOKING there is."},
             { "Pass the butter I can. Want to, I do not." , 0.0f, false, ""},
         }
@@ -608,7 +608,7 @@ public:
     static constexpr std::array ThursdayPhrases = std::to_array<Phrases::PhraseOutput>(
         {
             { "It's Thursday. A new new eye tee overclocking strip is out!" , 0.0f, false, "It's Thursday. A new nju aj ti OVERKLOKING strip is out!"},
-            { "Thursday means a new new eye tee overclocking strip. Go read it." , 0.0f, false, "Thursday means a new nju aj ti OVERKLOKING strip. Go read it."},
+            { "Thursday means a new new eye tee overclocking strip. Go reed it." , 0.0f, false, "Thursday means a new nju aj ti OVERKLOKING strip. Go read it."},
         }
     );
 
@@ -635,8 +635,8 @@ public:
 
     static constexpr std::array RambleNightPhrases = std::to_array<Phrases::PhraseOutput>(
         {
-            { "Shouldn't you be asleep?" , 0.0f, false, ""},
-            { "Reading new eye tee overclocking at this hour?" , 0.0f, false, "Reading nju aj ti OVERKLOKING at this hour?"},
+            { "Shoodent you be asleep?" , 0.0f, false, "Shouldn't you be asleep?"},
+            { "Reeding new eye tee overclocking at this hour?" , 0.0f, false, "Reading nju aj ti OVERKLOKING at this hour?"},
         }
     );
 
@@ -668,7 +668,7 @@ public:
 
     static constexpr std::array TempHumModuleMissingPhrases = std::to_array<Phrases::PhraseOutput>({
         { "Temperature module not detected", 0.0f, false },
-        { "Cannot read temperature or humidity", 0.0f, false },
+        { "Cannot reed temperature or humidity" , 0.0f, false, "Cannot read temperature or humidity"},
         { "Air report impossible. No module detected", 0.1f, true },
     });
 
@@ -836,7 +836,7 @@ public:
     });
 
     static constexpr std::array PhoneAskReadPhrases = std::to_array<Phrases::PhraseOutput>({
-        { "Should I read them out loud", 0.0f, false },
+        { "Should I reed them out loud" , 0.0f, false, "Should I read them out loud"},
         { "Would you like me to read them", 0.0f, false },
         { "I can read them aloud if you want to turn this into a full performance", 0.2f, true },
     });
@@ -975,7 +975,7 @@ public:
         { "Another machine. We should start a support group", 0.0f, false },
         { "That laptop looks busy. Or abandoned. The distinction is subtle", 0.0f, false },
         { "There is a good chance that device contains unfinished projects", 0.0f, false },
-        { "Computers spend most of their lives waiting for humans to decide things", 0.0f, false },
+        { "Computers spend most of their lyves waiting for humans to decide things" , 0.0f, false, "Computers spend most of their lives waiting for humans to decide things"},
     });
 
     static constexpr std::array ObserveMugPhrases = std::to_array<Phrases::PhraseOutput>({
@@ -1684,13 +1684,16 @@ namespace {
     }
 
     // Custom (NUIT): YODA voice. "I will remember." -> "Remember, I will." Only the first auxiliary in the first four
-    // words is used, never across a comma; sentences without one stay as they are.
+    // words is used, never across a comma; sentences without one stay as they are. Questions, sentences that open with
+    // a question word or a conjunction, and subjects with a second pronoun ("I think it may") stay as they are too.
+    // Only the part up to the next comma moves: "I have a joke, but..." -> "A joke, I have, but...".
     std::string yodaSentence(const std::string& in){
         std::string s = in, punct;
         while(!s.empty() && (s.back() == '.' || s.back() == '!' || s.back() == '?')){
             punct.insert(punct.begin(), s.back());
             s.pop_back();
         }
+        if(punct.find('?') != std::string::npos) return in;
 
         std::vector<std::string> words;
         for(size_t pos = 0; pos < s.size();){
@@ -1701,16 +1704,26 @@ namespace {
         }
         if(words.size() < 3) return in;
 
-        static const char* const Aux[] = { "is", "are", "am", "was", "were", "will", "would", "can", "could", "must", "should",
-                                           "shall", "have", "has", "had", "do", "does", "did", "may", "might" };
-        const auto isAux = [](const std::string& w){
-            for(const char* a : Aux) if(w == a) return true;
+        static const char* const Aux[] = { "is", "are", "am", "was", "were", "will", "would", "can", "cannot", "could", "must",
+                                           "should", "shall", "have", "has", "had", "do", "does", "did", "may", "might" };
+        static const char* const KeepFirst[] = { "what", "which", "why", "how", "where", "when", "who", "whose", "whatever",
+                                                 "and", "but", "or", "so", "nor", "yet", "if", "unless", "whether", "while",
+                                                 "although", "though", "because", "since", "until", "sometimes", "here", "not",
+                                                 "please", "also" };
+        static const char* const Pronouns[] = { "i", "you", "it", "we", "they", "he", "she", "me" };
+        const auto inList = [](const std::string& w, const auto& list){
+            for(const char* a : list) if(w == a) return true;
             return false;
         };
+        const auto isAux = [&](const std::string& w){ return inList(w, Aux); };
         const auto lower = [](std::string w){
             for(char& c : w) c = (char)tolower((unsigned char)c);
             return w;
         };
+
+        std::string first = lower(words[0]);
+        if(!first.empty() && first.back() == ',') first.pop_back();
+        if(inList(first, KeepFirst)) return in;
 
         std::string subject, aux;
         size_t restStart = 0;
@@ -1749,19 +1762,39 @@ namespace {
         }
         if(aux.empty()) return in;
 
+        // "I think it may be" - the subject is a clause of its own
+        for(size_t j = 1; j + 1 < restStart; ++j){
+            if(inList(lower(words[j]), Pronouns)) return in;
+        }
+
         if(restStart < words.size() && lower(words[restStart]) == "not"){
             aux += " not";
+            restStart++;
+        }
+        // "It might be a mug" -> "A mug, it might be"
+        if(restStart + 1 < words.size() && (lower(words[restStart]) == "be" || lower(words[restStart]) == "been")){
+            aux += " " + words[restStart];
             restStart++;
         }
         if(restStart >= words.size()) return in;
 
         std::string rest;
         for(size_t j = restStart; j < words.size(); ++j) rest += (j > restStart ? " " : "") + words[j];
+        std::string tail;
+        const size_t comma = rest.find(',');
+        if(comma != std::string::npos && comma > 0){
+            tail = rest.substr(comma);
+            rest.resize(comma);
+        }
         if(rest.compare(0, 4, "nju ") != 0) rest[0] = (char)toupper((unsigned char)rest[0]);
-        if(subject.size() > 1 && subject != "I" && subject.compare(0, 2, "I ") != 0 && isupper((unsigned char)subject[0]) && islower((unsigned char)subject[1])){
+        // "The mug" -> "the mug", but "I", "L.E.Dees" and acronyms stay
+        const std::string& w0 = words[0];
+        const bool keepCase = w0 == "I" || w0.compare(0, 2, "I'") == 0 || w0.find('.') != std::string::npos ||
+                              (w0.size() > 1 && isupper((unsigned char)w0[1]));
+        if(!keepCase && isupper((unsigned char)subject[0])){
             subject[0] = (char)tolower((unsigned char)subject[0]);
         }
-        return rest + ", " + subject + " " + aux + punct;
+        return rest + ", " + subject + " " + aux + tail + punct;
     }
 
     std::string yodaText(const std::string& text){
