@@ -41,6 +41,7 @@ void Settings::store() const{
 	nvs_set_u8(handle, VolumeKey, robotConfig.volume);
 	nvs_set_u8(handle, NightModeKey, robotConfig.nightMode);
 	nvs_set_u8(handle, NightVolumeKey, robotConfig.nightVolume);
+	nvs_set_u8(handle, RoamingKey, robotConfig.roaming);
 	nvs_commit(handle);
 }
 
@@ -111,6 +112,7 @@ void Settings::load(){
 	if(nvs_get_u8(handle, VolumeKey, &val) == ESP_OK && val >= 10 && val <= 100) robotConfig.volume = val;
 	if(nvs_get_u8(handle, NightModeKey, &val) == ESP_OK && val <= static_cast<uint8_t>(NightMode::From00)) robotConfig.nightMode = val;
 	if(nvs_get_u8(handle, NightVolumeKey, &val) == ESP_OK && val >= 10 && val <= 100) robotConfig.nightVolume = val;
+	if(nvs_get_u8(handle, RoamingKey, &val) == ESP_OK && val <= 1) robotConfig.roaming = val;
 
 	switch(settingsStruct.inactivityTimeout){
 		case InactivityTimeout::Min2:

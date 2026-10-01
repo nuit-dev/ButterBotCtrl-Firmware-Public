@@ -82,8 +82,10 @@ private:
 		memcpy(buf.data() + sizeof(Ctrl::Command), &data, sizeof(T));
 		return buf;
 	}
-	static uint32_t pack(const RobotConfigData& c){ return 0x1000000u | (c.volume << 16) | (c.nightMode << 8) | c.nightVolume; }
-	static RobotConfigData unpack(uint32_t p){ return { (uint8_t)(p >> 16), (uint8_t)(p >> 8), (uint8_t)p }; }
+	static uint32_t pack(const RobotConfigData& c){
+		return 0x80000000u | ((uint32_t)(c.roaming & 1) << 24) | (c.volume << 16) | (c.nightMode << 8) | c.nightVolume;
+	}
+	static RobotConfigData unpack(uint32_t p){ return { (uint8_t)(p >> 16), (uint8_t)(p >> 8), (uint8_t)p, (uint8_t)((p >> 24) & 1) }; }
 
 };
 

@@ -34,7 +34,9 @@ struct RobotConfigData {
 	uint8_t volume;      // [10, 100] %
 	uint8_t nightMode;   // NightMode
 	uint8_t nightVolume; // [10, 100] %
+	uint8_t roaming = 1; // 1 = may wander and turn to people while idle. Added in v4.2: a 3-byte payload means 1
 };
+static constexpr uint8_t RobotConfigDataV4Size = 3;
 
 // Custom (NUIT): sets the robot's RTC (local time, 24 h)
 struct SetTimeData {

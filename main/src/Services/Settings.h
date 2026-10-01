@@ -82,7 +82,7 @@ public:
 	FastStart getFastStart() const;
 	void setFastStart(FastStart level);
 
-	// Custom (NUIT): robot volume and night mode (sent to the robot with Com::setRobotConfig)
+	// Custom (NUIT): robot volume, night mode and roaming (sent to the robot with Com::setRobotConfig)
 	RobotConfigData getRobotConfig() const;
 	void setRobotConfig(const RobotConfigData& config);
 
@@ -94,10 +94,11 @@ private:
 	static constexpr const char* VoiceKey = "Voice";
 	FastStart fastStart = FastStart::Off;
 	static constexpr const char* FastStartKey = "FastStart";
-	RobotConfigData robotConfig{ 80, 0, 40 };
+	RobotConfigData robotConfig{ 80, 0, 40, 1 };
 	static constexpr const char* VolumeKey = "Volume";
 	static constexpr const char* NightModeKey = "NightMode";
 	static constexpr const char* NightVolumeKey = "NightVol";
+	static constexpr const char* RoamingKey = "Roaming";
 
 	static constexpr const char* BlobName = "Settings";
 	static constexpr const char* NVSNamespace = "ButterbotCtrl";

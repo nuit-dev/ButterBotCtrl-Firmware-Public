@@ -58,6 +58,9 @@ Custom OVERKLOKING mod by NUIT d.o.o. Must be flashed together with the matching
 - v4.1 - ButterBot-Common only (identical to the robot repo): new Yoda reordering rules and respelled `pronounced`
   texts in `Phrases.cpp`, so `mapShown()` shows the same Yoda sentences the robot v4.1 speaks. Voice command and
   vision reference: `docs/VOICE-COMMANDS.md` and `docs/VISION.md` in the robot repo.
+- v4.2 - Settings row ROAMING (`Components/SettingsWindow/RoamingSelector`, ON / OFF) below SENSOR, 12 rows
+  (`RowY`, `DateRowIndex` 10, `TimeRowIndex` 11). Stored in `RobotConfigData::roaming` (NVS key "Roaming"), sent with
+  `Ctrl::RobotConfig`; `Com::pack` keeps it in bit 24, the "set" marker moved to bit 31.
 
 ## Flashing
 

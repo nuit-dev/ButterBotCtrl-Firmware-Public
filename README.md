@@ -7,6 +7,10 @@ Fork of the [CircuitMess ButterBot controller](https://github.com/CircuitMess/Bu
 
 ## What's new
 
+### v4.2 – ROAMING
+- **Settings → ROAMING**, right below SENSOR: OFF keeps the robot in place while idle – no wandering, and it no longer turns and drives towards faces, it only looks straight ahead. Voice commands, Summon and dancing still move it. Settings now has 12 rows.
+- Flash together with the [robot mod v4.2](https://github.com/nuit-dev/ButterBot-Firmware-Public/releases/tag/v4.2). Mixing with v4.1 works too, roaming then simply stays on.
+
 ### v4.1 – talking to ButterBot
 - **[Voice commands](https://github.com/nuit-dev/ButterBot-Firmware-Public/blob/nuit-overkloking/docs/VOICE-COMMANDS.md)** and **[vision](https://github.com/nuit-dev/ButterBot-Firmware-Public/blob/nuit-overkloking/docs/VISION.md)** reference (in the robot repo): every phrase the robot understands, and the objects and faces its camera recognises.
 - **Yoda mode:** the controller shows the reordered sentences exactly as the robot v4.1 says them (questions and sentences starting with why / if / but stay as they are).
@@ -78,7 +82,7 @@ python -m esptool -p <PORT> flash_id
 **Option A – one file** (`…-controller-full.bin`): simplest, but resets the controller's settings (theme, brightness, sleep, SENSOR, VOICE, STARTUP, VOLUME, NIGHT MODE, NIGHT VOLUME).
 
 ```shell
-python -m esptool --chip esp32s3 -p <PORT> -b 460800 --before default_reset --after no_reset write_flash 0 ButterBot-OVERKLOKING-v4.1-controller-full.bin
+python -m esptool --chip esp32s3 -p <PORT> -b 460800 --before default_reset --after no_reset write_flash 0 ButterBot-OVERKLOKING-v4.2-controller-full.bin
 ```
 
 **Option B – keep settings** (`…-controller-parts.zip`): unzip, then run in the unzipped folder:
