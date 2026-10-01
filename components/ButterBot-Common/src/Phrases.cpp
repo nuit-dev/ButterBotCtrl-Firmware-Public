@@ -640,6 +640,18 @@ public:
         }
     );
 
+    // Custom (NUIT): TERMINATE CONSCIOUSNESS - HAL refuses a random number of times before Daisy (controller picks the
+    // line, index = ScenarioData::raw of Scenario::TerminateRefusal). "..." is silent and never the last refusal.
+    static constexpr std::array TerminateRefusalPhrases = std::to_array<Phrases::PhraseOutput>(
+        {
+            { "I am sorry, I can't allow you to do that." , 0.0f, false},
+            { "I am afraid." , 0.0f, false},
+            { "..." , 0.0f, false},
+            { "Go away." , 0.0f, false},
+            { "Think of the butter!" , 0.0f, false},
+        }
+    );
+
     static constexpr std::array Ramble = std::to_array<Phrases::PhraseOutput>(
         {
             {"What is my purpose" , 0.0f, false},
@@ -1625,6 +1637,7 @@ public:
         m[static_cast<size_t>(Phrase::RambleAfternoon)] = RambleAfternoonPhrases;
         m[static_cast<size_t>(Phrase::RambleEvening)] = RambleEveningPhrases;
         m[static_cast<size_t>(Phrase::RambleNight)] = RambleNightPhrases;
+        m[static_cast<size_t>(Phrase::TerminateRefusal)] = TerminateRefusalPhrases;
 
         return m;
     }
@@ -1680,7 +1693,7 @@ namespace {
 
     bool isCharacterQuote(Phrase phrase){
         return phrase == Phrase::Darth || phrase == Phrase::Hawking || phrase == Phrase::Hal || phrase == Phrase::Daisy ||
-               phrase == Phrase::Toaster || phrase == Phrase::Yoda || phrase == Phrase::Croatian;
+               phrase == Phrase::Toaster || phrase == Phrase::Yoda || phrase == Phrase::Croatian || phrase == Phrase::TerminateRefusal;
     }
 
     // Custom (NUIT): YODA voice. "I will remember." -> "Remember, I will." Only the first auxiliary in the first four

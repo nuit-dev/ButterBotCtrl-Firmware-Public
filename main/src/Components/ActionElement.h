@@ -29,7 +29,6 @@ private:
 	static constexpr int32_t Width = 128;
 	static constexpr int32_t Height = 120;
 	static constexpr const char* SettingsTitle = "SETTINGS";
-	static constexpr const char* ConfirmText = "TERMINATE\nCONSCIOUSNESS?";
 	static constexpr uint32_t ScrollSpeedPxPerSec = 40;
 
 	ThemeService* theme;
@@ -52,12 +51,16 @@ private:
 	void buildUI();
 	lv_obj_t* addButton(const char* title, const char* phrases, bool icon = false);
 
-	// Custom (NUIT): SHUTDOWN confirmation dialog, created on first use, a child of the list
-	lv_obj_t* confirm = nullptr;
-	lv_obj_t* confirmYes = nullptr;
-	lv_obj_t* confirmNo = nullptr;
-	void showConfirm();
-	void hideConfirm();
+	// Custom (NUIT): TERMINATE CONSCIOUSNESS - HAL refuses a random number of times (0-4) before Daisy. Each refusal
+	// is a line in a popup over the list (CLOSE returns to the list) that the robot also says; the count and the
+	// lines already used live across list openings (static), and start over once Daisy is sent.
+	lv_obj_t* refusal = nullptr;
+	lv_obj_t* refusalText = nullptr;
+	lv_obj_t* refusalClose = nullptr;
+	std::string refusalLine; // the label holds its c_str() (text_static)
+	void onTerminate();
+	void showRefusal(const char* text);
+	void hideRefusal();
 	void moveFocus(int8_t dir);
 	void onItemClicked(const lv_obj_t* btn);
 	static std::string collectPhrases(BB::Action::Scenario scenario, ScenarioData data);

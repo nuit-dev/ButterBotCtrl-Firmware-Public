@@ -196,6 +196,7 @@ enum class Phrase : uint16_t {
     RambleAfternoon,
     RambleEvening,
     RambleNight,
+    TerminateRefusal,
     // Add phrases here
     COUNT
 };
@@ -218,7 +219,7 @@ public:
     // Custom (NUIT): set on robot and controller from the VOICE setting, so both pick and show the same line.
     // Toaster: "fun" lines (Ramble, Fact, Joke, Poke, Profanity) come from the Toaster list instead.
     // Yoda: map()/mapShown() reorder sentences Yoda style ("I will remember" -> "Remember, I will").
-    // Character quotes (Darth, Hawking, HAL, Daisy, Toaster, Yoda, Croatian) are never changed.
+    // Character quotes (Darth, Hawking, HAL, Daisy, Toaster, Yoda, Croatian, TerminateRefusal) are never changed.
     static inline std::atomic<bool> toasterMode{ false };
     static inline std::atomic<bool> yodaMode{ false };
 

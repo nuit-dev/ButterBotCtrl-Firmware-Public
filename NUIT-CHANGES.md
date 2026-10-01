@@ -61,6 +61,12 @@ Custom OVERKLOKING mod by NUIT d.o.o. Must be flashed together with the matching
 - v4.2 - Settings row ROAMING (`Components/SettingsWindow/RoamingSelector`, ON / OFF) below SENSOR, 12 rows
   (`RowY`, `DateRowIndex` 10, `TimeRowIndex` 11). Stored in `RobotConfigData::roaming` (NVS key "Roaming"), sent with
   `Ctrl::RobotConfig`; `Com::pack` keeps it in bit 24, the "set" marker moved to bit 31.
+- v4.3 - SHUTDOWN renamed to TERMINATE CONSCIOUSNESS (`ScenarioMapping.h`, two lines next to the gear: 107 px
+  does not fit one line with the icon). The YES / NO dialog is replaced by `ActionElement::onTerminate`: a random
+  number of refusals (0-4, weights 5/30/30/20/15 %) before `DaisySong`, each an unused `Phrase::TerminateRefusal`
+  line ("..." never last) shown in a popup with CLOSE over the list (`showRefusal`) and sent to the robot as
+  `Scenario::TerminateRefusal` with the line index. The count and used lines are static, so they survive closing
+  the list; sending Daisy starts a new sequence on the next pick.
 
 ## Flashing
 

@@ -58,7 +58,7 @@ namespace QuoteText {
 			case QuoteData::Category::Darth: return "DARTH OVERKLOKING";
 			case QuoteData::Category::Hawking: return "OVERHAWKING";
 			case QuoteData::Category::Hal: return "HAL 9000";
-			case QuoteData::Category::Daisy: return "SHUTDOWN";
+			case QuoteData::Category::Daisy: return "TERMINATE CONSCIOUSNESS";
 			case QuoteData::Category::Toaster: return "TALKIE TOASTER";
 			case QuoteData::Category::Yoda: return "YODA";
 			case QuoteData::Category::Croatian: return "HRVATSKI";

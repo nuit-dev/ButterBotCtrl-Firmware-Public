@@ -69,8 +69,8 @@ constexpr std::pair<const char*, Action> ScenarioNameMap[] = {
 	{ "Remember this face", { BB::Action::Scenario::FaceDetect, FaceScenarioData{ FaceScenarioData::Phase::Remember } } },
 	{ "Forget Owner", { BB::Action::Scenario::FaceDetectForget, FaceScenarioData{ FaceScenarioData::Phase::Forget } } },
 	{ "Dance", { BB::Action::Scenario::Dance, {} } },
-	// Custom (NUIT) - last, with the settings icon; asks "TERMINATE CONSCIOUSNESS?" first (ActionElement)
-	{ "SHUTDOWN", { BB::Action::Scenario::DaisySong, {} } },
+	// Custom (NUIT) - last, with the settings icon, two lines (107 px in one); HAL may refuse first (ActionElement)
+	{ "TERMINATE\nCONSCIOUSNESS", { BB::Action::Scenario::DaisySong, {} } },
 };
 
 #endif //BUTTERBOTCTRL_FIRMWARE_SCENARIOMAPPING_H

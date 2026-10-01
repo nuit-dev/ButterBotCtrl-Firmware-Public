@@ -52,10 +52,11 @@ struct BB {
 			DarthQuote,       // menu: DARTH OVERKLOKING, always Vader voice
 			HawkingQuote,     // menu: OVERHAWKING, always Hawking voice
 			HalQuote,         // menu: HAL 9000, always HAL voice
-			DaisySong,        // menu: SHUTDOWN, HAL sings Daisy (slowing down), then the robot powers off
+			DaisySong,        // menu: TERMINATE CONSCIOUSNESS, HAL sings Daisy (slowing down), then the robot powers off
 			ToasterQuote,     // menu: TALKIE TOASTER, always Talkie Toaster voice
 			YodaQuote,        // menu: YODA, always Yoda voice
 			CroatianQuote,    // menu: HRVATSKI, Croatian lines respelled for the US English TTS, VOICE setting voice
+			TerminateRefusal, // TERMINATE CONSCIOUSNESS refused: HAL says one line, ScenarioData::raw = TerminateRefusal index
 		} scenario;
 
 		enum class Listen {
