@@ -67,6 +67,9 @@ Custom OVERKLOKING mod by NUIT d.o.o. Must be flashed together with the matching
   line ("..." never last) shown in a popup with CLOSE over the list (`showRefusal`) and sent to the robot as
   `Scenario::TerminateRefusal` with the line index. The count and used lines are static, so they survive closing
   the list; sending Daisy starts a new sequence on the next pick.
+- v4.4 - ButterBot-Common only (identical to the robot repo): Talkie Toaster versions of every phrase category,
+  picked by `Phrases::get()` / `map()` / `mapShown()` while `Phrases::toasterMode` (set from VOICE), so the screen shows
+  the same Toaster line the robot says. The refusal popup uses the Toaster refusals in that mode.
 
 ## Flashing
 

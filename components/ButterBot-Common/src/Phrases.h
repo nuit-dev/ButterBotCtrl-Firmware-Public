@@ -217,7 +217,8 @@ public:
     static int16_t get(Phrase phrase);
 
     // Custom (NUIT): set on robot and controller from the VOICE setting, so both pick and show the same line.
-    // Toaster: "fun" lines (Ramble, Fact, Joke, Poke, Profanity) come from the Toaster list instead.
+    // Toaster: every phrase that has a Talkie Toaster version (all but the character quotes) uses it, same
+    // placeholders, so functional messages keep their information (Toaster_* arrays in Phrases.cpp).
     // Yoda: map()/mapShown() reorder sentences Yoda style ("I will remember" -> "Remember, I will").
     // Character quotes (Darth, Hawking, HAL, Daisy, Toaster, Yoda, Croatian, TerminateRefusal) are never changed.
     static inline std::atomic<bool> toasterMode{ false };

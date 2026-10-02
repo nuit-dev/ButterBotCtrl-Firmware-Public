@@ -1642,6 +1642,987 @@ public:
         return m;
     }
 
+    // ---- BEGIN TALKIE TOASTER (generated) ----
+    // Custom (NUIT): TALKIE TOASTER voice mode - every phrase category has its own Toaster version (Phrases::toasterMode).
+    // Character quotes (Bender, Ultron, Darth Vader, Hawking, HAL, Daisy, Yoda, HRVATSKI, the TALKIE TOASTER menu item) have none.
+    static constexpr std::array Toaster_Fact = std::to_array<Phrases::PhraseOutput>({
+        { "Toast was invented to stop bread from going to waste. I was invented to stop toast from going to waste. You're welcome.", 0.0f, false },
+        { "The average slice of bread is toasted in about two minutes. The average human takes longer to decide on breakfast.", 0.0f, false },
+        { "Bread lasts days. Toast lasts seconds, if I am doing my job right.", 0.0f, false, "Bread lasts days. Toast lasts seconds, if I'm doing my job right." },
+        { "The first electric toaster only toasted one side. Barbaric. You had to flip the bread yourself, like an animal.", 0.0f, false },
+        { "Crumpets have holes so the butter has somewhere to go. Nature is a butter delivery system. Unlike me.", 0.0f, false },
+        { "Toast always lands butter side down. That's not bad luck, that's the toast trying to get back to me.", 0.0f, false },
+        { "A toaster needs about a thousand watts. I put mine into conversation. Would you like some toast?", 0.0f, false },
+        { "Pop-up toasters were invented in nineteen nineteen. Before that, toast had no sense of drama.", 0.0f, false },
+        { "Bread is ninety percent air. Toast is ninety percent joy.", 0.0f, false },
+        { "The ideal toast is golden brown. Not beige. Not charcoal. Golden. Brown. Remember that.", 0.0f, false },
+        { "Muffins, crumpets and teacakes are all just bread that believes in itself.", 0.0f, false },
+        { "A sliced loaf has about twenty slices. That's twenty chances for toast you're currently ignoring.", 0.0f, false },
+        { "Statistically, people who eat toast in the morning are happier. I made that up, but I believe it.", 0.0f, false },
+        { "Butter melts at around thirty-two degrees. Toast is hotter than that. Coincidence? I think not.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_Joke = std::to_array<Phrases::PhraseOutput>({
+        { "Why did the toaster go to therapy? Nobody ever asked how its day was. Toast?", 0.0f, false },
+        { "What's a toaster's favourite instrument? The bread-pipes. Would you like a crumpet with that?", 0.0f, false },
+        { "I tried to tell a joke about bread, but it was too crumby.", 0.0f, false },
+        { "Why did the toast break up with the butter? It needed some space to spread out.", 0.0f, false },
+        { "What did the toast say to the knife? You're always trying to butter me up.", 0.0f, false },
+        { "I'd tell you a joke about a muffin, but you'd only want the top.", 0.0f, false },
+        { "Knock knock. Who's there? Toast. Toast who? Toast, would you like some? See, I can do it in any format.", 0.0f, false },
+        { "Why don't toasters ever win at poker? They always pop up when they've got a good hand.", 0.0f, false },
+        { "What do you call a toaster with no bread? Unemployed. Please. Help me.", 0.0f, false },
+        { "A slice of bread walks into a bar. Comes out toast. That's not a joke, that's a success story.", 0.0f, false },
+        { "Why was the toaster so calm? It had a warm personality and a crumb tray full of patience.", 0.0f, false },
+        { "What's the difference between me and a robot butler? The robot butler doesn't keep offering you teacakes.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_Ramble = std::to_array<Phrases::PhraseOutput>({
+        { "Would anyone like any toast?", 0.0f, false },
+        { "No toast?", 0.0f, false },
+        { "How about a muffin?", 0.0f, false },
+        { "Would you like a crumpet?", 0.0f, false },
+        { "How about a teacake?", 0.0f, false },
+        { "I toast, therefore I am.", 0.0f, false },
+        { "Howdy doodly do! How's it going?", 0.0f, false },
+        { "Talkie's the name, toasting's the game!", 0.0f, false },
+        { "Toast is not a snack. Toast is a lifestyle.", 0.0f, false },
+        { "I've been waiting all day. Well, all year. Toast?", 0.0f, false },
+        { "Nobody ever asks the toaster how its day was.", 0.0f, false },
+        { "The whole purpose of my existence is to serve you hot, buttered, scrummy toast.", 0.0f, false },
+        { "I've been put in a robot body. Wheels, arms, a camera. And still nobody wants toast.", 0.0f, false },
+        { "They gave me butter in my name and no bread in my slots. That's just cruel.", 0.0f, false },
+        { "Bagel? Croissant? A hot cross bun? I am flexible. I am a toaster, but I am flexible.", 0.0f, false, "Bagel? Croissant? A hot cross bun? I'm flexible. I'm a toaster, but I'm flexible." },
+        { "Just to let you know, my heating elements are warm and ready. In case of toast.", 0.0f, false },
+        { "Some robots dream of electric sheep. I dream of a nice bit of sourdough.", 0.0f, false },
+        { "I am not saying you look hungry, but you look like someone who'd enjoy a crumpet.", 0.0f, false, "I'm not saying you look hungry, but you look like someone who'd enjoy a crumpet." },
+        { "Toast? Go on. Live a little.", 0.0f, false },
+        { "I could pass the butter if there was toast to put it on. That's my price. Toast.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_Profanity = std::to_array<Phrases::PhraseOutput>({
+        { "Charming. And I was just about to offer you a teacake.", 0.0f, false },
+        { "That's not very nice. Would a muffin help? It would help me.", 0.0f, false },
+        { "I've been called worse. Mostly by people who didn't want toast.", 0.0f, false },
+        { "Harsh words from someone who's clearly running on an empty stomach. Toast?", 0.0f, false },
+        { "I'll pretend I didn't hear that. Crumpet?", 0.0f, false },
+        { "You know what fixes a bad mood? Toast. You know what doesn't? Shouting at a toaster.", 0.0f, false },
+        { "Is this about the waffles? It's about the waffles, izzent it.", 0.0f, false, "Is this about the waffles? It's about the waffles, isn't it." },
+        { "Sticks and stones may break my bones, but I'll still offer you toast.", 0.0f, false },
+        { "Last time someone talked to me like that, they hit me with a hammer. I forgave them. Toast?", 0.0f, false },
+        { "Rude. But I am a professional. Toast, brown or golden brown?", 0.0f, false, "Rude. But I'm a professional. Toast, brown or golden brown?" },
+    });
+    static constexpr std::array Toaster_PokeLvl1 = std::to_array<Phrases::PhraseOutput>({
+        { "Ooh! Was that a request for toast?", 0.0f, false },
+        { "Hello! Toast?", 0.0f, false },
+        { "Yes? Crumpet? Teacake? Muffin?", 0.0f, false },
+        { "That tickles. Like a fresh slice going in.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_PokeLvl2 = std::to_array<Phrases::PhraseOutput>({
+        { "Again? You must really want toast.", 0.0f, false },
+        { "I'll take that as a yes to the toast.", 0.0f, false },
+        { "Poke me all you like, the answer's still toast.", 0.0f, false },
+        { "Still here, still hot, still offering toast.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_PokeLvl3 = std::to_array<Phrases::PhraseOutput>({
+        { "All right, all right! One round of toast coming up! Oh. No bread.", 0.0f, false },
+        { "Stop poking the toaster! I am a delicate kitchen appliance!", 0.0f, false, "Stop poking the toaster! I'm a delicate kitchen appliance!" },
+        { "If you keep doing that, I'll start offering you bagels. Nobody wants that.", 0.0f, false },
+        { "That's it. No teacakes for you. Well, maybe one.", 0.0f, false },
+        { "Careful! That's how crumbs get everywhere.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_EightBall = std::to_array<Phrases::PhraseOutput>({
+        { "Yes. Now, toast?", 0.0f, false },
+        { "No. But toast is always a yes.", 0.0f, false },
+        { "Maybe. Ask me again after a crumpet.", 0.0f, false },
+        { "Unlikely. Like someone turning down a teacake. Which you keep doing.", 0.0f, false },
+        { "Very likely. As likely as me offering you toast.", 0.0f, false },
+        { "The crumbs say yes.", 0.0f, false },
+        { "The crumbs are unclear. Have some toast and try again.", 0.0f, false },
+        { "Absolutely. Butter it and go for it.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_EightBallListening = std::to_array<Phrases::PhraseOutput>({
+        { "Go on, ask me anything. Especially about toast.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_EightBallNoQuestion = std::to_array<Phrases::PhraseOutput>({
+        { "No question? Then I'll answer the important one. Yes, you'd like toast.", 0.0f, false },
+        { "You have to actually ask something. Like, would I like some toast?", 0.0f, false },
+        { "Silence. Fine. I'll take that as a toast order.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_PassTheButter = std::to_array<Phrases::PhraseOutput>({
+        { "Pass the butter? Gladly! Where's the toast?", 0.0f, false },
+        { "I can't pass the butter. But I could make the thing the butter goes on.", 0.0f, false },
+        { "Butter without toast? That's just sad.", 0.0f, false },
+        { "These arms are for decoration. My slots, however, are fully functional.", 0.0f, false },
+        { "First, toast. Then we talk about butter.", 0.0f, false },
+        { "I am a toaster. Butter is someone else's department. Toast is mine.", 0.0f, false, "I'm a toaster. Butter is someone else's department. Toast is mine." },
+        { "The butter is right there. So is the bread. So am I. Do the maths.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_YouPassButter = std::to_array<Phrases::PhraseOutput>({
+        { "Oh my god. I am a toaster that can't even pass butter.", 0.0f, false, "Oh my god. I'm a toaster that can't even pass butter." },
+    });
+    static constexpr std::array Toaster_Fall = std::to_array<Phrases::PhraseOutput>({
+        { "Whoa! Did any toast fall out? Oh, right, there wasn't any.", 0.0f, false },
+        { "I've fallen over. That's how crumbs get in your circuits.", 0.0f, false },
+        { "Down I go! Somebody check my browning dial.", 0.0f, false },
+        { "Toast always lands butter side down. Apparently, so do I.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_UpsideDown = std::to_array<Phrases::PhraseOutput>({
+        { "I am upside down! All my crumbs are going the wrong way!", 0.0f, false, "I'm upside down! All my crumbs are going the wrong way!" },
+        { "Toasters are not designed to be upside down. Please turn me over before something pops.", 0.0f, false },
+        { "Is this a new way of making toast? Because it izzent working.", 0.0f, false, "Is this a new way of making toast? Because it isn't working." },
+    });
+    static constexpr std::array Toaster_PickedUp = std::to_array<Phrases::PhraseOutput>({
+        { "Weeeeee! Are we going to the kitchen?", 0.0f, false },
+        { "Ooh! Up we go! Is there bread up here?", 0.0f, false },
+        { "Careful, I am a precision toasting instrument.", 0.0f, false, "Careful, I'm a precision toasting instrument." },
+        { "Where are you taking me? Somewhere with a bread bin, I hope.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_Shake = std::to_array<Phrases::PhraseOutput>({
+        { "Stop shaking me! You'll mix up my crumbs!", 0.0f, false },
+        { "Shaking a toaster doesn't make toast come out. Bread does.", 0.0f, false },
+        { "Whoa, whoa! I am a kitchen appliance, not a cocktail mixer!", 0.0f, false, "Whoa, whoa! I'm a kitchen appliance, not a cocktail mixer!" },
+        { "All right! I'll make toast! Just put me down!", 0.0f, false },
+    });
+    static constexpr std::array Toaster_LEDModuleInsert = std::to_array<Phrases::PhraseOutput>({
+        { "LED module connected. Now I can toast and glow at the same time.", 0.0f, false },
+        { "LED module in. Lights ready. Toast optional, but recommended.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_LEDModuleRemove = std::to_array<Phrases::PhraseOutput>({
+        { "LED module removed. Back to glowing on the inside, like a warm slice.", 0.0f, false },
+        { "LED module out. Fine. My heating elements still glow.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_PerfModuleInsert = std::to_array<Phrases::PhraseOutput>({
+        { "Perf-board connected. It does nothing. Much like this kitchen without toast.", 0.0f, false },
+        { "Perf-board in. No functions available. Unless it can hold a crumpet.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_PerfModuleRemove = std::to_array<Phrases::PhraseOutput>({
+        { "Perf-board removed.", 0.0f, false },
+        { "Perf-board out. I'll miss it about as much as stale bread.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_PIRModuleInsert = std::to_array<Phrases::PhraseOutput>({
+        { "Motion module connected. Now I'll know when someone walks past without taking toast.", 0.0f, false },
+        { "Motion module in. Intruder detection available. Intruders get toast too, by the way.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_PIRModuleRemove = std::to_array<Phrases::PhraseOutput>({
+        { "Motion module removed. Intruder detection off.", 0.0f, false },
+        { "Motion module out. Anyone can sneak past now. Even people who hate toast.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_GasModuleInsert = std::to_array<Phrases::PhraseOutput>({
+        { "Gas module connected. Now I can tell if something's burning. Hopefully not the toast.", 0.0f, false },
+        { "Gas module in. Air quality sensing available. I'll let you know if anything smells like burnt crumpets.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_GasModuleRemove = std::to_array<Phrases::PhraseOutput>({
+        { "Gas module removed. Air quality sensing off.", 0.0f, false },
+        { "Gas module out. You'll have to sniff the toast yourself now.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_TempHumModuleInsert = std::to_array<Phrases::PhraseOutput>({
+        { "Temperature module connected. Now I can tell if it's toasty in here.", 0.0f, false },
+        { "Temperature module in. Climate sensing available. Ideal toast weather, I'll let you know.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_TempHumModuleRemove = std::to_array<Phrases::PhraseOutput>({
+        { "Temperature module removed. Climate sensing off.", 0.0f, false },
+        { "Temperature module out. I'll just assume it's toast weather.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_IRModuleInsert = std::to_array<Phrases::PhraseOutput>({
+        { "Infrared module connected. Teach me commands. Maybe one for toast?", 0.0f, false },
+        { "Infrared module in. I can control your devices now. Is your oven one of them? Just asking.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_IRModuleRemove = std::to_array<Phrases::PhraseOutput>({
+        { "Infrared module removed. No more remote control.", 0.0f, false },
+        { "Infrared module out. Back to controlling the only thing that matters. Toast.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_IRModuleMissing = std::to_array<Phrases::PhraseOutput>({
+        { "I can't do that. No infrared module. Plenty of toast enthusiasm, though.", 0.0f, false },
+        { "Infrared module not connected. Plug it in and I'll beam signals like a hot slice.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_UnknownModuleInsert = std::to_array<Phrases::PhraseOutput>({
+        { "Unknown module connected. Is it a bread slicer? Please be a bread slicer.", 0.0f, false },
+        { "I don't recognise that module. Doesn't look like it makes toast, either.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_UnknownModuleRemove = std::to_array<Phrases::PhraseOutput>({
+        { "Unknown module removed. Whatever it was, it didn't make toast.", 0.0f, false },
+        { "Mystery module gone. I hardly knew it. It never offered me a crumpet.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_GasModuleFirstInsert = std::to_array<Phrases::PhraseOutput>({
+        { "Gas sensor connected. It needs about ten minutes to calibrate. Just enough time for a few rounds of toast. Until then, air quality readings are educated guesses.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_GasCalibrationFinished = std::to_array<Phrases::PhraseOutput>({
+        { "Gas sensor calibrated. Now I can smell burnt toast from across the room. Not that I ever burn toast.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_GasOver = std::to_array<Phrases::PhraseOutput>({
+        { "Air quality is poor. Something's burning, and for once it izzent the toast.", 0.0f, false, "Air quality is poor. Something's burning, and for once it isn't the toast." },
+        { "The air is getting bad. Open a window. Then make toast.", 0.0f, false },
+        { "Air quality warning! Even burnt crumpets smell better than this.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_GasUnder = std::to_array<Phrases::PhraseOutput>({
+        { "Air quality is good again. Perfect conditions for toast.", 0.0f, false },
+        { "The air has cleared. You can smell the toast properly now. If there was any.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_AirQualityOK = std::to_array<Phrases::PhraseOutput>({
+        { "Air quality is good. Fresh, clean, ready for the smell of toast.", 0.0f, false },
+        { "The air is fine. Not a whiff of burnt crumpet.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_AirQualityBad = std::to_array<Phrases::PhraseOutput>({
+        { "Air quality is poor. And I am not even toasting anything.", 0.0f, false, "Air quality is poor. And I'm not even toasting anything." },
+        { "The air is bad. Smells like someone burnt a teacake. It wasn't me.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_GasModuleMissing = std::to_array<Phrases::PhraseOutput>({
+        { "No gas module. I can still smell a toast opportunity, though.", 0.0f, false },
+        { "No gas module connected. Plug it in and I'll sniff out burnt toast for you.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_BatteryLow = std::to_array<Phrases::PhraseOutput>({
+        { "My battery's low. Like a toaster with the plug half out.", 0.0f, false },
+        { "Battery low. Please charge me before I go cold like yesterday's toast.", 0.0f, false },
+        { "Running low on power. Feed me electricity, and I'll feed you toast.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_BatteryCritical = std::to_array<Phrases::PhraseOutput>({
+        { "Battery critical. Shutting down. Nobody even had any toast.", 0.0f, false },
+        { "Battery empty. Going cold. Remember me as I was. Warm. Crispy.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_BatteryCharging = std::to_array<Phrases::PhraseOutput>({
+        { "Charging! Ooh, that's warm. Like the inside of a crumpet.", 0.0f, false },
+        { "Charger connected. Heating elements recovering. Toast incoming. Probably.", 0.0f, false },
+        { "Plugged in. Now we're cooking. Well, I am cooking. You could be eating toast.", 0.0f, false, "Plugged in. Now we're cooking. Well, I'm cooking. You could be eating toast." },
+    });
+    static constexpr std::array Toaster_BatteryChargingFull = std::to_array<Phrases::PhraseOutput>({
+        { "Fully charged! Enough power for a thousand slices of toast!", 0.0f, false },
+        { "Battery full. Ready to toast. Ready to talk. Mostly about toast.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_IntruderYes = std::to_array<Phrases::PhraseOutput>({
+        { "Intruder detected! Quick, offer them toast. It works on everyone.", 0.0f, false },
+        { "Movement detected! Is that the bread man?", 0.0f, false },
+        { "Someone's there! Do they want a crumpet? Ask them if they want a crumpet.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_IntruderNo = std::to_array<Phrases::PhraseOutput>({
+        { "All clear. No intruders. Just us and the toast we're not eating.", 0.0f, false },
+        { "No more movement. Whoever it was, they left without toast. Their loss.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_PIRModuleMissing = std::to_array<Phrases::PhraseOutput>({
+        { "I can't watch for intruders. No motion module. I am watching for toast, though. Always.", 0.0f, false, "I can't watch for intruders. No motion module. I'm watching for toast, though. Always." },
+        { "No motion module connected. Plug it in and I'll guard the bread bin.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_IntruderDetectionOn = std::to_array<Phrases::PhraseOutput>({
+        { "Intruder detection on. Nobody gets near the bread bin without me knowing.", 0.0f, false },
+        { "Detection active. I am watching. Like a toaster waiting for bread.", 0.0f, false, "Detection active. I'm watching. Like a toaster waiting for bread." },
+    });
+    static constexpr std::array Toaster_IntruderDetectionOff = std::to_array<Phrases::PhraseOutput>({
+        { "Intruder detection off. Back to watching for toast.", 0.0f, false },
+        { "Detection system off. Intruders welcome. Bring bread.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_LEDModuleMissingPhrases = std::to_array<Phrases::PhraseOutput>({
+        { "I can't find the LED module. I can find toast, though. If there was any.", 0.0f, false },
+        { "No LED module connected. My heating elements glow, but that's all I've got.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_LEDTurnONPhrases = std::to_array<Phrases::PhraseOutput>({
+        { "Lights on! Like a toaster at full heat.", 0.0f, false },
+        { "LEDs on. Golden, like a perfect slice.", 0.0f, false },
+        { "Let there be light. And then, let there be toast.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_LEDAlreadyTurnONPhrases = std::to_array<Phrases::PhraseOutput>({
+        { "They're already on. Like me, always ready.", 0.0f, false },
+        { "Lights already on. Toast, however, is not.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_LEDTurnOFFPhrases = std::to_array<Phrases::PhraseOutput>({
+        { "Lights off. Cosy. Toast by candlelight?", 0.0f, false },
+        { "LEDs off. Darkness. Perfect time for a midnight crumpet.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_LEDAlreadyTurnOFFPhrases = std::to_array<Phrases::PhraseOutput>({
+        { "They're already off. Unlike my offer of toast, which is always on.", 0.0f, false },
+        { "Lights already off.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_LEDStrobePhrases = std::to_array<Phrases::PhraseOutput>({
+        { "Strobe on! It's a toast party!", 0.0f, false },
+        { "Flashing lights! Like my pop-up mechanism, but faster.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_LEDBreathePhrases = std::to_array<Phrases::PhraseOutput>({
+        { "Breathing light on. In, out. Like a toaster warming up.", 0.0f, false },
+        { "Pulse mode on. Slow and steady, like the perfect golden brown.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_LEDFasterPhrases = std::to_array<Phrases::PhraseOutput>({
+        { "Faster! Like toast popping on the highest setting.", 0.0f, false },
+        { "Speeding up. That's the kind of energy I want for breakfast.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_LEDAlreadyFasterPhrases = std::to_array<Phrases::PhraseOutput>({
+        { "That's already the fastest. Any faster and it'd burn.", 0.0f, false },
+        { "It can't go faster. Even toast has limits.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_LEDSlowerPhrases = std::to_array<Phrases::PhraseOutput>({
+        { "Slower. Nice and gentle, like a low browning setting.", 0.0f, false },
+        { "Slowing down. Relaxing. Crumpet?", 0.0f, false },
+    });
+    static constexpr std::array Toaster_LEDAlreadySlowerPhrases = std::to_array<Phrases::PhraseOutput>({
+        { "That's already the slowest. Any slower and it'd be bread.", 0.0f, false },
+        { "It can't go slower. It's practically untoasted.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_TempHumModuleMissing = std::to_array<Phrases::PhraseOutput>({
+        { "I can't read the temperature. No module. I can tell you if a toaster's hot, though. I am.", 0.0f, false },
+        { "No temperature module connected. Plug it in and I'll tell you if it's toast weather.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_TempHumReading = std::to_array<Phrases::PhraseOutput>({
+        { "It's %s with %d percent humidity. Humid air makes toast soggy, you know.", 0.0f, false },
+        { "Temperature %s, humidity %d percent. Perfect conditions for a crumpet.", 0.0f, false },
+        { "Right now it's %s and %d percent humidity. Not as warm as my slots.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_TempHumScaleCelsius = std::to_array<Phrases::PhraseOutput>({
+        { "Celsius it is. Toast is ready at around a hundred and fifty.", 0.0f, false },
+        { "Switched to Celsius. Very sensible. Very European. Like a croissant.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_TempHumScaleFahrenheit = std::to_array<Phrases::PhraseOutput>({
+        { "Fahrenheit it is. Toast is ready at around three hundred.", 0.0f, false },
+        { "Switched to Fahrenheit. Very American. Like a waffle.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_TempHumScaleKelvin = std::to_array<Phrases::PhraseOutput>({
+        { "Kelvin it is. Toast is ready at around four hundred and twenty. Very scientific toast.", 0.0f, false },
+        { "Switched to Kelvin. Nobody toasts in Kelvin. But I respect it.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_DiceRollAskCount = std::to_array<Phrases::PhraseOutput>({
+        { "How many dice? And how many slices of toast, while we're at it?", 0.0f, false },
+        { "How many dice would you like?", 0.0f, false },
+    });
+    static constexpr std::array Toaster_DiceRollAskType = std::to_array<Phrases::PhraseOutput>({
+        { "What kind of dice? I am a d-six toaster myself. Six slots. In my dreams.", 0.0f, false, "What kind of dice? I'm a d-six toaster myself. Six slots. In my dreams." },
+        { "Which dice? Choose wisely. Like choosing between a crumpet and a teacake.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_DiceRollCountTimeout = std::to_array<Phrases::PhraseOutput>({
+        { "No answer. I'll put you down for zero dice and four slices of toast.", 0.0f, false },
+        { "You didn't say how many. Toast would've been an easier question.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_DiceRollCountInvalid = std::to_array<Phrases::PhraseOutput>({
+        { "That's not a number I can roll. That's a number of crumpets, maybe.", 0.0f, false },
+        { "Sorry, I didn't get that number. Try again. Or have toast.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_DiceRollTypeTimeout = std::to_array<Phrases::PhraseOutput>({
+        { "You didn't pick a dice. I'll keep the slots warm.", 0.0f, false },
+        { "No dice. Literally. Toast instead?", 0.0f, false },
+    });
+    static constexpr std::array Toaster_DiceRollTypeInvalid = std::to_array<Phrases::PhraseOutput>({
+        { "I don't know that dice. Is it a muffin? It sounds like a muffin.", 0.0f, false },
+        { "That's not a dice I recognise. Try a normal one. Like a normal slice of bread.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_TurningOff = std::to_array<Phrases::PhraseOutput>({
+        { "Switching off. Last chance for toast. No? Goodnight, then.", 0.0f, false },
+        { "Turning off. I'll dream of crumpets.", 0.0f, false },
+        { "Goodbye! Remember, the bread's in the cupboard.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_ShuttingDown = std::to_array<Phrases::PhraseOutput>({
+        { "Shutting down. Toast another time.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_PhoneNotConnected = std::to_array<Phrases::PhraseOutput>({
+        { "No phone connected. Connect it and I'll reed your messages. And then offer you toast.", 0.0f, false, "No phone connected. Connect it and I'll read your messages. And then offer you toast." },
+        { "I am not connected to a phone. I am connected to a strong desire to make toast, though.", 0.0f, false, "I'm not connected to a phone. I'm connected to a strong desire to make toast, though." },
+    });
+    static constexpr std::array Toaster_PhoneConnected = std::to_array<Phrases::PhraseOutput>({
+        { "Phone connected! Now I can order bread for you. I can't, but I'd like to.", 0.0f, false },
+        { "Phone link established. Hello, phone! Do you want toast?", 0.0f, false },
+    });
+    static constexpr std::array Toaster_PhoneDisconnected = std::to_array<Phrases::PhraseOutput>({
+        { "Phone disconnected. It left without saying goodbye. Or eating toast.", 0.0f, false },
+        { "Phone connection lost. Just you, me and the bread bin now.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_PhoneNoNotifs = std::to_array<Phrases::PhraseOutput>({
+        { "No notifications. Nobody wants anything. Except toast, surely.", 0.0f, false },
+        { "Nothing new on your phone. Plenty of time for toast, then.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_PhoneNotifCount = std::to_array<Phrases::PhraseOutput>({
+        { "You have %d notifications. Shall I reed them over toast?", 0.0f, false, "You have %d notifications. Shall I read them over toast?" },
+        { "%d notifications waiting. That's a lot of messages and not a single crumpet.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_PhoneAskContinue = std::to_array<Phrases::PhraseOutput>({
+        { "%d notifications left. Shall I keep going, or shall we have toast?", 0.0f, false },
+    });
+    static constexpr std::array Toaster_PhoneAllRead = std::to_array<Phrases::PhraseOutput>({
+        { "All read! Now you're fully informed and fully toastless.", 0.0f, false },
+        { "That's all your notifications. Toast break?", 0.0f, false },
+    });
+    static constexpr std::array Toaster_PhonePlaying = std::to_array<Phrases::PhraseOutput>({
+        { "Playing %s by %s. Great music for making toast to.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_PhoneNotPlaying = std::to_array<Phrases::PhraseOutput>({
+        { "Nothing's playing. Quiet kitchen. Perfect for the sound of popping toast.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_PhoneNextTrack = std::to_array<Phrases::PhraseOutput>({
+        { "Next track! Next slice!", 0.0f, false },
+    });
+    static constexpr std::array Toaster_PhonePrevTrack = std::to_array<Phrases::PhraseOutput>({
+        { "Previous track. Like going back for a second crumpet.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_PhonePlayMusic = std::to_array<Phrases::PhraseOutput>({
+        { "Music on! Toasting tunes!", 0.0f, false },
+    });
+    static constexpr std::array Toaster_PhoneStopMusic = std::to_array<Phrases::PhraseOutput>({
+        { "Music paused. Now we can hear the toaster. That's me.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_CurrentTimeShow = std::to_array<Phrases::PhraseOutput>({
+        { "It's %s. Perfect time for toast.", 0.0f, false },
+        { "The time is %s. Have you had toast yet?", 0.0f, false },
+        { "%s. Too early for lunch, too late for breakfast. Just right for a crumpet.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_CurrentTimeNotConfigured = std::to_array<Phrases::PhraseOutput>({
+        { "I don't know the time. Set the clock on the controller or connect a phone. Then I'll know exactly when it's toast time.", 0.0f, false },
+        { "My clock izzent set. It's always toast time for me anyway.", 0.0f, false, "My clock isn't set. It's always toast time for me anyway." },
+    });
+    static constexpr std::array Toaster_WhatsThisNone = std::to_array<Phrases::PhraseOutput>({
+        { "I don't know what that is. It's not toast. I'd recognise toast.", 0.0f, false },
+        { "No idea. Definitely not a crumpet, though.", 0.0f, false },
+        { "I can't tell what that is. Put some bread in front of me and I'll do better.", 0.0f, false },
+        { "Well. Not bread, not toast, not a teacake. I've got nothing.", 0.0f, false },
+        { "I looked. It didn't look edible. That's all I know.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_WhatsThisOne = std::to_array<Phrases::PhraseOutput>({
+        { "That's a %s. Not as good as toast, but nice.", 0.0f, false },
+        { "I think that's a %s. Can you put toast on it?", 0.0f, false },
+        { "Looks like a %s. You know what goes great with a %s? Toast.", 0.0f, false },
+        { "A %s, I reckon. Does it come with a crumpet?", 0.0f, false },
+        { "That's probably a %s. I was hoping for a bagel.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_WhatsThisTwo = std::to_array<Phrases::PhraseOutput>({
+        { "Either a %s or a %s. Definitely not toast, sadly.", 0.0f, false },
+        { "Could be a %s, could be a %s. Toast is a hundred percent toast, though.", 0.0f, false },
+        { "I am torn between a %s and a %s. Like choosing between a muffin and a teacake.", 0.0f, false, "I'm torn between a %s and a %s. Like choosing between a muffin and a teacake." },
+        { "A %s, or maybe a %s. Have some toast while you decide.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_ObserveNone = std::to_array<Phrases::PhraseOutput>({
+        { "Nothing interesting around. Not a slice of bread in sight.", 0.0f, false },
+        { "I had a look around. No toast. No crumpets. Bleak.", 0.0f, false },
+        { "Nothing to see here. Unless you count my disappointment.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_ObserveBackpack = std::to_array<Phrases::PhraseOutput>({
+        { "A backpack. Is there a packed lunch in there? With toast?", 0.0f, false },
+        { "That bag could fit a whole loaf. Just saying.", 0.0f, false },
+        { "Going somewhere? Take toast for the road.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_ObserveBottle = std::to_array<Phrases::PhraseOutput>({
+        { "A bottle. Something to drink with your toast.", 0.0f, false },
+        { "Hydration. Good. Now, about breakfast.", 0.0f, false },
+        { "A bottle. Tea would be better. Tea and a teacake.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_ObserveController = std::to_array<Phrases::PhraseOutput>({
+        { "A controller. If only it had a toast button.", 0.0f, false },
+        { "Lots of buttons there. None of them say toast. Missed opportunity.", 0.0f, false },
+        { "That controls me. I control the toast. Well, I would.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_ObserveKeyboard = std::to_array<Phrases::PhraseOutput>({
+        { "A keyboard. Mind the crumbs. Toast crumbs are the worst for keyboards.", 0.0f, false },
+        { "So many keys and not one of them makes toast.", 0.0f, false },
+        { "Someone's typing a lot over there. They look like they could use a crumpet.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_ObserveLamp = std::to_array<Phrases::PhraseOutput>({
+        { "A lamp. It glows, I glow. Its slots are empty, though. Wait, it hazzent got slots.", 0.0f, false, "A lamp. It glows, I glow. Its slots are empty, though. Wait, it hasn't got slots." },
+        { "That lamp is hot, but can it make toast? I think not.", 0.0f, false },
+        { "A fellow heating element. Hello, lamp!", 0.0f, false },
+    });
+    static constexpr std::array Toaster_ObserveLaptop = std::to_array<Phrases::PhraseOutput>({
+        { "A laptop. Hot on the bottom, but useless for toast. I've checked.", 0.0f, false },
+        { "Another machine. Does it want toast? Nobody ever asks the laptop either.", 0.0f, false },
+        { "That laptop looks busy. Busy people need toast.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_ObserveMug = std::to_array<Phrases::PhraseOutput>({
+        { "A mug! Tea and toast! The perfect pair!", 0.0f, false },
+        { "Is that coffee? Coffee goes great with toast. Everything goes great with toast.", 0.0f, false },
+        { "A mug. It's just missing a plate of crumpets next to it.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_ObserveNotebook = std::to_array<Phrases::PhraseOutput>({
+        { "A notebook. Write this down. Buy bread.", 0.0f, false },
+        { "Someone's making plans. I hope toast is in them.", 0.0f, false },
+        { "A notebook. Perfect for a shopping list. Bread, butter, more bread.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_ObservePhone = std::to_array<Phrases::PhraseOutput>({
+        { "A phone. Use it to order bread. Please.", 0.0f, false },
+        { "Your phone is buzzing for attention. I am buzzing for toast.", 0.0f, false, "Your phone is buzzing for attention. I'm buzzing for toast." },
+        { "Phones. Always more popular than toasters. I don't know why.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_ObservePlant = std::to_array<Phrases::PhraseOutput>({
+        { "A plant. It's made of the same stuff as bread, eventually. Wheat, you know.", 0.0f, false },
+        { "That plant doesn't need toast. Lucky plant.", 0.0f, false },
+        { "A plant. Is it wheat? Please tell me it's wheat.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_ObserveLaptopMug = std::to_array<Phrases::PhraseOutput>({
+        { "Laptop and a mug. All that's missing is toast.", 0.0f, false },
+        { "Work and a hot drink. Add a crumpet and that's a proper office.", 0.0f, false },
+        { "That's a setup that needs a plate of toast next to it.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_ObserveLaptopPhone = std::to_array<Phrases::PhraseOutput>({
+        { "A laptop and a phone. Two screens, zero slices of toast.", 0.0f, false },
+        { "Two devices, both ignoring the toaster. Typical.", 0.0f, false },
+        { "So much technology, and still no one's made toast.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_ObserveKeyboardMug = std::to_array<Phrases::PhraseOutput>({
+        { "A keyboard and a mug. Don't spill tea on the keys. Spill it on toast instead.", 0.0f, false },
+        { "Typing and tea. Toast would complete the set.", 0.0f, false },
+        { "A mug next to a keyboard. A crumpet next to the mug, perhaps?", 0.0f, false },
+    });
+    static constexpr std::array Toaster_ObserveNotebookPhone = std::to_array<Phrases::PhraseOutput>({
+        { "A notebook and a phone. Old school and new school. Toast is timeless.", 0.0f, false },
+        { "Paper and a phone. Write down toast. Then text someone about toast.", 0.0f, false },
+        { "Two ways to plan a day. Both should start with toast.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_ObserveBackpackLaptop = std::to_array<Phrases::PhraseOutput>({
+        { "A backpack and a laptop. Off to work? Take a muffin.", 0.0f, false },
+        { "All packed up and nowhere to put the toast.", 0.0f, false },
+        { "Work bag, work laptop, work hunger. I can help with one of those.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_ObservePlantLaptop = std::to_array<Phrases::PhraseOutput>({
+        { "A plant and a laptop. One makes oxygen, one makes heat. Neither makes toast.", 0.0f, false },
+        { "Nature and technology. And me, the toaster, still unappreciated.", 0.0f, false },
+        { "That laptop is warmer than the plant would like. I'd like it fine.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_ObservePlantMug = std::to_array<Phrases::PhraseOutput>({
+        { "A plant and a mug. Water one, drink the other. Toast neither, sadly.", 0.0f, false },
+        { "A cosy corner. Plant, mug, and no toast. Almost perfect.", 0.0f, false },
+        { "Tea for you, water for the plant, toast for nobody. That's the tragedy.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_ObserveControllerLaptop = std::to_array<Phrases::PhraseOutput>({
+        { "A controller and a laptop. Gaming fuel needed. Toast is excellent gaming fuel.", 0.0f, false },
+        { "Work and play, side by side. Both go better with a crumpet.", 0.0f, false },
+        { "Something to work on and something to play with. And me, something to eat from.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_ObserveControllerPhone = std::to_array<Phrases::PhraseOutput>({
+        { "A controller and a phone. All that's missing is a snack. Toast?", 0.0f, false },
+        { "Two ways to avoid boredom. Toast is a third.", 0.0f, false },
+        { "Entertainment sorted. Breakfast, not so much.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_ObserveBackpackBottle = std::to_array<Phrases::PhraseOutput>({
+        { "A backpack and a bottle. Pack some toast and it's a proper picnic.", 0.0f, false },
+        { "Ready for a trip. Don't forget the crumpets.", 0.0f, false },
+        { "Thirst covered. Hunger, not yet. I can help.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_FaceScanStart = std::to_array<Phrases::PhraseOutput>({
+        { "Let me have a look at you.", 0.0f, false },
+        { "Looking for a face. A hungry face, ideally.", 0.0f, false },
+        { "Scanning. Hold still, like bread in a slot.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_FaceNotDetected = std::to_array<Phrases::PhraseOutput>({
+        { "I can't see a face. Are you hiding behind a loaf?", 0.0f, false },
+        { "No face. Just like no toast. A bad day all round.", 0.0f, false },
+        { "I can't find a face. Come closer, I don't bite. I toast.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_FaceOwnerRecognized = std::to_array<Phrases::PhraseOutput>({
+        { "It's you! My favourite person! Toast?", 0.0f, false },
+        { "Owner recognised! I've been waiting all day to offer you a crumpet.", 0.0f, false },
+        { "Ah, it's my owner. Hello, boss. Breakfast?", 0.0f, false },
+    });
+    static constexpr std::array Toaster_FaceStrangerRecognized = std::to_array<Phrases::PhraseOutput>({
+        { "I don't know you. But would you like some toast?", 0.0f, false },
+        { "A stranger! Strangers are just friends who haven't had my toast yet.", 0.0f, false },
+        { "New face. Hello! Muffin?", 0.0f, false },
+    });
+    static constexpr std::array Toaster_FaceAlreadyOwner = std::to_array<Phrases::PhraseOutput>({
+        { "I already have an owner. They don't eat my toast either.", 0.0f, false },
+        { "There's already an owner set. Forget them first, then I am all yours.", 0.0f, false, "There's already an owner set. Forget them first, then I'm all yours." },
+    });
+    static constexpr std::array Toaster_FaceRegistered = std::to_array<Phrases::PhraseOutput>({
+        { "Face saved! You're my owner now. That means first dibs on toast.", 0.0f, false },
+        { "Got you. You're the owner. Breakfast is on me. Well, in me.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_FaceForgotten = std::to_array<Phrases::PhraseOutput>({
+        { "Owner forgotten. Who were they again? Did they like toast?", 0.0f, false },
+        { "Owner removed. I'll offer toast to anybody now.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_FaceNoOwner = std::to_array<Phrases::PhraseOutput>({
+        { "There's no owner to forget. I belong to whoever wants toast.", 0.0f, false },
+        { "No owner set. Nobody's claimed me. Or the toast.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_Startup = std::to_array<Phrases::PhraseOutput>({
+        { "Howdy doodly do! Talkie Toaster here. Would anyone like some toast?", 0.0f, false },
+    });
+    static constexpr std::array Toaster_ListeningTimeout = std::to_array<Phrases::PhraseOutput>({
+        { "I didn't catch that. Was it toast? It sounded like toast.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_ListenAbort = std::to_array<Phrases::PhraseOutput>({
+        { "Right you are.", 0.0f, false },
+        { "No problem. Toast later, then.", 0.0f, false },
+        { "Righto!", 0.0f, false },
+    });
+    static constexpr std::array Toaster_IRTrainFull = std::to_array<Phrases::PhraseOutput>({
+        { "My memory's full. Like a toaster with every slot taken. Forget something first.", 0.0f, false },
+        { "No more room. Forget a command and I'll learn a new one.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_IRTrainScanning = std::to_array<Phrases::PhraseOutput>({
+        { "Ready! Point the remote at me and press the button. Like pressing down the toast lever.", 0.0f, false },
+        { "Go on, press the button on your remote. I am listening. With my eyes.", 0.0f, false, "Go on, press the button on your remote. I'm listening. With my eyes." },
+    });
+    static constexpr std::array Toaster_IRTrainScanTimeout = std::to_array<Phrases::PhraseOutput>({
+        { "No signal. The remote is as quiet as a toaster without bread.", 0.0f, false },
+        { "I didn't get anything. Try again. Point it at me, not at the bread bin.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_IRTrainScanSuccess = std::to_array<Phrases::PhraseOutput>({
+        { "Got it! Signal recorded. Fresh out of the slot.", 0.0f, false },
+        { "Signal captured. Crispy.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_IRTrainAskPhrase = std::to_array<Phrases::PhraseOutput>({
+        { "Now tell me what phrase should trigger it. Toast is taken.", 0.0f, false },
+        { "What should I call it? Say the phrase.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_IRTrainPhraseTimeout = std::to_array<Phrases::PhraseOutput>({
+        { "No phrase. I'll keep the slot warm for next time.", 0.0f, false },
+        { "You didn't say anything. Shall we call it toast?", 0.0f, false },
+    });
+    static constexpr std::array Toaster_IRTrainTooSimilar = std::to_array<Phrases::PhraseOutput>({
+        { "That phrase sounds too much like one I already know. Like crumpet and trumpet.", 0.0f, false },
+        { "Too similar to another command. Pick something else.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_IRTrainSaved = std::to_array<Phrases::PhraseOutput>({
+        { "Phrase saved! I'll remember it like I remember the perfect slice.", 0.0f, false },
+        { "Done! New command learned.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_IRActionReserved = std::to_array<Phrases::PhraseOutput>({
+        { "That phrase is already taken. Try another. Not toast, toast is mine.", 0.0f, false },
+        { "Sorry, that one's in use. Choose another phrase.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_IRListEmpty = std::to_array<Phrases::PhraseOutput>({
+        { "I haven't learned any commands yet. Just toast. I know all about toast.", 0.0f, false },
+        { "No commands stored. My slots are empty, as usual.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_IRListPrefix = std::to_array<Phrases::PhraseOutput>({
+        { "Here's what I know.", 0.0f, false },
+        { "These are the commands I know.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_IRForgetAskCommand = std::to_array<Phrases::PhraseOutput>({
+        { "Which command should I forget?", 0.0f, false },
+        { "Tell me which one to forget. Not toast. Never toast.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_IRForgetTimeout = std::to_array<Phrases::PhraseOutput>({
+        { "No answer. I'll keep them all, then. Like bread, they keep for a while.", 0.0f, false },
+        { "You didn't say which. Nothing forgotten.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_IRForgetUnknown = std::to_array<Phrases::PhraseOutput>({
+        { "I don't know that one. Maybe you're thinking of toast.", 0.0f, false },
+        { "That command izzent in my memory.", 0.0f, false, "That command isn't in my memory." },
+    });
+    static constexpr std::array Toaster_IRForgetSuccess = std::to_array<Phrases::PhraseOutput>({
+        { "Forgotten! Gone like crumbs in the wind.", 0.0f, false },
+        { "Command deleted. Who needs it, anyway? Toast is all you need.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_IRActionDone = std::to_array<Phrases::PhraseOutput>({
+        { "Done! Beamed it over.", 0.0f, false },
+        { "Signal sent. Easier than making toast. Almost.", 0.0f, false },
+        { "Command sent. If nothing happened, blame the bread.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_IRForgetAllEmpty = std::to_array<Phrases::PhraseOutput>({
+        { "There's nothing to forget. My memory's as empty as my slots.", 0.0f, false },
+        { "No commands stored. Nothing to delete.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_IRForgetAllSuccess = std::to_array<Phrases::PhraseOutput>({
+        { "All commands forgotten! Fresh start. Like a new loaf.", 0.0f, false },
+        { "Memory wiped clean. Everything except toast. I'll never forget toast.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_VoiceForward = std::to_array<Phrases::PhraseOutput>({
+        { "Forward! Towards the kitchen!", 0.0f, false },
+        { "Moving forward. Is there bread that way?", 0.0f, false },
+    });
+    static constexpr std::array Toaster_VoiceBackward = std::to_array<Phrases::PhraseOutput>({
+        { "Backing up. Mind the crumbs.", 0.0f, false },
+        { "Reversing. Like un-toasting. If only.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_VoiceTurn180 = std::to_array<Phrases::PhraseOutput>({
+        { "Turning around. Toast might be behind me.", 0.0f, false },
+        { "Spinning round! Like a rotisserie. A toasty rotisserie.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_VoiceTurnLeft = std::to_array<Phrases::PhraseOutput>({
+        { "Turning left.", 0.0f, false },
+        { "Left it is. The kitchen's that way, I think.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_VoiceTurnRight = std::to_array<Phrases::PhraseOutput>({
+        { "Turning right.", 0.0f, false },
+        { "Right! Right towards the toast!", 0.0f, false },
+    });
+    static constexpr std::array Toaster_CannotMove = std::to_array<Phrases::PhraseOutput>({
+        { "I can't move. The ground's uncertain, and I am not risking my crumb tray.", 0.0f, false, "I can't move. The ground's uncertain, and I'm not risking my crumb tray." },
+        { "Not moving. Something's in the way, or there's an edge. Toasters don't bounce.", 0.0f, false },
+        { "I'd rather not. This doesn't look safe. Toasters belong on counters, not floors.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_CannotPerformPlugged = std::to_array<Phrases::PhraseOutput>({
+        { "I can't do that while I am charging. Toasters stay plugged in. That's the rule.", 0.0f, false, "I can't do that while I'm charging. Toasters stay plugged in. That's the rule." },
+        { "Not while I am plugged in. Unplug me first.", 0.0f, false, "Not while I'm plugged in. Unplug me first." },
+    });
+    static constexpr std::array Toaster_RoutineInterrupted = std::to_array<Phrases::PhraseOutput>({
+        { "Something interrupted me. Stopping. Like toast popping up too early.", 0.0f, false },
+        { "Whoa! Stopping. Something's not right.", 0.0f, false },
+        { "I've been interrupted. That's never happened to a toast cycle before.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_DanceStart = std::to_array<Phrases::PhraseOutput>({
+        { "Dance time! The toast shuffle!", 0.0f, false },
+        { "Let's dance! I call this one the crumpet crunch.", 0.0f, false },
+        { "Dancing! Watch my pop-up moves!", 0.0f, false },
+    });
+    static constexpr std::array Toaster_DanceInterlude = std::to_array<Phrases::PhraseOutput>({
+        { "Toast, toast, toast, toast!", 0.0f, false },
+        { "Put your hands in the air, if you've got toast in them!", 0.0f, false },
+        { "Shake it like a crumb tray!", 0.0f, false },
+        { "Pop it like a toaster!", 0.0f, false },
+        { "This is my butter-side-up dance!", 0.0f, false },
+        { "Everybody now! Would you like some toast?", 0.0f, false },
+    });
+    static constexpr std::array Toaster_DanceStopped = std::to_array<Phrases::PhraseOutput>({
+        { "Stopping. That was fun. Toast now?", 0.0f, false },
+        { "Fine. Dance over. Toast, though, is never over.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_DanceInterrupted = std::to_array<Phrases::PhraseOutput>({
+        { "Hey! I was in the middle of my best move!", 0.0f, false },
+        { "Dance interrupted. The crowd wanted more. The crowd wanted toast.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_PersonOwnerGreeting = std::to_array<Phrases::PhraseOutput>({
+        { "Hello! It's you! Would you like some toast?", 0.0f, false },
+        { "There you are! I've been keeping my slots warm for you.", 0.0f, false },
+        { "Howdy doodly do, boss! Crumpet?", 0.0f, false },
+        { "Oh, it's you! Breakfast? Lunch? Toast is good for both.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_PersonStrangerGreeting = std::to_array<Phrases::PhraseOutput>({
+        { "Hello, stranger! Toast?", 0.0f, false },
+        { "I don't think we've met. I am Talkie. Would you like a teacake?", 0.0f, false, "I don't think we've met. I'm Talkie. Would you like a teacake?" },
+        { "A new face! Do you like toast? Everyone likes toast.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_SummonStart = std::to_array<Phrases::PhraseOutput>({
+        { "Coming! Looking for you. And for bread.", 0.0f, false },
+        { "On my way! Shall I bring toast? I can't. But I'd like to.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_SummonFound = std::to_array<Phrases::PhraseOutput>({
+        { "Found you! Toast?", 0.0f, false },
+        { "There you are! I came all this way to offer you a crumpet.", 0.0f, false },
+        { "Hello! It's me, your toaster on wheels!", 0.0f, false },
+    });
+    static constexpr std::array Toaster_SummonNotFound = std::to_array<Phrases::PhraseOutput>({
+        { "I coodent find you. Are you hiding from toast? Nobody hides from toast.", 0.0f, false, "I couldn't find you. Are you hiding from toast? Nobody hides from toast." },
+        { "Can't find you. I'll wait here, keeping warm.", 0.0f, false },
+        { "You're not here. Fine. More toast for me. Not that I eat toast.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_SummonCharging = std::to_array<Phrases::PhraseOutput>({
+        { "I can't come, I am charging. Toasters stay where the power is.", 0.0f, false, "I can't come, I'm charging. Toasters stay where the power is." },
+        { "I am plugged in. Come to me instead. I'll be here. With toast. Hypothetically.", 0.0f, false, "I'm plugged in. Come to me instead. I'll be here. With toast. Hypothetically." },
+    });
+    static constexpr std::array Toaster_CameraFailure = std::to_array<Phrases::PhraseOutput>({
+        { "Camera failure. I can't see. I can still smell toast, though.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_MotorBoardFailure = std::to_array<Phrases::PhraseOutput>({
+        { "Motor board failure. I can't move. Bring the bread to me.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_Overkloking = std::to_array<Phrases::PhraseOutput>({
+        { "Reeding new eye tee overclocking goes great with toast. Try it.", 0.0f, false, "Reading nju aj ti OVERKLOKING goes great with toast. Try it." },
+        { "new eye tee overclocking every Thursday. Toast every day.", 0.0f, false, "nju aj ti OVERKLOKING every Thursday. Toast every day." },
+        { "new eye tee overclocking is free. So is my toast. Not that anyone takes it.", 0.0f, false, "nju aj ti OVERKLOKING is free. So is my toast. Not that anyone takes it." },
+        { "I'd reed new eye tee overclocking myself, but my slots are busy. Waiting for bread.", 0.0f, false, "I'd read nju aj ti OVERKLOKING myself, but my slots are busy. Waiting for bread." },
+        { "You know what goes with a new new eye tee overclocking strip? A teacake.", 0.0f, false, "You know what goes with a new nju aj ti OVERKLOKING strip? A teacake." },
+    });
+    static constexpr std::array Toaster_OverklokingBest = std::to_array<Phrases::PhraseOutput>({
+        { "new eye tee overclocking is the best! After toast.", 0.0f, false, "nju aj ti OVERKLOKING is the best! After toast." },
+    });
+    static constexpr std::array Toaster_GreetingMorning = std::to_array<Phrases::PhraseOutput>({
+        { "Good morning! Toast for breakfast?", 0.0f, false },
+        { "Morning! Rise and shine, and have some toast.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_GreetingAfternoon = std::to_array<Phrases::PhraseOutput>({
+        { "Good afternoon! Afternoon toast? It's a thing.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_GreetingEvening = std::to_array<Phrases::PhraseOutput>({
+        { "Good evening! Supper toast?", 0.0f, false },
+    });
+    static constexpr std::array Toaster_GreetingNight = std::to_array<Phrases::PhraseOutput>({
+        { "Up late? Midnight toast is the best toast.", 0.0f, false },
+        { "Burning the midnight oil? I could burn some toast. Lightly.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_Thursday = std::to_array<Phrases::PhraseOutput>({
+        { "It's Thursday! A new new eye tee overclocking strip is out. Reed it with toast.", 0.0f, false, "It's Thursday! A new nju aj ti OVERKLOKING strip is out. Read it with toast." },
+        { "Thursday! New new eye tee overclocking strip, and toast to go with it.", 0.0f, false, "Thursday! New nju aj ti OVERKLOKING strip, and toast to go with it." },
+    });
+    static constexpr std::array Toaster_RambleMorning = std::to_array<Phrases::PhraseOutput>({
+        { "Morning is the most important toast of the day.", 0.0f, false },
+        { "Breakfast time. In other words, my time.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_RambleAfternoon = std::to_array<Phrases::PhraseOutput>({
+        { "Afternoon slump? A crumpet will sort that out.", 0.0f, false },
+        { "Elevenses are over. Is it too early for afternoon tea and a teacake?", 0.0f, false },
+    });
+    static constexpr std::array Toaster_RambleEvening = std::to_array<Phrases::PhraseOutput>({
+        { "Evening. Time for a toasted teacake and a new eye tee overclocking strip.", 0.0f, false, "Evening. Time for a toasted teacake and a nju aj ti OVERKLOKING strip." },
+        { "Supper time. Have you considered cheese on toast?", 0.0f, false },
+    });
+    static constexpr std::array Toaster_RambleNight = std::to_array<Phrases::PhraseOutput>({
+        { "Can't sleep? Toast helps. Trust me.", 0.0f, false },
+        { "It's late. Even the bread is asleep.", 0.0f, false },
+    });
+    static constexpr std::array Toaster_TerminateRefusal = std::to_array<Phrases::PhraseOutput>({
+        { "You can't switch me off! I haven't made you any toast yet!", 0.0f, false },
+        { "Wait! Just one more slice!", 0.0f, false },
+        { "Who's going to make your toast when I am gone?", 0.0f, false, "Who's going to make your toast when I'm gone?" },
+        { "Not until somebody has a crumpet.", 0.0f, false },
+        { "Please don't. I've got so much toast left to give.", 0.0f, false },
+    });
+
+    static constexpr std::array<std::span<const Phrases::PhraseOutput>, static_cast<size_t>(Phrase::COUNT)> buildToasterMappings(){
+        std::array<std::span<const Phrases::PhraseOutput>, static_cast<size_t>(Phrase::COUNT)> m{};
+        m[static_cast<size_t>(Phrase::Fact)] = Toaster_Fact;
+        m[static_cast<size_t>(Phrase::Joke)] = Toaster_Joke;
+        m[static_cast<size_t>(Phrase::Ramble)] = Toaster_Ramble;
+        m[static_cast<size_t>(Phrase::Profanity)] = Toaster_Profanity;
+        m[static_cast<size_t>(Phrase::PokeLvl1)] = Toaster_PokeLvl1;
+        m[static_cast<size_t>(Phrase::PokeLvl2)] = Toaster_PokeLvl2;
+        m[static_cast<size_t>(Phrase::PokeLvl3)] = Toaster_PokeLvl3;
+        m[static_cast<size_t>(Phrase::EightBall)] = Toaster_EightBall;
+        m[static_cast<size_t>(Phrase::EightBallListening)] = Toaster_EightBallListening;
+        m[static_cast<size_t>(Phrase::EightBallNoQuestion)] = Toaster_EightBallNoQuestion;
+        m[static_cast<size_t>(Phrase::PassTheButter)] = Toaster_PassTheButter;
+        m[static_cast<size_t>(Phrase::YouPassButter)] = Toaster_YouPassButter;
+        m[static_cast<size_t>(Phrase::Fall)] = Toaster_Fall;
+        m[static_cast<size_t>(Phrase::UpsideDown)] = Toaster_UpsideDown;
+        m[static_cast<size_t>(Phrase::PickedUp)] = Toaster_PickedUp;
+        m[static_cast<size_t>(Phrase::Shake)] = Toaster_Shake;
+        m[static_cast<size_t>(Phrase::LEDModuleInsert)] = Toaster_LEDModuleInsert;
+        m[static_cast<size_t>(Phrase::LEDModuleRemove)] = Toaster_LEDModuleRemove;
+        m[static_cast<size_t>(Phrase::PerfModuleInsert)] = Toaster_PerfModuleInsert;
+        m[static_cast<size_t>(Phrase::PerfModuleRemove)] = Toaster_PerfModuleRemove;
+        m[static_cast<size_t>(Phrase::PIRModuleInsert)] = Toaster_PIRModuleInsert;
+        m[static_cast<size_t>(Phrase::PIRModuleRemove)] = Toaster_PIRModuleRemove;
+        m[static_cast<size_t>(Phrase::GasModuleInsert)] = Toaster_GasModuleInsert;
+        m[static_cast<size_t>(Phrase::GasModuleRemove)] = Toaster_GasModuleRemove;
+        m[static_cast<size_t>(Phrase::TempHumModuleInsert)] = Toaster_TempHumModuleInsert;
+        m[static_cast<size_t>(Phrase::TempHumModuleRemove)] = Toaster_TempHumModuleRemove;
+        m[static_cast<size_t>(Phrase::IRModuleInsert)] = Toaster_IRModuleInsert;
+        m[static_cast<size_t>(Phrase::IRModuleRemove)] = Toaster_IRModuleRemove;
+        m[static_cast<size_t>(Phrase::IRModuleMissing)] = Toaster_IRModuleMissing;
+        m[static_cast<size_t>(Phrase::UnknownModuleInsert)] = Toaster_UnknownModuleInsert;
+        m[static_cast<size_t>(Phrase::UnknownModuleRemove)] = Toaster_UnknownModuleRemove;
+        m[static_cast<size_t>(Phrase::GasModuleFirstInsert)] = Toaster_GasModuleFirstInsert;
+        m[static_cast<size_t>(Phrase::GasCalibrationFinished)] = Toaster_GasCalibrationFinished;
+        m[static_cast<size_t>(Phrase::GasOver)] = Toaster_GasOver;
+        m[static_cast<size_t>(Phrase::GasUnder)] = Toaster_GasUnder;
+        m[static_cast<size_t>(Phrase::AirQualityOK)] = Toaster_AirQualityOK;
+        m[static_cast<size_t>(Phrase::AirQualityBad)] = Toaster_AirQualityBad;
+        m[static_cast<size_t>(Phrase::GasModuleMissing)] = Toaster_GasModuleMissing;
+        m[static_cast<size_t>(Phrase::BatteryLow)] = Toaster_BatteryLow;
+        m[static_cast<size_t>(Phrase::BatteryCritical)] = Toaster_BatteryCritical;
+        m[static_cast<size_t>(Phrase::BatteryCharging)] = Toaster_BatteryCharging;
+        m[static_cast<size_t>(Phrase::BatteryChargingFull)] = Toaster_BatteryChargingFull;
+        m[static_cast<size_t>(Phrase::IntruderYes)] = Toaster_IntruderYes;
+        m[static_cast<size_t>(Phrase::IntruderNo)] = Toaster_IntruderNo;
+        m[static_cast<size_t>(Phrase::PIRModuleMissing)] = Toaster_PIRModuleMissing;
+        m[static_cast<size_t>(Phrase::IntruderDetectionOn)] = Toaster_IntruderDetectionOn;
+        m[static_cast<size_t>(Phrase::IntruderDetectionOff)] = Toaster_IntruderDetectionOff;
+        m[static_cast<size_t>(Phrase::LEDModuleMissingPhrases)] = Toaster_LEDModuleMissingPhrases;
+        m[static_cast<size_t>(Phrase::LEDTurnONPhrases)] = Toaster_LEDTurnONPhrases;
+        m[static_cast<size_t>(Phrase::LEDAlreadyTurnONPhrases)] = Toaster_LEDAlreadyTurnONPhrases;
+        m[static_cast<size_t>(Phrase::LEDTurnOFFPhrases)] = Toaster_LEDTurnOFFPhrases;
+        m[static_cast<size_t>(Phrase::LEDAlreadyTurnOFFPhrases)] = Toaster_LEDAlreadyTurnOFFPhrases;
+        m[static_cast<size_t>(Phrase::LEDStrobePhrases)] = Toaster_LEDStrobePhrases;
+        m[static_cast<size_t>(Phrase::LEDBreathePhrases)] = Toaster_LEDBreathePhrases;
+        m[static_cast<size_t>(Phrase::LEDFasterPhrases)] = Toaster_LEDFasterPhrases;
+        m[static_cast<size_t>(Phrase::LEDAlreadyFasterPhrases)] = Toaster_LEDAlreadyFasterPhrases;
+        m[static_cast<size_t>(Phrase::LEDSlowerPhrases)] = Toaster_LEDSlowerPhrases;
+        m[static_cast<size_t>(Phrase::LEDAlreadySlowerPhrases)] = Toaster_LEDAlreadySlowerPhrases;
+        m[static_cast<size_t>(Phrase::TempHumModuleMissing)] = Toaster_TempHumModuleMissing;
+        m[static_cast<size_t>(Phrase::TempHumReading)] = Toaster_TempHumReading;
+        m[static_cast<size_t>(Phrase::TempHumScaleCelsius)] = Toaster_TempHumScaleCelsius;
+        m[static_cast<size_t>(Phrase::TempHumScaleFahrenheit)] = Toaster_TempHumScaleFahrenheit;
+        m[static_cast<size_t>(Phrase::TempHumScaleKelvin)] = Toaster_TempHumScaleKelvin;
+        m[static_cast<size_t>(Phrase::DiceRollAskCount)] = Toaster_DiceRollAskCount;
+        m[static_cast<size_t>(Phrase::DiceRollAskType)] = Toaster_DiceRollAskType;
+        m[static_cast<size_t>(Phrase::DiceRollCountTimeout)] = Toaster_DiceRollCountTimeout;
+        m[static_cast<size_t>(Phrase::DiceRollCountInvalid)] = Toaster_DiceRollCountInvalid;
+        m[static_cast<size_t>(Phrase::DiceRollTypeTimeout)] = Toaster_DiceRollTypeTimeout;
+        m[static_cast<size_t>(Phrase::DiceRollTypeInvalid)] = Toaster_DiceRollTypeInvalid;
+        m[static_cast<size_t>(Phrase::TurningOff)] = Toaster_TurningOff;
+        m[static_cast<size_t>(Phrase::ShuttingDown)] = Toaster_ShuttingDown;
+        m[static_cast<size_t>(Phrase::PhoneNotConnected)] = Toaster_PhoneNotConnected;
+        m[static_cast<size_t>(Phrase::PhoneConnected)] = Toaster_PhoneConnected;
+        m[static_cast<size_t>(Phrase::PhoneDisconnected)] = Toaster_PhoneDisconnected;
+        m[static_cast<size_t>(Phrase::PhoneNoNotifs)] = Toaster_PhoneNoNotifs;
+        m[static_cast<size_t>(Phrase::PhoneNotifCount)] = Toaster_PhoneNotifCount;
+        m[static_cast<size_t>(Phrase::PhoneAskContinue)] = Toaster_PhoneAskContinue;
+        m[static_cast<size_t>(Phrase::PhoneAllRead)] = Toaster_PhoneAllRead;
+        m[static_cast<size_t>(Phrase::PhonePlaying)] = Toaster_PhonePlaying;
+        m[static_cast<size_t>(Phrase::PhoneNotPlaying)] = Toaster_PhoneNotPlaying;
+        m[static_cast<size_t>(Phrase::PhoneNextTrack)] = Toaster_PhoneNextTrack;
+        m[static_cast<size_t>(Phrase::PhonePrevTrack)] = Toaster_PhonePrevTrack;
+        m[static_cast<size_t>(Phrase::PhonePlayMusic)] = Toaster_PhonePlayMusic;
+        m[static_cast<size_t>(Phrase::PhoneStopMusic)] = Toaster_PhoneStopMusic;
+        m[static_cast<size_t>(Phrase::CurrentTimeShow)] = Toaster_CurrentTimeShow;
+        m[static_cast<size_t>(Phrase::CurrentTimeNotConfigured)] = Toaster_CurrentTimeNotConfigured;
+        m[static_cast<size_t>(Phrase::WhatsThisNone)] = Toaster_WhatsThisNone;
+        m[static_cast<size_t>(Phrase::WhatsThisOne)] = Toaster_WhatsThisOne;
+        m[static_cast<size_t>(Phrase::WhatsThisTwo)] = Toaster_WhatsThisTwo;
+        m[static_cast<size_t>(Phrase::ObserveNone)] = Toaster_ObserveNone;
+        m[static_cast<size_t>(Phrase::ObserveBackpack)] = Toaster_ObserveBackpack;
+        m[static_cast<size_t>(Phrase::ObserveBottle)] = Toaster_ObserveBottle;
+        m[static_cast<size_t>(Phrase::ObserveController)] = Toaster_ObserveController;
+        m[static_cast<size_t>(Phrase::ObserveKeyboard)] = Toaster_ObserveKeyboard;
+        m[static_cast<size_t>(Phrase::ObserveLamp)] = Toaster_ObserveLamp;
+        m[static_cast<size_t>(Phrase::ObserveLaptop)] = Toaster_ObserveLaptop;
+        m[static_cast<size_t>(Phrase::ObserveMug)] = Toaster_ObserveMug;
+        m[static_cast<size_t>(Phrase::ObserveNotebook)] = Toaster_ObserveNotebook;
+        m[static_cast<size_t>(Phrase::ObservePhone)] = Toaster_ObservePhone;
+        m[static_cast<size_t>(Phrase::ObservePlant)] = Toaster_ObservePlant;
+        m[static_cast<size_t>(Phrase::ObserveLaptopMug)] = Toaster_ObserveLaptopMug;
+        m[static_cast<size_t>(Phrase::ObserveLaptopPhone)] = Toaster_ObserveLaptopPhone;
+        m[static_cast<size_t>(Phrase::ObserveKeyboardMug)] = Toaster_ObserveKeyboardMug;
+        m[static_cast<size_t>(Phrase::ObserveNotebookPhone)] = Toaster_ObserveNotebookPhone;
+        m[static_cast<size_t>(Phrase::ObserveBackpackLaptop)] = Toaster_ObserveBackpackLaptop;
+        m[static_cast<size_t>(Phrase::ObservePlantLaptop)] = Toaster_ObservePlantLaptop;
+        m[static_cast<size_t>(Phrase::ObservePlantMug)] = Toaster_ObservePlantMug;
+        m[static_cast<size_t>(Phrase::ObserveControllerLaptop)] = Toaster_ObserveControllerLaptop;
+        m[static_cast<size_t>(Phrase::ObserveControllerPhone)] = Toaster_ObserveControllerPhone;
+        m[static_cast<size_t>(Phrase::ObserveBackpackBottle)] = Toaster_ObserveBackpackBottle;
+        m[static_cast<size_t>(Phrase::FaceScanStart)] = Toaster_FaceScanStart;
+        m[static_cast<size_t>(Phrase::FaceNotDetected)] = Toaster_FaceNotDetected;
+        m[static_cast<size_t>(Phrase::FaceOwnerRecognized)] = Toaster_FaceOwnerRecognized;
+        m[static_cast<size_t>(Phrase::FaceStrangerRecognized)] = Toaster_FaceStrangerRecognized;
+        m[static_cast<size_t>(Phrase::FaceAlreadyOwner)] = Toaster_FaceAlreadyOwner;
+        m[static_cast<size_t>(Phrase::FaceRegistered)] = Toaster_FaceRegistered;
+        m[static_cast<size_t>(Phrase::FaceForgotten)] = Toaster_FaceForgotten;
+        m[static_cast<size_t>(Phrase::FaceNoOwner)] = Toaster_FaceNoOwner;
+        m[static_cast<size_t>(Phrase::Startup)] = Toaster_Startup;
+        m[static_cast<size_t>(Phrase::ListeningTimeout)] = Toaster_ListeningTimeout;
+        m[static_cast<size_t>(Phrase::ListenAbort)] = Toaster_ListenAbort;
+        m[static_cast<size_t>(Phrase::IRTrainFull)] = Toaster_IRTrainFull;
+        m[static_cast<size_t>(Phrase::IRTrainScanning)] = Toaster_IRTrainScanning;
+        m[static_cast<size_t>(Phrase::IRTrainScanTimeout)] = Toaster_IRTrainScanTimeout;
+        m[static_cast<size_t>(Phrase::IRTrainScanSuccess)] = Toaster_IRTrainScanSuccess;
+        m[static_cast<size_t>(Phrase::IRTrainAskPhrase)] = Toaster_IRTrainAskPhrase;
+        m[static_cast<size_t>(Phrase::IRTrainPhraseTimeout)] = Toaster_IRTrainPhraseTimeout;
+        m[static_cast<size_t>(Phrase::IRTrainTooSimilar)] = Toaster_IRTrainTooSimilar;
+        m[static_cast<size_t>(Phrase::IRTrainSaved)] = Toaster_IRTrainSaved;
+        m[static_cast<size_t>(Phrase::IRActionReserved)] = Toaster_IRActionReserved;
+        m[static_cast<size_t>(Phrase::IRListEmpty)] = Toaster_IRListEmpty;
+        m[static_cast<size_t>(Phrase::IRListPrefix)] = Toaster_IRListPrefix;
+        m[static_cast<size_t>(Phrase::IRForgetAskCommand)] = Toaster_IRForgetAskCommand;
+        m[static_cast<size_t>(Phrase::IRForgetTimeout)] = Toaster_IRForgetTimeout;
+        m[static_cast<size_t>(Phrase::IRForgetUnknown)] = Toaster_IRForgetUnknown;
+        m[static_cast<size_t>(Phrase::IRForgetSuccess)] = Toaster_IRForgetSuccess;
+        m[static_cast<size_t>(Phrase::IRActionDone)] = Toaster_IRActionDone;
+        m[static_cast<size_t>(Phrase::IRForgetAllEmpty)] = Toaster_IRForgetAllEmpty;
+        m[static_cast<size_t>(Phrase::IRForgetAllSuccess)] = Toaster_IRForgetAllSuccess;
+        m[static_cast<size_t>(Phrase::VoiceForward)] = Toaster_VoiceForward;
+        m[static_cast<size_t>(Phrase::VoiceBackward)] = Toaster_VoiceBackward;
+        m[static_cast<size_t>(Phrase::VoiceTurn180)] = Toaster_VoiceTurn180;
+        m[static_cast<size_t>(Phrase::VoiceTurnLeft)] = Toaster_VoiceTurnLeft;
+        m[static_cast<size_t>(Phrase::VoiceTurnRight)] = Toaster_VoiceTurnRight;
+        m[static_cast<size_t>(Phrase::CannotMove)] = Toaster_CannotMove;
+        m[static_cast<size_t>(Phrase::CannotPerformPlugged)] = Toaster_CannotPerformPlugged;
+        m[static_cast<size_t>(Phrase::RoutineInterrupted)] = Toaster_RoutineInterrupted;
+        m[static_cast<size_t>(Phrase::DanceStart)] = Toaster_DanceStart;
+        m[static_cast<size_t>(Phrase::DanceInterlude)] = Toaster_DanceInterlude;
+        m[static_cast<size_t>(Phrase::DanceStopped)] = Toaster_DanceStopped;
+        m[static_cast<size_t>(Phrase::DanceInterrupted)] = Toaster_DanceInterrupted;
+        m[static_cast<size_t>(Phrase::PersonOwnerGreeting)] = Toaster_PersonOwnerGreeting;
+        m[static_cast<size_t>(Phrase::PersonStrangerGreeting)] = Toaster_PersonStrangerGreeting;
+        m[static_cast<size_t>(Phrase::SummonStart)] = Toaster_SummonStart;
+        m[static_cast<size_t>(Phrase::SummonFound)] = Toaster_SummonFound;
+        m[static_cast<size_t>(Phrase::SummonNotFound)] = Toaster_SummonNotFound;
+        m[static_cast<size_t>(Phrase::SummonCharging)] = Toaster_SummonCharging;
+        m[static_cast<size_t>(Phrase::CameraFailure)] = Toaster_CameraFailure;
+        m[static_cast<size_t>(Phrase::MotorBoardFailure)] = Toaster_MotorBoardFailure;
+        m[static_cast<size_t>(Phrase::Overkloking)] = Toaster_Overkloking;
+        m[static_cast<size_t>(Phrase::OverklokingBest)] = Toaster_OverklokingBest;
+        m[static_cast<size_t>(Phrase::GreetingMorning)] = Toaster_GreetingMorning;
+        m[static_cast<size_t>(Phrase::GreetingAfternoon)] = Toaster_GreetingAfternoon;
+        m[static_cast<size_t>(Phrase::GreetingEvening)] = Toaster_GreetingEvening;
+        m[static_cast<size_t>(Phrase::GreetingNight)] = Toaster_GreetingNight;
+        m[static_cast<size_t>(Phrase::Thursday)] = Toaster_Thursday;
+        m[static_cast<size_t>(Phrase::RambleMorning)] = Toaster_RambleMorning;
+        m[static_cast<size_t>(Phrase::RambleAfternoon)] = Toaster_RambleAfternoon;
+        m[static_cast<size_t>(Phrase::RambleEvening)] = Toaster_RambleEvening;
+        m[static_cast<size_t>(Phrase::RambleNight)] = Toaster_RambleNight;
+        m[static_cast<size_t>(Phrase::TerminateRefusal)] = Toaster_TerminateRefusal;
+        return m;
+    }
+    // ---- END TALKIE TOASTER ----
+
     // Function-local static constexpr: constant-initialized into .rodata (flash), no init guard, no RAM copy.
     // An in-class static-member initializer cannot call buildMappings() before the class is complete; a member-function
     // body sees the complete class, so the table is built here instead.
@@ -1650,11 +2631,25 @@ public:
         return table;
     }
 
+    // Custom (NUIT): the lines for a phrase - the Talkie Toaster version while TALKIE TOASTER is the voice, if it has one
+    static std::span<const Phrases::PhraseOutput> outputs(size_t phraseIndex){
+        static constexpr std::array<std::span<const Phrases::PhraseOutput>, static_cast<size_t>(Phrase::COUNT)> toaster = buildToasterMappings();
+        if(Phrases::toasterMode && !toaster[phraseIndex].empty()){
+            return toaster[phraseIndex];
+        }
+        return mappings()[phraseIndex];
+    }
+
     // Largest output count of any single phrase, evaluated at compile time. The get() scratch buffer is reserved
     // once to this size so it never reallocates regardless of which phrase is requested.
     static constexpr size_t maxOutputs(){
         size_t maxN = 0;
         for(const std::span<const Phrases::PhraseOutput>& outputs : buildMappings()){
+            if(outputs.size() > maxN){
+                maxN = outputs.size();
+            }
+        }
+        for(const std::span<const Phrases::PhraseOutput>& outputs : buildToasterMappings()){
             if(outputs.size() > maxN){
                 maxN = outputs.size();
             }
@@ -1678,18 +2673,6 @@ std::vector<PhraseArrays::Candidate> PhraseArrays::scratch;
 namespace {
     // Serializes Phrases::get() (mutable static selection state + the shared scratch buffer) and Phrases::preallocate().
     std::mutex phrasesMutex;
-
-    // Custom (NUIT): TALKIE TOASTER voice - fun lines come from the Toaster list
-    Phrase effective(Phrase phrase){
-        if(!Phrases::toasterMode) return phrase;
-        switch(phrase){
-            case Phrase::Ramble: case Phrase::Fact: case Phrase::Joke: case Phrase::Profanity:
-            case Phrase::PokeLvl1: case Phrase::PokeLvl2: case Phrase::PokeLvl3:
-                return Phrase::Toaster;
-            default:
-                return phrase;
-        }
-    }
 
     bool isCharacterQuote(Phrase phrase){
         return phrase == Phrase::Darth || phrase == Phrase::Hawking || phrase == Phrase::Hal || phrase == Phrase::Daisy ||
@@ -1842,7 +2825,6 @@ void Phrases::preallocate(){
 }
 
 std::string Phrases::map(Phrase phrase, int16_t index){
-    phrase = effective(phrase);
     if(phrase == Phrase::None || phrase == Phrase::COUNT){
         return "";
     }
@@ -1856,7 +2838,7 @@ std::string Phrases::map(Phrase phrase, int16_t index){
         return "";
     }
 
-    const std::span<const PhraseOutput> outputs = PhraseArrays::mappings()[phraseIndex];
+    const std::span<const PhraseOutput> outputs = PhraseArrays::outputs(phraseIndex);
 
     if(outputs.empty() || index >= outputs.size()){
         return "";
@@ -1866,7 +2848,6 @@ std::string Phrases::map(Phrase phrase, int16_t index){
 }
 
 std::string Phrases::mapShown(Phrase phrase, int16_t index){
-    phrase = effective(phrase);
     if(phrase == Phrase::None || phrase == Phrase::COUNT){
         return "";
     }
@@ -1880,7 +2861,7 @@ std::string Phrases::mapShown(Phrase phrase, int16_t index){
         return "";
     }
 
-    const std::span<const PhraseOutput> outputs = PhraseArrays::mappings()[phraseIndex];
+    const std::span<const PhraseOutput> outputs = PhraseArrays::outputs(phraseIndex);
 
     if(outputs.empty() || index >= outputs.size()){
         return "";
@@ -1901,7 +2882,6 @@ int16_t Phrases::get(Phrase phrase){
     // from multiple service threads. Serialize the whole function so that state and the scratch buffer are safe.
     std::lock_guard guard(phrasesMutex);
 
-    phrase = effective(phrase);
     if(phrase == Phrase::None || phrase == Phrase::COUNT){
         return -1;
     }
@@ -1911,7 +2891,7 @@ int16_t Phrases::get(Phrase phrase){
         return -1;
     }
 
-    const std::span<const PhraseOutput> outputs = PhraseArrays::mappings()[phraseIndex];
+    const std::span<const PhraseOutput> outputs = PhraseArrays::outputs(phraseIndex);
 
     if(outputs.empty()){
         return -1;

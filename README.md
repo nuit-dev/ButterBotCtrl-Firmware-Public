@@ -7,6 +7,10 @@ Fork of the [CircuitMess ButterBot controller](https://github.com/CircuitMess/Bu
 
 ## What's new
 
+### v4.4 – Talkie Toaster, all the way
+- With **VOICE → TALKIE TOASTER**, the screen shows the robot's new Toaster lines for every message (465 of them: greetings, battery, modules, lights, the clock, the camera, faces, phone, IR, movement, dancing, errors), including the TERMINATE CONSCIOUSNESS refusals, which the toaster now says himself.
+- Flash together with the [robot mod v4.4](https://github.com/nuit-dev/ButterBot-Firmware-Public/releases/tag/v4.4). The protocol did not change.
+
 ### v4.3 – TERMINATE CONSCIOUSNESS
 - The last menu item, SHUTDOWN, is now **TERMINATE CONSCIOUSNESS** (two lines next to the gear icon), and the YES / NO question is gone. Picking it either shows HAL's refusal in a box with **CLOSE** – back to the menu, the robot says it too – or starts *Daisy Bell* right away. HAL refuses a random number of times first (0–4, mostly one or two), never with the same line twice, and "..." is always followed by one more line.
 - Flash together with the [robot mod v4.3](https://github.com/nuit-dev/ButterBot-Firmware-Public/releases/tag/v4.3), which says the refusals. With an older robot the box still appears, but HAL stays silent.
@@ -86,7 +90,7 @@ python -m esptool -p <PORT> flash_id
 **Option A – one file** (`…-controller-full.bin`): simplest, but resets the controller's settings (theme, brightness, sleep, SENSOR, VOICE, STARTUP, VOLUME, NIGHT MODE, NIGHT VOLUME).
 
 ```shell
-python -m esptool --chip esp32s3 -p <PORT> -b 460800 --before default_reset --after no_reset write_flash 0 ButterBot-OVERKLOKING-v4.3-controller-full.bin
+python -m esptool --chip esp32s3 -p <PORT> -b 460800 --before default_reset --after no_reset write_flash 0 ButterBot-OVERKLOKING-v4.4-controller-full.bin
 ```
 
 **Option B – keep settings** (`…-controller-parts.zip`): unzip, then run in the unzipped folder:
