@@ -11,7 +11,7 @@ Fork of the [CircuitMess ButterBot controller](https://github.com/CircuitMess/Bu
 - With **VOICE → TALKIE TOASTER**, the screen shows the robot's new Toaster lines for every message (465 of them: greetings, battery, modules, lights, the clock, the camera, faces, phone, IR, movement, dancing, errors), including the TERMINATE CONSCIOUSNESS refusals, which the toaster now says himself.
 - Flash together with the [robot mod v5](https://github.com/nuit-dev/ButterBot-Firmware-Public/releases/tag/v5). The protocol did not change.
 
-**I had a lot of fun playing with this robot, but this one is hands down the best mod yet. I have the robot on my table turned on non-stop, and to have something that actually reminisces a living Talkie Toaster from Red Dwarf in such an elegant (and eloquent manner) is an absolute blast! Do try it!**
+**I had a lot of fun playing with this robot, but this one is hands down the best mod yet. I have the robot on my table turned on non-stop, and to have something that is actually reminiscent of a living Talkie Toaster from Red Dwarf in such an elegant (and eloquent manner) is an absolute blast! Do try it!**
 
 ### v4.3 – TERMINATE CONSCIOUSNESS
 - The last menu item, SHUTDOWN, is now **TERMINATE CONSCIOUSNESS** (two lines next to the gear icon), and the YES / NO question is gone. Picking it either shows HAL's refusal in a box with **CLOSE** – back to the menu, the robot says it too – or starts *Daisy Bell* right away. HAL refuses a random number of times first (0–4, mostly one or two), never with the same line twice, and "..." is always followed by one more line.
