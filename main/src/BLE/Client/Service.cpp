@@ -49,6 +49,7 @@ void BLE::Client::Service::pull(){
 			continue;
 		}
 
+		// TODO: refactor this or something
 		svc->regChar(chr.get(), remote.char_handle);
 		chr->establish(svc->makeCharInfo(remote.char_handle), remote.properties);
 	}

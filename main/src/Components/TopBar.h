@@ -22,6 +22,8 @@ public:
 	/* Main update loop, called by the parent */
 	void loop();
 
+	void setRobotElementsVisible(bool visible) const;
+
 private:
 	ThemeService* theme;
 	Battery* battery;

@@ -47,6 +47,11 @@ public:
 	const ThemeStyle& getThemeStyle() const;
 
 	/**
+	 * @return Style of the given theme, regardless of the currently set one.
+	 */
+	static const ThemeStyle& getThemeStyle(Theme theme);
+
+	/**
 	 * @return Primary color for the current theme.
 	 */
 	lv_color_t getPrimaryColor() const;

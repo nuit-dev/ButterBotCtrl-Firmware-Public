@@ -21,6 +21,7 @@ public:
 	bool isConnected();
 	bool isConnecting();
 	void connect();
+	void disconnect();
 
 	// Custom (NUIT): FAST START OVERKLOKING - scan all the time (window = interval) instead of 30 of every 50 ms
 	void setContinuousScan(bool continuous);

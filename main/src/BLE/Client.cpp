@@ -103,6 +103,13 @@ void BLE::Client::ble_GATTC_cb(esp_gattc_cb_event_t event, esp_gatt_if_t gattc_i
 }
 
 void BLE::Client::onConnect(const esp_ble_gattc_cb_param_t::gattc_connect_evt_param* param){
+	if(gap->state != GAP::Connecting){
+		esp_bd_addr_t addr;
+		memcpy(addr, param->remote_bda, sizeof(esp_bd_addr_t));
+		esp_ble_gap_disconnect(addr);
+		return;
+	}
+
 	memcpy(con.addr, param->remote_bda, 6);
 
 	// Server notifies ConMan, which in turn sets connection parameters
@@ -211,7 +218,7 @@ void BLE::Client::passToChar(esp_gattc_cb_event_t event, esp_ble_gattc_cb_param_
 		auto chr = chars.find(param->read.handle);
 		check(chr);
 
-		// TODO: turn this into actual read evt handling
+		// TODO: lol what is this, turn this into actual read evt handling
 		esp_ble_gattc_cb_param_t::gattc_notify_evt_param notifParam = {
 				.value_len = param->read.value_len,
 				.value = param->read.value,

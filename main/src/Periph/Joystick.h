@@ -22,8 +22,8 @@ protected:
 private:
 	static constexpr TickType_t SampleInterval = 20; // ms
 	static constexpr float EmaA = 0.3f;
-	static constexpr int DeadZone = 25; // ±25 points around center
-	static constexpr float MaxMapping = 80.0f; // After which points around center is it considered to be at 100%
+	static constexpr int DeadZone = 15; // ±15 points around center
+	static constexpr float MaxMapping = 65.0f; // After which points around center is it considered to be at 100%
 	static constexpr int RawCenter = 2048;
 
 	StrongObjectPtr<EMA_ADCFilter> hEMAFilter;

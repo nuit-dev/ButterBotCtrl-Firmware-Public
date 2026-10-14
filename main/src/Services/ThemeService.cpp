@@ -176,7 +176,11 @@ const char* ThemeService::getAsset(const Asset asset) const{
 }
 
 const ThemeStyle& ThemeService::getThemeStyle() const{
-	const ThemeStyle& style = *ThemedStyles.at(currentTheme);
+	return getThemeStyle(currentTheme);
+}
+
+const ThemeStyle& ThemeService::getThemeStyle(const Theme theme){
+	const ThemeStyle& style = *ThemedStyles.at(theme);
 
 	return style;
 }

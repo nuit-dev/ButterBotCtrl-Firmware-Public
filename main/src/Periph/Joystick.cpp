@@ -26,7 +26,7 @@ int8_t Joystick::getVertical() const noexcept{
 
 int8_t Joystick::mapSample(float raw) noexcept{
 	const float centered = raw - static_cast<float>(RawCenter);
-	int mapped = std::clamp(static_cast<int>(centered / static_cast<float>(RawCenter) * 100.0f), -80, 80);
+	int mapped = std::clamp(static_cast<int>(centered / static_cast<float>(RawCenter) * 100.0f), -65, 65);
 	if(mapped > -DeadZone && mapped < DeadZone){
 		return 0;
 	}

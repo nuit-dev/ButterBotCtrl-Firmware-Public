@@ -48,6 +48,13 @@ void TopBar::updateShutUpEl() const{
 	shutupEl->setMutedStatus(robotState->isMuted());
 }
 
+void TopBar::setRobotElementsVisible(const bool visible) const{
+	const lv_opa_t opa = visible ? LV_OPA_COVER : LV_OPA_TRANSP;
+	lv_obj_set_style_opa(*botBattery, opa, 0);
+	lv_obj_set_style_opa(botIcon, opa, 0);
+	lv_obj_set_style_opa(*shutupEl, opa, 0);
+}
+
 void TopBar::loop(){
 	// Charging animation runs on its own (200ms) cadence, independent of the blink gate.
 	botBattery->loop();

@@ -4,7 +4,9 @@
 #include <Fonts/font.hpp>
 #include <LV_Interface/LVGL.h>
 
+#include "BLE/GAP.h"
 #include "HomeScreen.h"
+#include "PairingScreen.h"
 
 static constexpr const char* TAG = "SettingsScreen";
 
@@ -13,9 +15,25 @@ SettingsScreen::SettingsScreen(){
 	theme = app->getService<ThemeService>();
 	buttonInput = app->getService<ButtonInput>();
 	settings = app->getService<Settings>();
+	com = app->getService<Com>();
+	ledController = app->getService<LEDController>();
+
+	if(com->getStatus() != Com::ConnStatus::Connected){
+		app->getSingleton<BLE::GAP>()->disconnect();
+	}
+
+	theme->activateThemeAssets();
 
 	buttonInput->OnButtonEvent.bind(app->getService<LVGL>(), [this](Enum<int> btn, ButtonInput::Action action) {
 		handleButtonEvent((Button)(int)btn, action);
+	});
+
+	com->onConnStatus.bind(app->getService<LVGL>(), [this](const Com::ConnStatus status) {
+		topBar->setRobotElementsVisible(status == Com::ConnStatus::Connected);
+		if(status == Com::ConnStatus::Connected){
+			ledController->wifiLedOn();
+			ledController->bigGreenLedOff();
+		}
 	});
 
 	buildUI();
@@ -24,6 +42,7 @@ SettingsScreen::SettingsScreen(){
 SettingsScreen::~SettingsScreen(){
 	const auto app = Application::getApp();
 	buttonInput->OnButtonEvent.unbind(app->getService<LVGL>());
+	com->onConnStatus.unbind(app->getService<LVGL>());
 }
 
 void SettingsScreen::handleButtonEvent(const Button btn, const ButtonInput::Action action){
@@ -35,6 +54,14 @@ void SettingsScreen::handleButtonEvent(const Button btn, const ButtonInput::Acti
 
 		// Save current settings
 		settings->store();
+
+		if(com->getStatus() != Com::ConnStatus::Connected){
+			transition([]() {
+				return std::make_unique<PairingScreen>();
+			});
+			return;
+		}
+
 		// Return to home screen
 		transition([]() {
 			return std::make_unique<HomeScreen>();
@@ -74,6 +101,7 @@ void SettingsScreen::buildUI(){
 	const lv_color_t bgColor = theme->getTertiaryColor();
 
 	topBar = new TopBar(*this);
+	topBar->setRobotElementsVisible(com->getStatus() == Com::ConnStatus::Connected);
 	windowContainer = lv_obj_create(*this);
 
 	settingsWindow = new SettingsWindow(windowContainer, inputGroup, [this](const Theme &newTheme) {

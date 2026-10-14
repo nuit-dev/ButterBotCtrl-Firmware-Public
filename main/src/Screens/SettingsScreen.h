@@ -5,6 +5,8 @@
 #include <Services/ButtonInput.h>
 
 #include "Enums.hpp"
+#include "Services/Com.h"
+#include "Services/LEDController.h"
 #include "Components/TopBar.h"
 #include "Components/SettingsWindow.h"
 
@@ -17,6 +19,8 @@ private:
 	ThemeService* theme;
 	Settings* settings;
 	ButtonInput* buttonInput;
+	Com* com;
+	LEDController* ledController;
 
 	lv_obj_t* windowContainer = nullptr;
 	TopBar* topBar = nullptr;

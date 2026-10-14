@@ -56,6 +56,28 @@ void BLE::GAP::setContinuousScan(bool continuous){
 	continuousScan = continuous;
 }
 
+void BLE::GAP::disconnect(){
+	connectPending = false; // Custom (NUIT): a connect() still waiting for BLE privacy must not start later
+
+	if(state == Idle){
+		return;
+	}
+
+	if(state == Scanning){
+		state = Stopping;
+		esp_ble_gap_stop_scanning();
+		return;
+	}
+
+	if(state == Stopping){
+		result.found = false;
+		return;
+	}
+
+	state = Idle;
+	esp_ble_gap_disconnect(result.addr);
+}
+
 void BLE::GAP::setClient(Client* client){
 	this->client = client;
 }

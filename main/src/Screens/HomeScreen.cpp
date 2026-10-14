@@ -580,7 +580,7 @@ HomeWindow* HomeScreen::createActionWindow(const BB::State state, const BB::Acti
 			case BB::Action::Idle::ChargingFull:
 				newWin = initActionWindow<ChargingFullWindow, BatteryData>(windowContainer, data);
 				break;
-			case BB::Action::Idle::Observe: // Object Detection window - random/passive
+			case BB::Action::Idle::Observe: // Object Detection window - random/pasivni
 				newWin = initActionWindow<ObserveWindow, ObserveData>(windowContainer, data);
 				break;
 			case BB::Action::Idle::GasConfigureStart:
