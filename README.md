@@ -83,6 +83,9 @@ Expect computers, bureaucracy, artificial intelligence, family catastrophes, cur
 
 **Read the comic:** [nuit.hr/overkloking](https://nuit.hr/overkloking/)
 
+[![nju aj ti OVERKLOKING #1151 – 2028.](docs/overkloking-1151-2028.avif)](https://nuit.hr/overkloking/robokalipsa-2028/)
+*[nju aj ti OVERKLOKING #1151 – 2028.](https://nuit.hr/overkloking/robokalipsa-2028/) by [Dubravko Mataković](https://nuit.hr/overkloking/dubravko-matakovic/), English edition (both pages in Croatian). The year after the AI robots replaced us – and the zoo has a new exhibit.*
+
 [![nju aj ti OVERKLOKING #1133 – We're Screwed!](docs/overkloking-1133-we-are-screwed.avif)](https://nuit.hr/overkloking/najebasmo/)
 *[nju aj ti OVERKLOKING #1133 – We're Screwed!](https://nuit.hr/overkloking/najebasmo/) by [Dubravko Mataković](https://nuit.hr/overkloking/dubravko-matakovic/), English edition (both pages in Croatian). Robots making robots – what could go wrong?*
 
