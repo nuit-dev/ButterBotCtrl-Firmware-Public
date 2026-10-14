@@ -71,6 +71,13 @@ Custom OVERKLOKING mod by NUIT d.o.o. Must be flashed together with the matching
   picked by `Phrases::get()` / `map()` / `mapShown()` while `Phrases::toasterMode` (set from VOICE), so the screen shows
   the same Toaster line the robot says. The refusal popup uses the Toaster refusals in that mode.
 
+- v5.1 - merged CircuitMess controller 1.0.1 (upstream master, merge branch `merge-upstream-1.0.x`):
+  - Upstream: BLE fixes (`GAP::disconnect`), Settings reachable from `PairingScreen` (joystick, hint row at the
+    bottom), `TopBar::setRobotElementsVisible` hides the robot battery / icon / mute while not connected, joystick
+    range clamped to +-65, glm restored.
+  - `PairingScreen`: the hint is built for both variants (OVERKLOKING "CONNECTING..." and the animation); our reconnect
+    loop stays, and a `leaving` flag makes sure only one transition (Settings or home) happens.
+  - `GAP::disconnect()` also clears `connectPending`, so our continuous scan can connect again.
 ## Flashing
 
 Do NOT flash the robot with esptool `--after hard_reset` (default of `idf.py flash`): it ends up stuck, ignores

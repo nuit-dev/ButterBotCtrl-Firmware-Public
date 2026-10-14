@@ -7,6 +7,11 @@ Fork of the [CircuitMess ButterBot controller](https://github.com/CircuitMess/Bu
 
 ## What's new
 
+### v5.1 – CircuitMess update 1.0.1
+- Includes the official CircuitMess controller update 1.0.1: Bluetooth fixes, Settings can be opened while the controller is still looking for the robot ("Click joystick for" + gear at the bottom of the pairing screen), and the joystick reaches full driving speed with less tilt.
+- The mod's STARTUP options and reconnect stay as they were; with OVERKLOKING the pairing screen still just says CONNECTING..., now with the Settings hint too.
+- Flash together with the [robot mod v5.1](https://github.com/nuit-dev/ButterBot-Firmware-Public/releases/tag/v5.1). The protocol did not change.
+
 ### v5 – Talkie Toaster, all the way
 - With **VOICE → TALKIE TOASTER**, the screen shows the robot's new Toaster lines for every message (465 of them: greetings, battery, modules, lights, the clock, the camera, faces, phone, IR, movement, dancing, errors), including the TERMINATE CONSCIOUSNESS refusals, which the toaster now says himself.
 - Flash together with the [robot mod v5](https://github.com/nuit-dev/ButterBot-Firmware-Public/releases/tag/v5). The protocol did not change.
