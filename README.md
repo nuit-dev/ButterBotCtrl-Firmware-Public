@@ -9,24 +9,22 @@ Fork of the [CircuitMess ButterBot controller](https://github.com/CircuitMess/Bu
 
 ## See it, hear it
 
-<div align="center">
 <table>
 <tr>
-<td colspan="2" width="500" align="center"><video src="https://github.com/user-attachments/assets/6fdd7308-928b-4a4c-8208-ec6f5be190fd"></video></td>
+<td colspan="2" width="834" align="center"><video src="https://github.com/user-attachments/assets/6fdd7308-928b-4a4c-8208-ec6f5be190fd"></video></td>
 </tr>
 <tr>
 <td colspan="2" align="center"><video src="https://github.com/user-attachments/assets/409d0d14-c5a2-4fcc-9ce2-d0b4e1e28681"></video></td>
 </tr>
 <tr>
-<td width="250" valign="top"><video src="https://github.com/user-attachments/assets/eb9846e3-df61-445b-9cf5-4f85d552a51a"></video></td>
-<td width="250" valign="top"><video src="https://github.com/user-attachments/assets/f6a1806b-28c4-4e37-933e-f048e1a9b01a"></video></td>
+<td width="417" valign="top"><video src="https://github.com/user-attachments/assets/eb9846e3-df61-445b-9cf5-4f85d552a51a"></video></td>
+<td width="417" valign="top"><video src="https://github.com/user-attachments/assets/f6a1806b-28c4-4e37-933e-f048e1a9b01a"></video></td>
 </tr>
 <tr>
-<td width="250" valign="top"><video src="https://github.com/user-attachments/assets/6e55f5a4-f735-4a1c-ba20-2d0bb315f70a"></video></td>
-<td width="250" valign="top"><video src="https://github.com/user-attachments/assets/033363b6-99c5-4c50-8bb3-8bc71b899f68"></video></td>
+<td width="417" valign="top"><video src="https://github.com/user-attachments/assets/6e55f5a4-f735-4a1c-ba20-2d0bb315f70a"></video></td>
+<td width="417" valign="top"><video src="https://github.com/user-attachments/assets/033363b6-99c5-4c50-8bb3-8bc71b899f68"></video></td>
 </tr>
 </table>
-</div>
 
 ## What's new
 
