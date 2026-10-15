@@ -13,7 +13,8 @@ Custom OVERKLOKING mod by NUIT d.o.o. Must be flashed together with the matching
   Stored in NVS key "Sensors" (separate from the settings blob), sent to the robot on change and on every connect
   (`Services/Com::setSensorCommand`). "Press joystick to return" hint removed to make room.
   Home screen guide shows "SENSORS: ... OFF" while any sensor is off.
-- `components/CMF/lib/glm` is git-ignored in this repo's CMF copy but required – keep it (copy from the robot repo).
+- `components/CMF/lib/glm` is in the repo since CircuitMess 1.0.1 (it used to be git-ignored and had to be copied
+  from the robot repo).
 - Action menu: HRVATSKI ("BUTTER BOT ZNA I HRVATSKI") after YODA - Croatian lines, in the VOICE setting's voice.
 - Action menu: DARTH OVERKLOKING, OVERHAWKING, HAL 9000, TALKIE TOASTER, YODA right after OVERKLOKING (shown in
   `QuoteWindow`). The robot speaks them in the Darth Vader / Hawking / HAL / Talkie Toaster / Yoda voice regardless
@@ -22,8 +23,9 @@ Custom OVERKLOKING mod by NUIT d.o.o. Must be flashed together with the matching
   the robot sentence by sentence (scrolled to the part index the robot sends).
 - Action menu subtitles keep their 2 px side padding when focused (they touched the selection box).
 - Action menu: SHUTDOWN as the last item, with the gear icon like SETTINGS (`ActionElement::addButton(..., icon)`).
-  Asks "TERMINATE CONSCIOUSNESS?" YES / NO first (`ActionElement::showConfirm`, NO focused), then sends
-  `DaisySong`: the robot sings Daisy as a dying HAL and powers off.
+  Asked "TERMINATE CONSCIOUSNESS?" YES / NO first (`ActionElement::showConfirm`, NO focused), then sent
+  `DaisySong`: the robot sings Daisy as a dying HAL and powers off. Since v4.3 it is TERMINATE CONSCIOUSNESS
+  with random refusals instead of YES / NO (see below).
 - Settings: 5th row VOICE (NORMAL / HAWKING / DARTH VADER / HAL 9000 / TALKIE TOASTER / YODA),
   `Components/SettingsWindow/VoiceSelector` (box as wide as THEME / SLEEP). TALKIE TOASTER and YODA also switch
   `Phrases::toasterMode` / `yodaMode` on the controller (`applyVoiceModeToPhrases` in `Services/Settings.h`).

@@ -82,7 +82,7 @@ Fork of the [CircuitMess ButterBot controller](https://github.com/CircuitMess/Bu
 - **Menu navigation fix:** joystick up/down now reliably moves through the action menu (the dominant stick axis wins, and left/right also move in the list).
 - **Action menu:** OVERKLOKING, BENDER and ULTRON right after SETTINGS – the robot says a random quote and the controller shows it. Long quotes follow the robot sentence by sentence; Shut Up or Poke stops them.
 - **Hold Poke 1 s:** a fill bar, then the robot drives ~10 cm forward and says "nju aj ti OVERKLOKING is the best!" A short press is still the normal poke.
-- **Settings → SENSOR:** ALL ON / FRONT OFF / FLOOR OFF / ALL OFF, for surfaces where the robot's proximity sensors misfire. Saved on the controller and sent to the robot on every connect. With the floor sensor off, the robot can drive off a table edge.
+- **Settings → SENSOR:** ALL ON / FRONT OFF / FLOOR OFF / ALL OFF, for surfaces where the robot's proximity sensors misfire. Saved on the controller and sent to the robot on every connect. With the floor sensor off, the robot can drive off a table edge (since v5.1 moving only stops for the front sensor anyway).
 
 ## About nju aj ti OVERKLOKING
 
@@ -116,10 +116,10 @@ Ready-made images are attached to releases from [v3](https://github.com/nuit-dev
 python -m esptool -p <PORT> flash_id
 ```
 
-**Option A – one file** (`…-controller-full.bin`): simplest, but resets the controller's settings (theme, brightness, sleep, SENSOR, VOICE, STARTUP, VOLUME, NIGHT MODE, NIGHT VOLUME).
+**Option A – one file** (`…-controller-full.bin`): simplest, but resets the controller's settings (theme, brightness, sleep, SENSOR, ROAMING, VOICE, STARTUP, VOLUME, NIGHT MODE, NIGHT VOLUME).
 
 ```shell
-python -m esptool --chip esp32s3 -p <PORT> -b 460800 --before default_reset --after no_reset write_flash 0 ButterBot-OVERKLOKING-v5-controller-full.bin
+python -m esptool --chip esp32s3 -p <PORT> -b 460800 --before default_reset --after no_reset write_flash 0 ButterBot-OVERKLOKING-v5.1-controller-full.bin
 ```
 
 **Option B – keep settings** (`…-controller-parts.zip`): unzip, then run in the unzipped folder:
@@ -138,7 +138,6 @@ Don't use `--after hard_reset` (esptool's default) – it left the controller st
 
 ## Build & flash
 ESP-IDF 5.5.3: `idf.py build`, then flash from the `build` directory with the Option B command above (`--after no_reset` + reset over USB) – plain `idf.py flash` ends with `--after hard_reset`.
-Copy `components/CMF/lib/glm` from the robot repo before building – it's missing here (git-ignored upstream).
 The controller has 4 MB flash, the robot 16 MB – check with `esptool.py -p <PORT> flash_id` and don't mix up the firmwares.
 ⚠️ The **robot** needs its own steps – see [Build & flash in the robot repo](https://github.com/nuit-dev/ButterBot-Firmware-Public#build--flash).
 Full change list: [NUIT-CHANGES.md](NUIT-CHANGES.md).
