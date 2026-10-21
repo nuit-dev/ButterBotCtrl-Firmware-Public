@@ -79,7 +79,12 @@ Custom OVERKLOKING mod by NUIT d.o.o. Must be flashed together with the matching
     range clamped to +-65, glm restored.
   - `PairingScreen`: the hint is built for both variants (OVERKLOKING "CONNECTING..." and the animation); our reconnect
     loop stays, and a `leaving` flag makes sure only one transition (Settings or home) happens.
-  - `GAP::disconnect()` also clears `connectPending`, so our continuous scan can connect again.
+  - `GAP::disconnect()` also clears `connectPending`, so our continuous scan can connect again.- v6 - Settings row CHATTER (`Components/SettingsWindow/ChatterSelector`, OFF / RARE / NORMAL / OFTEN / TOASTER)
+  between VOICE and STARTUP, 13 rows (`RowY`, `DateRowIndex` 11, `TimeRowIndex` 12). Stored in
+  `RobotConfigData::chatter` (NVS key "Chatter"), sent with `Ctrl::RobotConfig`; `Com::pack` keeps it in bits 28-30
+  (roaming bit 24, "set" marker bit 31). ButterBot-Common as in the robot repo: `RambleKind::Toaster` shows the
+  `Toaster_Ramble` line the robot says in CHATTER TOASTER.
+
 ## Flashing
 
 Do NOT flash the robot with esptool `--after hard_reset` (default of `idf.py flash`): it ends up stuck, ignores

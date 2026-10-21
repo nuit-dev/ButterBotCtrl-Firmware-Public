@@ -197,6 +197,7 @@ enum class Phrase : uint16_t {
     RambleEvening,
     RambleNight,
     TerminateRefusal,
+    RambleToaster, // Custom (NUIT): CHATTER = TOASTER, the toaster lines only, whatever the VOICE
     // Add phrases here
     COUNT
 };

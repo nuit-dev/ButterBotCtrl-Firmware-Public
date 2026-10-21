@@ -29,14 +29,21 @@ inline bool isNightHour(NightMode mode, int hour){
 	}
 }
 
+// Custom (NUIT): chatter frequency - how often the robot speaks idle comments
+enum class ChatterMode : uint8_t {
+	Off = 0, Rare = 1, Normal = 2, Frequent = 3, Toaster = 4
+};
+
 // Custom (NUIT): robot settings from the controller's Settings screen, sent on change and on every connect
 struct RobotConfigData {
 	uint8_t volume;      // [10, 100] %
 	uint8_t nightMode;   // NightMode
 	uint8_t nightVolume; // [10, 100] %
 	uint8_t roaming = 1; // 1 = may wander and turn to people while idle. Added in v4.2: a 3-byte payload means 1
+	uint8_t chatter = 2; // ChatterMode (default: Normal). Added in v6.0.1
 };
 static constexpr uint8_t RobotConfigDataV4Size = 3;
+static constexpr uint8_t RobotConfigDataV5Size = 4;
 
 // Custom (NUIT): sets the robot's RTC (local time, 24 h)
 struct SetTimeData {

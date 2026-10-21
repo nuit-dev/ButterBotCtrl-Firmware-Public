@@ -16,6 +16,7 @@ inline Phrase rambleKindPhrase(RambleKind kind){
 		case RambleKind::Evening: return Phrase::RambleEvening;
 		case RambleKind::Night: return Phrase::RambleNight;
 		case RambleKind::Thursday: return Phrase::Thursday;
+		case RambleKind::Toaster: return Phrase::RambleToaster;
 		default: return Phrase::Ramble;
 	}
 }

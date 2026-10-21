@@ -14,6 +14,7 @@
 #include "Components/SettingsWindow/SleepSelector.h"
 #include "Components/SettingsWindow/SensorSelector.h"
 #include "Components/SettingsWindow/VoiceSelector.h"
+#include "Components/SettingsWindow/ChatterSelector.h"
 #include "Components/SettingsWindow/FastStartSelector.h"
 #include "Components/SettingsWindow/PercentSlider.h"
 #include "Components/SettingsWindow/NightModeSelector.h"
@@ -49,6 +50,7 @@ private:
 	BrightnessSlider* brightnessSlider;
 	SensorSelector* sensorSelector; // Custom (NUIT)
 	VoiceSelector* voiceSelector; // Custom (NUIT)
+	ChatterSelector* chatterSelector; // Custom (NUIT)
 	FastStartSelector* fastStartSelector; // Custom (NUIT)
 	PercentSlider* volumeSlider; // Custom (NUIT)
 	RoamingSelector* roamingSelector; // Custom (NUIT)
@@ -72,13 +74,13 @@ private:
 	int32_t currentFocusIndex = 0;
 
 	static constexpr int32_t WindowWidth = 120;
-	static constexpr int32_t WindowHeight = 92; // Custom (NUIT): was 60; 6 of the 12 rows visible, footer removed
-	static constexpr int32_t RowCount = 12;
+	static constexpr int32_t WindowHeight = 92; // Custom (NUIT): was 60; 6 of the 13 rows visible, footer removed
+	static constexpr int32_t RowCount = 13;
 
 	// Custom (NUIT): row positions in the scrolling content (15 px selectors, 7 px sliders, 1-2 px gaps)
-	static constexpr std::array<int32_t, RowCount> RowY = { 1, 17, 34, 42, 58, 74, 90, 107, 115, 132, 140, 156 };
-	static constexpr int32_t DateRowIndex = 10;
-	static constexpr int32_t TimeRowIndex = 11;
+	static constexpr std::array<int32_t, RowCount> RowY = { 1, 17, 34, 42, 58, 74, 90, 106, 123, 131, 148, 156, 172 };
+	static constexpr int32_t DateRowIndex = 11;
+	static constexpr int32_t TimeRowIndex = 12;
 	std::array<lv_obj_t*, RowCount> rowObjs{};
 	std::array<lv_obj_t*, RowCount> rowLabels{};
 	void focusRow(int32_t index);
@@ -97,6 +99,5 @@ private:
 	void updateLayout();
 	void buildUI(lv_obj_t* parent);
 };
-
 
 #endif //BUTTERBOTCTRL_FIRMWARE_SETTINGSWINDOW_H

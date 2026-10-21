@@ -85,7 +85,7 @@ struct RambleData : BBData {
 
 // Custom (NUIT): RambleData::kind. Time-of-day and Thursday lines when the robot knows the time.
 enum class RambleKind : uint8_t {
-	Ramble = 0, Morning, Afternoon, Evening, Night, Thursday
+	Ramble = 0, Morning, Afternoon, Evening, Night, Thursday, Toaster
 };
 
 // Custom (NUIT): the robot's RTC time, sent on every connect and after SetTime

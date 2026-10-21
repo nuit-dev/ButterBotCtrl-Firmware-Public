@@ -36,7 +36,7 @@ public:
 	void setSensorCommand(Ctrl::Command command);
 	// Custom (NUIT): robot TTS voice preset, same behaviour as setSensorCommand
 	void setVoiceCommand(Ctrl::Command command);
-	// Custom (NUIT): robot volume / night mode, same behaviour as setSensorCommand
+	// Custom (NUIT): robot volume / night mode / chatter, same behaviour as setSensorCommand
 	void setRobotConfig(const RobotConfigData& config);
 	// Custom (NUIT): sets the robot's clock (only if connected). Call from the UI thread.
 	void sendSetTime(const SetTimeData& data);
@@ -83,11 +83,12 @@ private:
 		return buf;
 	}
 	static uint32_t pack(const RobotConfigData& c){
-		return 0x80000000u | ((uint32_t)(c.roaming & 1) << 24) | (c.volume << 16) | (c.nightMode << 8) | c.nightVolume;
+		return 0x80000000u | ((uint32_t)(c.chatter & 0x07) << 28) | ((uint32_t)(c.roaming & 1) << 24) | (c.volume << 16) | (c.nightMode << 8) | c.nightVolume;
 	}
-	static RobotConfigData unpack(uint32_t p){ return { (uint8_t)(p >> 16), (uint8_t)(p >> 8), (uint8_t)p, (uint8_t)((p >> 24) & 1) }; }
+	static RobotConfigData unpack(uint32_t p){
+		return { (uint8_t)(p >> 16), (uint8_t)(p >> 8), (uint8_t)p, (uint8_t)((p >> 24) & 1), (uint8_t)((p >> 28) & 0x07) };
+	}
 
 };
-
 
 #endif //BUTTERBOTCTRL_FIRMWARE_COM_H
