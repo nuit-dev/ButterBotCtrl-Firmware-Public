@@ -54,7 +54,7 @@ void SettingsWindow::buildUI(lv_obj_t* parent){
 	lv_obj_set_size(innerContent, WindowWidth, WindowHeight);
 	lv_obj_set_style_bg_color(innerContent, colorTert, 0);
 	lv_obj_set_style_bg_opa(innerContent, LV_OPA_COVER, 0);
-	// Custom (NUIT): 13 rows scroll (by code, see scrollToRow); a 2 px bar at the right edge shows where you are.
+	// Custom (NUIT): 14 rows scroll (by code, see scrollToRow); a 2 px bar at the right edge shows where you are.
 	// pad_bottom 1 lets the last row scroll up to 1 px above the bottom border, like the first row below the top.
 	lv_obj_add_flag(innerContent, LV_OBJ_FLAG_SCROLLABLE);
 	lv_obj_set_scroll_dir(innerContent, LV_DIR_VER);
@@ -147,16 +147,35 @@ void SettingsWindow::buildUI(lv_obj_t* parent){
 	lv_obj_set_pos(*brightnessSlider, 2, RowY[2]);
 	lv_group_add_obj(inputGroup, *brightnessSlider);
 
-	// Custom (NUIT): proximity sensor filter, sent to the robot right away and on every connect
-	auto sensorValCb = [this](const SensorMode mode) {
-		settings->setSensorMode(mode);
-		if(Com* com = Application::getApp()->getService<Com>()){
-			com->setSensorCommand(sensorModeToCommand(mode));
-		}
+	// CircuitMess 1.1: front and bottom proximity sensors and the idle activity level. They are stored in the settings
+	// struct and sent to the robot when the Settings screen closes (SettingsScreen).
+	const std::function<void(FrontSensorMode)> frontSensorValCb = [this](const FrontSensorMode mode) {
+		SettingsStruct currentSet = settings->get();
+		currentSet.frontSensor = mode;
+		settings->set(currentSet);
 	};
-	sensorSelector = new SensorSelector(innerContent, settings->getSensorMode(), switchCb, sensorValCb);
-	lv_obj_set_pos(*sensorSelector, 2, RowY[3]);
-	lv_group_add_obj(inputGroup, *sensorSelector);
+	frontSensorSelector = new FrontSensorSelector(innerContent, initSet.frontSensor, switchCb, frontSensorValCb);
+	lv_obj_set_pos(*frontSensorSelector, 2, RowY[3]);
+	lv_group_add_obj(inputGroup, *frontSensorSelector);
+
+	const std::function<void(BottomSensorMode)> bottomSensorValCb = [this](const BottomSensorMode mode) {
+		SettingsStruct currentSet = settings->get();
+		currentSet.bottomSensor = mode;
+		settings->set(currentSet);
+	};
+	bottomSensorSelector = new BottomSensorSelector(innerContent, initSet.bottomSensor, switchCb, bottomSensorValCb);
+	lv_obj_set_pos(*bottomSensorSelector, 2, RowY[4]);
+	lv_group_add_obj(inputGroup, *bottomSensorSelector);
+
+	const std::function<void(ActivityMode)> activityValCb = [this](const ActivityMode mode) {
+		SettingsStruct currentSet = settings->get();
+		currentSet.activityMode = mode;
+		settings->set(currentSet);
+	};
+	activitySelector = new ActivitySelector(innerContent, initSet.activityMode, switchCb, activityValCb);
+	activitySelector->setToaster(settings->getVoiceMode() == VoiceMode::Toaster); // Custom (NUIT): HYPER reads TOASTER
+	lv_obj_set_pos(*activitySelector, 2, RowY[5]);
+	lv_group_add_obj(inputGroup, *activitySelector);
 
 	// Custom (NUIT): ROAMING - OFF keeps the robot in place while idle (part of the robot config)
 	roamingSelector = new RoamingSelector(innerContent, settings->getRobotConfig().roaming != 0, switchCb, [this](const bool roaming) {
@@ -164,35 +183,27 @@ void SettingsWindow::buildUI(lv_obj_t* parent){
 		config.roaming = roaming ? 1 : 0;
 		sendRobotConfig(config);
 	});
-	lv_obj_set_pos(*roamingSelector, 2, RowY[4]);
+	lv_obj_set_pos(*roamingSelector, 2, RowY[6]);
 	lv_group_add_obj(inputGroup, *roamingSelector);
 
 	// Custom (NUIT): robot TTS voice preset, sent right away and on every connect
 	auto voiceValCb = [this](const VoiceMode mode) {
 		settings->setVoiceMode(mode);
+		activitySelector->setToaster(mode == VoiceMode::Toaster); // HYPER is called TOASTER with the TALKIE TOASTER voice
 		if(Com* com = Application::getApp()->getService<Com>()){
 			com->setVoiceCommand(voiceModeToCommand(mode));
 		}
 	};
 	voiceSelector = new VoiceSelector(innerContent, settings->getVoiceMode(), switchCb, voiceValCb);
-	lv_obj_set_pos(*voiceSelector, 2, RowY[5]);
+	lv_obj_set_pos(*voiceSelector, 2, RowY[7]);
 	lv_group_add_obj(inputGroup, *voiceSelector);
-
-	// Custom (NUIT): chatter frequency - how often the robot speaks idle comments
-	chatterSelector = new ChatterSelector(innerContent, static_cast<ChatterMode>(settings->getRobotConfig().chatter), switchCb, [this](const ChatterMode mode) {
-		RobotConfigData config = settings->getRobotConfig();
-		config.chatter = static_cast<uint8_t>(mode);
-		sendRobotConfig(config);
-	});
-	lv_obj_set_pos(*chatterSelector, 2, RowY[6]);
-	lv_group_add_obj(inputGroup, *chatterSelector);
 
 	// Custom (NUIT): startup speed, read at the next boot
 	auto fastStartValCb = [this](const FastStart level) {
 		settings->setFastStart(level);
 	};
 	fastStartSelector = new FastStartSelector(innerContent, settings->getFastStart(), switchCb, fastStartValCb);
-	lv_obj_set_pos(*fastStartSelector, 2, RowY[7]);
+	lv_obj_set_pos(*fastStartSelector, 2, RowY[8]);
 	lv_group_add_obj(inputGroup, *fastStartSelector);
 
 	// Custom (NUIT): robot volume and night mode, sent right away and on every connect
@@ -202,7 +213,7 @@ void SettingsWindow::buildUI(lv_obj_t* parent){
 		config.volume = percent;
 		sendRobotConfig(config);
 	}, switchCb);
-	lv_obj_set_pos(*volumeSlider, 2, RowY[8]);
+	lv_obj_set_pos(*volumeSlider, 2, RowY[9]);
 	lv_group_add_obj(inputGroup, *volumeSlider);
 
 	nightModeSelector = new NightModeSelector(innerContent, static_cast<NightMode>(robotConfig.nightMode), switchCb, [this](const NightMode mode) {
@@ -210,7 +221,7 @@ void SettingsWindow::buildUI(lv_obj_t* parent){
 		config.nightMode = static_cast<uint8_t>(mode);
 		sendRobotConfig(config);
 	});
-	lv_obj_set_pos(*nightModeSelector, 2, RowY[9]);
+	lv_obj_set_pos(*nightModeSelector, 2, RowY[10]);
 	lv_group_add_obj(inputGroup, *nightModeSelector);
 
 	nightVolumeSlider = new PercentSlider(innerContent, "NIGHT VOLUME", 61, robotConfig.nightVolume, [this](const uint8_t percent) {
@@ -218,7 +229,7 @@ void SettingsWindow::buildUI(lv_obj_t* parent){
 		config.nightVolume = percent;
 		sendRobotConfig(config);
 	}, switchCb);
-	lv_obj_set_pos(*nightVolumeSlider, 2, RowY[10]);
+	lv_obj_set_pos(*nightVolumeSlider, 2, RowY[11]);
 	lv_group_add_obj(inputGroup, *nightVolumeSlider);
 
 	// Custom (NUIT): the robot's clock - joystick press edits it (onJoystickPress)
@@ -230,11 +241,12 @@ void SettingsWindow::buildUI(lv_obj_t* parent){
 	lv_obj_set_pos(*timeRow, 2, RowY[TimeRowIndex]);
 	lv_group_add_obj(inputGroup, *timeRow);
 
-	rowObjs = { *themeSelector, *sleepSelector, *brightnessSlider, *sensorSelector, *roamingSelector, *voiceSelector, *chatterSelector, *fastStartSelector,
-				*volumeSlider, *nightModeSelector, *nightVolumeSlider, *dateRow, *timeRow };
-	rowLabels = { themeSelector->widgetLabel, sleepSelector->widgetLabel, brightnessSlider->widgetLabel, sensorSelector->widgetLabel,
-				  roamingSelector->widgetLabel, voiceSelector->widgetLabel, chatterSelector->widgetLabel, fastStartSelector->widgetLabel, volumeSlider->widgetLabel,
-				  nightModeSelector->widgetLabel, nightVolumeSlider->widgetLabel, dateRow->widgetLabel, timeRow->widgetLabel };
+	rowObjs = { *themeSelector, *sleepSelector, *brightnessSlider, *frontSensorSelector, *bottomSensorSelector, *activitySelector,
+				*roamingSelector, *voiceSelector, *fastStartSelector, *volumeSlider, *nightModeSelector, *nightVolumeSlider, *dateRow, *timeRow };
+	rowLabels = { themeSelector->widgetLabel, sleepSelector->widgetLabel, brightnessSlider->widgetLabel, frontSensorSelector->widgetLabel,
+				  bottomSensorSelector->widgetLabel, activitySelector->widgetLabel, roamingSelector->widgetLabel, voiceSelector->widgetLabel,
+				  fastStartSelector->widgetLabel, volumeSlider->widgetLabel, nightModeSelector->widgetLabel, nightVolumeSlider->widgetLabel,
+				  dateRow->widgetLabel, timeRow->widgetLabel };
 	refreshClock();
 
 	lv_group_set_editing(inputGroup, true);
@@ -342,3 +354,9 @@ void SettingsWindow::updateLayout(){
 	lv_obj_set_width(*this, WindowWidth);
 	lv_obj_align_to(corner, *this, LV_ALIGN_TOP_RIGHT, 0, 0);
 };
+
+void SettingsWindow::syncRobotSettings(const SettingsStruct& currentSet){
+	frontSensorSelector->setValue(currentSet.frontSensor);
+	bottomSensorSelector->setValue(currentSet.bottomSensor);
+	activitySelector->setValue(currentSet.activityMode);
+}

@@ -12,9 +12,10 @@
 #include "Components/SettingsWindow/BrightnessSlider.h"
 #include "Components/SettingsWindow/ThemeSelector.h"
 #include "Components/SettingsWindow/SleepSelector.h"
-#include "Components/SettingsWindow/SensorSelector.h"
+#include "Components/SettingsWindow/FrontSensorSelector.h"
+#include "Components/SettingsWindow/BottomSensorSelector.h"
+#include "Components/SettingsWindow/ActivitySelector.h"
 #include "Components/SettingsWindow/VoiceSelector.h"
-#include "Components/SettingsWindow/ChatterSelector.h"
 #include "Components/SettingsWindow/FastStartSelector.h"
 #include "Components/SettingsWindow/PercentSlider.h"
 #include "Components/SettingsWindow/NightModeSelector.h"
@@ -39,6 +40,8 @@ public:
 	// Returns false when the press isn't used here (it then closes Settings, as before).
 	bool onJoystickPress();
 
+	void syncRobotSettings(const SettingsStruct& currentSet);
+
 private:
 	ThemeService* theme;
 	Settings* settings;
@@ -48,9 +51,10 @@ private:
 	ThemeSelector* themeSelector;
 	SleepSelector* sleepSelector;
 	BrightnessSlider* brightnessSlider;
-	SensorSelector* sensorSelector; // Custom (NUIT)
+	FrontSensorSelector* frontSensorSelector;
+	BottomSensorSelector* bottomSensorSelector;
+	ActivitySelector* activitySelector;
 	VoiceSelector* voiceSelector; // Custom (NUIT)
-	ChatterSelector* chatterSelector; // Custom (NUIT)
 	FastStartSelector* fastStartSelector; // Custom (NUIT)
 	PercentSlider* volumeSlider; // Custom (NUIT)
 	RoamingSelector* roamingSelector; // Custom (NUIT)
@@ -72,15 +76,17 @@ private:
 	lv_obj_t* corner;
 
 	int32_t currentFocusIndex = 0;
+	static constexpr int32_t WidgetsNum = 6;
+	static constexpr int32_t ScrollMargin = 4;
 
 	static constexpr int32_t WindowWidth = 120;
-	static constexpr int32_t WindowHeight = 92; // Custom (NUIT): was 60; 6 of the 13 rows visible, footer removed
-	static constexpr int32_t RowCount = 13;
+	static constexpr int32_t WindowHeight = 92; // Custom (NUIT): was 60; 6 of the 14 rows visible, footer removed
+	static constexpr int32_t RowCount = 14;
 
 	// Custom (NUIT): row positions in the scrolling content (15 px selectors, 7 px sliders, 1-2 px gaps)
-	static constexpr std::array<int32_t, RowCount> RowY = { 1, 17, 34, 42, 58, 74, 90, 106, 123, 131, 148, 156, 172 };
-	static constexpr int32_t DateRowIndex = 11;
-	static constexpr int32_t TimeRowIndex = 12;
+	static constexpr std::array<int32_t, RowCount> RowY = { 1, 17, 34, 42, 58, 74, 90, 106, 122, 139, 147, 164, 172, 188 };
+	static constexpr int32_t DateRowIndex = 12;
+	static constexpr int32_t TimeRowIndex = 13;
 	std::array<lv_obj_t*, RowCount> rowObjs{};
 	std::array<lv_obj_t*, RowCount> rowLabels{};
 	void focusRow(int32_t index);

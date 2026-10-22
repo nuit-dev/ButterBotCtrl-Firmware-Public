@@ -140,7 +140,7 @@ protected:
 		// GAP connected means devices are paired/connected, Com event means service is connected
 		auto com = registerService<Com>(client, false);
 
-		com->onData.bind(this, [robotState](BB::State state, BB::Action action, std::vector<uint8_t> data) {
+		com->onData.bind(this, [this, robotState](BB::State state, BB::Action action, std::vector<uint8_t> data) {
 			// Custom (NUIT): the robot's clock, shown in Settings DATE / TIME
 			if(state == BB::State::Idle && action.idle == BB::Action::Idle::TimeInfo){
 				if(data.size() == sizeof(TimeInfoData)){
@@ -171,13 +171,29 @@ protected:
 				return;
 			}
 
+			if(state == BB::State::Idle && action.idle == BB::Action::Idle::SettingsSync){
+				if(data.size() != sizeof(SettingsSyncData)){
+					return;
+				}
+
+				const SettingsSyncData* sync = (const SettingsSyncData*)data.data();
+				if(Settings* settings = getService<Settings>()){
+					SettingsStruct currentSet = settings->get();
+					currentSet.frontSensor = sync->frontSensor;
+					currentSet.bottomSensor = sync->bottomSensor;
+					currentSet.activityMode = sync->activityMode;
+					settings->set(currentSet);
+					settings->store();
+				}
+				return;
+			}
+
 			robotState->setIdleNone(state == BB::State::Idle && action.idle == BB::Action::Idle::None);
 		});
 
 		Settings* settings = registerService<Settings>();
 		if(settings != nullptr){
 			ledService->on(LEDs::TftBacklight, settings->get().screenBrightness);
-			com->setSensorCommand(sensorModeToCommand(settings->getSensorMode())); // Custom (NUIT)
 			com->setVoiceCommand(voiceModeToCommand(settings->getVoiceMode())); // Custom (NUIT)
 			com->setRobotConfig(settings->getRobotConfig()); // Custom (NUIT)
 		}
@@ -189,6 +205,15 @@ protected:
 			gap->setContinuousScan(fastStart == FastStart::Overkloking);
 			gap->connect();
 		}
+
+		com->onConnStatus.bind(this, [com, settings](const Com::ConnStatus status) {
+			if(status != Com::ConnStatus::Connected || settings == nullptr){
+				return;
+			}
+
+			const SettingsStruct currentSet = settings->get();
+			com->sendSettings({ .frontSensor = currentSet.frontSensor, .bottomSensor = currentSet.bottomSensor, .activityMode = currentSet.activityMode });
+		});
 
 		if(!SPIFFS::init()){
 			return;

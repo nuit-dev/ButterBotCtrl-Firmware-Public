@@ -8,6 +8,7 @@
 #include <vector>
 #include "Phrases.h"
 #include "Serialization.h"
+#include "CtrlData.h"
 
 static constexpr const char* ControllerIP = "11.0.0.1";
 static constexpr const char* ButterbotIP = "11.0.0.2";
@@ -22,7 +23,7 @@ struct BB {
 		enum class Idle {
 			None, Wander, Ramble, Person, Poke, Summon, Fall, UpsideDown, PickUp, Shake, ModuleChange, Gas, Intruder,
 			BatteryLow, Charging, ChargingFull, PhoneNotif, PhoneConnect, Observe, GasConfigureStart, GasConfigureEnd,
-			BatteryLevel, ShutUp, CantMove,
+			BatteryLevel, ShutUp, CantMove, SettingsChange, SettingsSync,
 			TimeInfo // Custom (NUIT): robot RTC time for the controller, TimeInfoData
 		} idle;
 
@@ -44,6 +45,7 @@ struct BB {
 			PhonePlayMusic,
 			PhoneStopMusic,
 			WhatsThis,
+			SettingsActivity,
 			// Custom (NUIT) - keep these LAST so stock values never shift
 			OverklokingDrive, // Poke held 1 s: 10 cm forward + "nju aj ti OVERKLOKING is the best"
 			OverklokingQuote, // menu: random sarcastic OVERKLOKING line
@@ -85,7 +87,7 @@ struct RambleData : BBData {
 
 // Custom (NUIT): RambleData::kind. Time-of-day and Thursday lines when the robot knows the time.
 enum class RambleKind : uint8_t {
-	Ramble = 0, Morning, Afternoon, Evening, Night, Thursday, Toaster
+	Ramble = 0, Morning, Afternoon, Evening, Night, Thursday
 };
 
 // Custom (NUIT): the robot's RTC time, sent on every connect and after SetTime
@@ -437,6 +439,17 @@ struct QuoteData : BBData {
 	uint8_t id;   // index in the category's phrase list
 	uint8_t part; // sentence index for long quotes, WholeQuote otherwise
 	static constexpr uint8_t WholeQuote = 0xFF;
+};
+
+struct SettingsChangeData : BBData {
+	Phrase phrase;
+	uint8_t id;
+};
+
+struct SettingsSyncData : BBData {
+	FrontSensorMode frontSensor;
+	BottomSensorMode bottomSensor;
+	ActivityMode activityMode;
 };
 
 #endif //BUTTERBOT_COMMON_ACTIONDATA_H

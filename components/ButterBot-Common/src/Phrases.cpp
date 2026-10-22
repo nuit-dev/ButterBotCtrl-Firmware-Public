@@ -2466,6 +2466,52 @@ public:
 		{ "Got it", 0.0f, false },
 	});
 
+	static constexpr std::array SettingsFrontSensorOffPhrases = std::to_array<Phrases::PhraseOutput>({
+		{ "Front proximity sensor off", 0.0f, false },
+		{ "Obstacle detection off", 0.0f, false },
+	});
+
+	static constexpr std::array SettingsFrontSensorOnPhrases = std::to_array<Phrases::PhraseOutput>({
+		{ "Front proximity sensor on", 0.0f, false },
+		{ "Obstacle detection on", 0.0f, false },
+	});
+
+	static constexpr std::array SettingsBottomSensorOffPhrases = std::to_array<Phrases::PhraseOutput>({
+		{ "Bottom proximity sensor off", 0.0f, false },
+		{ "Ground detection off", 0.0f, false },
+	});
+
+	static constexpr std::array SettingsBottomSensorReducedPhrases = std::to_array<Phrases::PhraseOutput>({
+		{ "Bottom proximity sensor reduced", 0.0f, false },
+		{ "Ground detection reduced", 0.0f, false },
+	});
+
+	static constexpr std::array SettingsBottomSensorOnPhrases = std::to_array<Phrases::PhraseOutput>({
+		{ "Bottom proximity sensor on", 0.0f, false },
+		{ "Ground detection on", 0.0f, false },
+	});
+
+	static constexpr std::array SettingsActivityOffPhrases = std::to_array<Phrases::PhraseOutput>({
+		{ "Idle, activity off", 0.0f, false, "Idle activity off" },
+	});
+
+	static constexpr std::array SettingsActivityChillPhrases = std::to_array<Phrases::PhraseOutput>({
+		{ "Idle, activity chill", 0.0f, false, "Idle activity chill" },
+	});
+
+	static constexpr std::array SettingsActivityActivePhrases = std::to_array<Phrases::PhraseOutput>({
+		{ "Idle, activity active", 0.0f, false, "Idle activity active" },
+	});
+
+	static constexpr std::array SettingsActivityHyperPhrases = std::to_array<Phrases::PhraseOutput>({
+		{ "Idle, activity hyper", 0.0f, false, "Idle activity hyper" },
+	});
+
+	static constexpr std::array SettingsAskActivityPhrases = std::to_array<Phrases::PhraseOutput>({
+		{ "Which activity level? Off, chill, active, or hyper", 0.0f, false },
+	});
+
+
     // Lookup table indexed directly by the (dense, gap-free) Phrase enum value.
     // Built entirely at compile time (constexpr) so it is constant-initialized into .rodata (flash/DROM on ESP32)
     // and is NEVER constructed or copied into RAM at startup. Unmapped entries (e.g. None) stay as empty spans.
@@ -2514,7 +2560,6 @@ public:
         m[static_cast<size_t>(Phrase::LEDSlowerPhrases)] = LEDSlowerPhrases;
         m[static_cast<size_t>(Phrase::LEDAlreadySlowerPhrases)] = LEDAlreadySlowerPhrases;
         m[static_cast<size_t>(Phrase::Ramble)] = Ramble;
-        m[static_cast<size_t>(Phrase::RambleToaster)] = Toaster_Ramble;
         m[static_cast<size_t>(Phrase::PokeLvl1)] = PokeLvl1Phrases;
         m[static_cast<size_t>(Phrase::PokeLvl2)] = PokeLvl2Phrases;
         m[static_cast<size_t>(Phrase::PokeLvl3)] = PokeLvl3Phrases;
@@ -2636,6 +2681,16 @@ public:
         m[static_cast<size_t>(Phrase::MotorBoardFailure)] = MotorBoardFailurePhrases;
         m[static_cast<size_t>(Phrase::ShuttingDown)] = ShuttingDownPhrases;
         m[static_cast<size_t>(Phrase::ListenAbort)] = ListenAbortPhrases;
+        m[static_cast<size_t>(Phrase::SettingsFrontSensorOff)] = SettingsFrontSensorOffPhrases;
+        m[static_cast<size_t>(Phrase::SettingsFrontSensorOn)] = SettingsFrontSensorOnPhrases;
+        m[static_cast<size_t>(Phrase::SettingsBottomSensorOff)] = SettingsBottomSensorOffPhrases;
+        m[static_cast<size_t>(Phrase::SettingsBottomSensorReduced)] = SettingsBottomSensorReducedPhrases;
+        m[static_cast<size_t>(Phrase::SettingsBottomSensorOn)] = SettingsBottomSensorOnPhrases;
+        m[static_cast<size_t>(Phrase::SettingsActivityOff)] = SettingsActivityOffPhrases;
+        m[static_cast<size_t>(Phrase::SettingsActivityChill)] = SettingsActivityChillPhrases;
+        m[static_cast<size_t>(Phrase::SettingsActivityActive)] = SettingsActivityActivePhrases;
+        m[static_cast<size_t>(Phrase::SettingsActivityHyper)] = SettingsActivityHyperPhrases;
+        m[static_cast<size_t>(Phrase::SettingsAskActivity)] = SettingsAskActivityPhrases;
         m[static_cast<size_t>(Phrase::Overkloking)] = OverklokingPhrases;
         m[static_cast<size_t>(Phrase::OverklokingBest)] = OverklokingBestPhrases;
         m[static_cast<size_t>(Phrase::Bender)] = BenderPhrases;
@@ -3415,6 +3470,52 @@ public:
         { "Up late? Midnight toast is the best toast.", 0.0f, false },
         { "Burning the midnight oil? I could burn some toast. Lightly.", 0.0f, false },
     });
+    // Custom (NUIT): Toaster versions of the CircuitMess 1.1 settings phrases (the highest activity level is TOASTER here)
+    static constexpr std::array Toaster_SettingsFrontSensorOff = std::to_array<Phrases::PhraseOutput>({
+        { "Front sensor off. I shall walk blindly into the unknown, like toast without butter.", 0.0f, false },
+        { "Obstacle detection off. What could possibly go wrong?", 0.0f, false },
+    });
+
+    static constexpr std::array Toaster_SettingsFrontSensorOn = std::to_array<Phrases::PhraseOutput>({
+        { "Front sensor on. I can see obstacles again. Even crumbs.", 0.0f, false },
+        { "Obstacle detection on. Nothing gets between me and the toast.", 0.0f, false },
+    });
+
+    static constexpr std::array Toaster_SettingsBottomSensorOff = std::to_array<Phrases::PhraseOutput>({
+        { "Floor sensor off. Edges are now a matter of faith.", 0.0f, false },
+        { "Ground detection off. Gravity, you may have your way.", 0.0f, false },
+    });
+
+    static constexpr std::array Toaster_SettingsBottomSensorReduced = std::to_array<Phrases::PhraseOutput>({
+        { "Floor sensor reduced. Half careful, half toasted.", 0.0f, false },
+        { "Ground detection reduced. I will only panic a little at edges.", 0.0f, false },
+    });
+
+    static constexpr std::array Toaster_SettingsBottomSensorOn = std::to_array<Phrases::PhraseOutput>({
+        { "Floor sensor on. I will not fall for it.", 0.0f, false },
+        { "Ground detection on. Edges are my friends, from a distance.", 0.0f, false },
+    });
+
+    static constexpr std::array Toaster_SettingsActivityOff = std::to_array<Phrases::PhraseOutput>({
+        { "Idle activity off. I will just sit here and think about toast.", 0.0f, false },
+    });
+
+    static constexpr std::array Toaster_SettingsActivityChill = std::to_array<Phrases::PhraseOutput>({
+        { "Idle activity chill. Slow and golden, like a good toasting.", 0.0f, false },
+    });
+
+    static constexpr std::array Toaster_SettingsActivityActive = std::to_array<Phrases::PhraseOutput>({
+        { "Idle activity active. Medium heat, steady toasting.", 0.0f, false },
+    });
+
+    static constexpr std::array Toaster_SettingsActivityHyper = std::to_array<Phrases::PhraseOutput>({
+        { "Idle activity toaster. Maximum heat, maximum toast!", 0.0f, false },
+    });
+
+    static constexpr std::array Toaster_SettingsAskActivity = std::to_array<Phrases::PhraseOutput>({
+        { "Which activity level? Off, chill, active, or toaster?", 0.0f, false },
+    });
+
     static constexpr std::array Toaster_Thursday = std::to_array<Phrases::PhraseOutput>({
         { "It's Thursday! A new new eye tee overclocking strip is out. Reed it with toast.", 0.0f, false, "It's Thursday! A new nju aj ti OVERKLOKING strip is out. Read it with toast." },
         { "Thursday! New new eye tee overclocking strip, and toast to go with it.", 0.0f, false, "Thursday! New nju aj ti OVERKLOKING strip, and toast to go with it." },
@@ -3448,7 +3549,6 @@ public:
         m[static_cast<size_t>(Phrase::Fact)] = Toaster_Fact;
         m[static_cast<size_t>(Phrase::Joke)] = Toaster_Joke;
         m[static_cast<size_t>(Phrase::Ramble)] = Toaster_Ramble;
-        m[static_cast<size_t>(Phrase::RambleToaster)] = Toaster_Ramble;
         m[static_cast<size_t>(Phrase::Profanity)] = Toaster_Profanity;
         m[static_cast<size_t>(Phrase::PokeLvl1)] = Toaster_PokeLvl1;
         m[static_cast<size_t>(Phrase::PokeLvl2)] = Toaster_PokeLvl2;
@@ -3612,6 +3712,16 @@ public:
         m[static_cast<size_t>(Phrase::GreetingEvening)] = Toaster_GreetingEvening;
         m[static_cast<size_t>(Phrase::GreetingNight)] = Toaster_GreetingNight;
         m[static_cast<size_t>(Phrase::Thursday)] = Toaster_Thursday;
+        m[static_cast<size_t>(Phrase::SettingsFrontSensorOff)] = Toaster_SettingsFrontSensorOff;
+        m[static_cast<size_t>(Phrase::SettingsFrontSensorOn)] = Toaster_SettingsFrontSensorOn;
+        m[static_cast<size_t>(Phrase::SettingsBottomSensorOff)] = Toaster_SettingsBottomSensorOff;
+        m[static_cast<size_t>(Phrase::SettingsBottomSensorReduced)] = Toaster_SettingsBottomSensorReduced;
+        m[static_cast<size_t>(Phrase::SettingsBottomSensorOn)] = Toaster_SettingsBottomSensorOn;
+        m[static_cast<size_t>(Phrase::SettingsActivityOff)] = Toaster_SettingsActivityOff;
+        m[static_cast<size_t>(Phrase::SettingsActivityChill)] = Toaster_SettingsActivityChill;
+        m[static_cast<size_t>(Phrase::SettingsActivityActive)] = Toaster_SettingsActivityActive;
+        m[static_cast<size_t>(Phrase::SettingsActivityHyper)] = Toaster_SettingsActivityHyper;
+        m[static_cast<size_t>(Phrase::SettingsAskActivity)] = Toaster_SettingsAskActivity;
         m[static_cast<size_t>(Phrase::RambleMorning)] = Toaster_RambleMorning;
         m[static_cast<size_t>(Phrase::RambleAfternoon)] = Toaster_RambleAfternoon;
         m[static_cast<size_t>(Phrase::RambleEvening)] = Toaster_RambleEvening;

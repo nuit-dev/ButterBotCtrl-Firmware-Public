@@ -35,12 +35,12 @@ void GuideElement::buildUI(){
 	// Custom (NUIT): reminder while robot proximity sensors are ignored
 	std::vector<const char*> lines(std::begin(Lines), std::end(Lines));
 	if(Settings* settings = Application::getApp()->getService<Settings>()){
-		switch(settings->getSensorMode()){
-			case SensorMode::FrontOff: lines.push_back("SENSORS: FRONT OFF"); break;
-			case SensorMode::FloorOff: lines.push_back("SENSORS: FLOOR OFF"); break;
-			case SensorMode::AllOff: lines.push_back("SENSORS: ALL OFF"); break;
-			default: break;
-		}
+		const SettingsStruct current = settings->get();
+		const bool frontOff = current.frontSensor == FrontSensorMode::Off;
+		const bool floorOff = current.bottomSensor == BottomSensorMode::Off;
+		if(frontOff && floorOff) lines.push_back("SENSORS: ALL OFF");
+		else if(frontOff) lines.push_back("SENSORS: FRONT OFF");
+		else if(floorOff) lines.push_back("SENSORS: FLOOR OFF");
 	}
 
 	for(const char* text : lines){

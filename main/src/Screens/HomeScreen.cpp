@@ -63,6 +63,7 @@
 #include "Components/HomeWindows/WhatsThisWindow.h"
 #include "Components/HomeWindows/ObserveWindow.h"
 #include "Components/HomeWindows/CantMoveWindow.h"
+#include "Components/HomeWindows/SettingsChangeWindow.h"
 #include "Components/HomeWindows/HoldPopupWindow.h"
 #include "Components/HomeWindows/QuoteWindow.h"
 #include "RCScreen.h"
@@ -335,6 +336,10 @@ void HomeScreen::handleDataEvent(const BB::State state, const BB::Action action,
 		return;
 	}
 
+	if(state == BB::State::Idle && action.idle == BB::Action::Idle::SettingsSync){
+		return;
+	}
+
 	// Listen carries its phase in the data payload; a phase change means a new window,
 	// a repeated packet of the same phase is only an update
 	bool listenPhaseChanged = false;
@@ -511,6 +516,9 @@ HomeWindow* HomeScreen::createActionWindow(const BB::State state, const BB::Acti
 			case BB::Action::Scenario::WhatsThis: // Object Detection window - on demand
 				newWin = initActionWindow<WhatsThisWindow, WhatsThisData>(windowContainer, data);
 				break;
+			case BB::Action::Scenario::SettingsActivity:
+				newWin = initActionWindow<SettingsChangeWindow, SettingsChangeData>(windowContainer, data);
+				break;
 			// Custom (NUIT)
 			case BB::Action::Scenario::OverklokingDrive:
 			case BB::Action::Scenario::OverklokingQuote:
@@ -594,6 +602,9 @@ HomeWindow* HomeScreen::createActionWindow(const BB::State state, const BB::Acti
 				break;
 			case BB::Action::Idle::CantMove:
 				newWin = initActionWindow<CantMoveWindow, CantMoveData>(windowContainer, data);
+				break;
+			case BB::Action::Idle::SettingsChange:
+				newWin = initActionWindow<SettingsChangeWindow, SettingsChangeData>(windowContainer, data);
 				break;
 			default:
 				ESP_LOGE(TAG, "Idle action not recognised");

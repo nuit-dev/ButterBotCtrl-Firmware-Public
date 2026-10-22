@@ -30,13 +30,13 @@ public:
 	void sendDrive(DriveData data);
 	void sendRC(RCData data);
 	void sendScenario(BB::Action::Scenario scenario, ScenarioData data);
+	void sendSettings(SettingsData data);
 
 	// Custom (NUIT): proximity sensor filter; sent now if connected and again on every (re)connect.
 	// Call from the UI thread.
-	void setSensorCommand(Ctrl::Command command);
-	// Custom (NUIT): robot TTS voice preset, same behaviour as setSensorCommand
+	// Custom (NUIT): robot TTS voice preset, sent right away and re-sent on every connect
 	void setVoiceCommand(Ctrl::Command command);
-	// Custom (NUIT): robot volume / night mode / chatter, same behaviour as setSensorCommand
+	// Custom (NUIT): robot volume / night mode / roaming, sent right away and re-sent on every connect
 	void setRobotConfig(const RobotConfigData& config);
 	// Custom (NUIT): sets the robot's clock (only if connected). Call from the UI thread.
 	void sendSetTime(const SetTimeData& data);
@@ -70,9 +70,8 @@ private:
 	static constexpr size_t BufSize = 16;
 	std::vector<uint8_t> txBuf;
 
-	std::atomic<Ctrl::Command> sensorCommand{ Ctrl::SensorsAllOn };
 	std::atomic<Ctrl::Command> voiceCommand{ Ctrl::VoiceNormal };
-	std::atomic<bool> sensorSyncPending{ false }; // sensor + voice + robot config
+	std::atomic<bool> sensorSyncPending{ false }; // voice + robot config
 	std::atomic<uint32_t> robotConfigPacked{ 0 }; // RobotConfigData, 0 = not set yet
 
 	template<typename T>
@@ -83,10 +82,10 @@ private:
 		return buf;
 	}
 	static uint32_t pack(const RobotConfigData& c){
-		return 0x80000000u | ((uint32_t)(c.chatter & 0x07) << 28) | ((uint32_t)(c.roaming & 1) << 24) | (c.volume << 16) | (c.nightMode << 8) | c.nightVolume;
+		return 0x80000000u | ((uint32_t)(c.roaming & 1) << 24) | (c.volume << 16) | (c.nightMode << 8) | c.nightVolume;
 	}
 	static RobotConfigData unpack(uint32_t p){
-		return { (uint8_t)(p >> 16), (uint8_t)(p >> 8), (uint8_t)p, (uint8_t)((p >> 24) & 1), (uint8_t)((p >> 28) & 0x07) };
+		return { (uint8_t)(p >> 16), (uint8_t)(p >> 8), (uint8_t)p, (uint8_t)((p >> 24) & 1) };
 	}
 
 };

@@ -26,10 +26,6 @@ void Settings::store() const{
 		CMF_LOG(Settings, LogLevel::Error, "Error storing settings: %s", esp_err_to_name(err));
 		return;
 	}
-	err = nvs_set_u8(handle, SensorKey, static_cast<uint8_t>(sensorMode));
-	if(err != ESP_OK){
-		CMF_LOG(Settings, LogLevel::Error, "Error storing sensor mode: %s", esp_err_to_name(err));
-	}
 	err = nvs_set_u8(handle, VoiceKey, static_cast<uint8_t>(voiceMode));
 	if(err != ESP_OK){
 		CMF_LOG(Settings, LogLevel::Error, "Error storing voice mode: %s", esp_err_to_name(err));
@@ -42,16 +38,7 @@ void Settings::store() const{
 	nvs_set_u8(handle, NightModeKey, robotConfig.nightMode);
 	nvs_set_u8(handle, NightVolumeKey, robotConfig.nightVolume);
 	nvs_set_u8(handle, RoamingKey, robotConfig.roaming);
-	nvs_set_u8(handle, ChatterKey, robotConfig.chatter);
 	nvs_commit(handle);
-}
-
-SensorMode Settings::getSensorMode() const{
-	return sensorMode;
-}
-
-void Settings::setSensorMode(SensorMode mode){
-	sensorMode = mode;
 }
 
 VoiceMode Settings::getVoiceMode() const{
@@ -87,13 +74,6 @@ void Settings::load(){
 		settingsStruct = SettingsStruct();
 	}
 
-	uint8_t sensorVal = 0;
-	if(nvs_get_u8(handle, SensorKey, &sensorVal) == ESP_OK && sensorVal <= static_cast<uint8_t>(SensorMode::AllOff)){
-		sensorMode = static_cast<SensorMode>(sensorVal);
-	}else{
-		sensorMode = SensorMode::AllOn;
-	}
-
 	uint8_t voiceVal = 0;
 	if(nvs_get_u8(handle, VoiceKey, &voiceVal) == ESP_OK && voiceVal <= static_cast<uint8_t>(VoiceMode::Yoda)){
 		voiceMode = static_cast<VoiceMode>(voiceVal);
@@ -114,7 +94,6 @@ void Settings::load(){
 	if(nvs_get_u8(handle, NightModeKey, &val) == ESP_OK && val <= static_cast<uint8_t>(NightMode::From00)) robotConfig.nightMode = val;
 	if(nvs_get_u8(handle, NightVolumeKey, &val) == ESP_OK && val >= 10 && val <= 100) robotConfig.nightVolume = val;
 	if(nvs_get_u8(handle, RoamingKey, &val) == ESP_OK && val <= 1) robotConfig.roaming = val;
-	if(nvs_get_u8(handle, ChatterKey, &val) == ESP_OK && val <= static_cast<uint8_t>(ChatterMode::Toaster)) robotConfig.chatter = val;
 
 	switch(settingsStruct.inactivityTimeout){
 		case InactivityTimeout::Min2:
@@ -125,6 +104,36 @@ void Settings::load(){
 			break;
 		default:
 			settingsStruct.inactivityTimeout = SettingsStruct().inactivityTimeout;
+			break;
+	}
+
+	switch(settingsStruct.frontSensor){
+		case FrontSensorMode::Off:
+		case FrontSensorMode::On:
+			break;
+		default:
+			settingsStruct.frontSensor = SettingsStruct().frontSensor;
+			break;
+	}
+
+	switch(settingsStruct.bottomSensor){
+		case BottomSensorMode::Off:
+		case BottomSensorMode::Reduced:
+		case BottomSensorMode::On:
+			break;
+		default:
+			settingsStruct.bottomSensor = SettingsStruct().bottomSensor;
+			break;
+	}
+
+	switch(settingsStruct.activityMode){
+		case ActivityMode::Off:
+		case ActivityMode::Chill:
+		case ActivityMode::Active:
+		case ActivityMode::Hyper:
+			break;
+		default:
+			settingsStruct.activityMode = SettingsStruct().activityMode;
 			break;
 	}
 }

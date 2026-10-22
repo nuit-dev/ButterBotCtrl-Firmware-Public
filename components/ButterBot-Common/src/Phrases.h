@@ -175,6 +175,16 @@ enum class Phrase : uint16_t {
     MotorBoardFailure,
     ShuttingDown,
 	ListenAbort,
+	SettingsFrontSensorOff,
+	SettingsFrontSensorOn,
+	SettingsBottomSensorOff,
+	SettingsBottomSensorReduced,
+	SettingsBottomSensorOn,
+	SettingsActivityOff,
+	SettingsActivityChill,
+	SettingsActivityActive,
+	SettingsActivityHyper,
+	SettingsAskActivity,
     // Custom (NUIT)
     Overkloking,
     OverklokingBest,
@@ -197,7 +207,6 @@ enum class Phrase : uint16_t {
     RambleEvening,
     RambleNight,
     TerminateRefusal,
-    RambleToaster, // Custom (NUIT): CHATTER = TOASTER, the toaster lines only, whatever the VOICE
     // Add phrases here
     COUNT
 };

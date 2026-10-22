@@ -69,6 +69,11 @@ constexpr std::pair<const char*, Action> ScenarioNameMap[] = {
 	{ "Remember this face", { BB::Action::Scenario::FaceDetect, FaceScenarioData{ FaceScenarioData::Phase::Remember } } },
 	{ "Forget Owner", { BB::Action::Scenario::FaceDetectForget, FaceScenarioData{ FaceScenarioData::Phase::Forget } } },
 	{ "Dance", { BB::Action::Scenario::Dance, {} } },
+	{ "Activity Mode", { BB::Action::Scenario::SettingsActivity, ActivityScenarioData{ ActivityScenarioData::Level::None } } },
+	{ "Activity Off", { BB::Action::Scenario::SettingsActivity, ActivityScenarioData{ ActivityScenarioData::Level::Off } } },
+	{ "Activity Chill", { BB::Action::Scenario::SettingsActivity, ActivityScenarioData{ ActivityScenarioData::Level::Chill } } },
+	{ "Activity Active", { BB::Action::Scenario::SettingsActivity, ActivityScenarioData{ ActivityScenarioData::Level::Active } } },
+	{ "Activity Hyper", { BB::Action::Scenario::SettingsActivity, ActivityScenarioData{ ActivityScenarioData::Level::Hyper } } },
 	// Custom (NUIT) - last, with the settings icon, two lines (107 px in one); HAL may refuse first (ActionElement)
 	{ "TERMINATE\nCONSCIOUSNESS", { BB::Action::Scenario::DaisySong, {} } },
 };

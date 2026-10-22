@@ -27,14 +27,6 @@ Com::Com(BLE::Client* client, bool internalStack) : AsyncEntity(10, 3 * 1024, CO
 	txBuf.reserve(BufSize);
 }
 
-void Com::setSensorCommand(Ctrl::Command command){
-	sensorCommand = command;
-	if(status == ConnStatus::Connected){
-		sendCommand(command); // called from the UI thread, like the other send* calls
-	}
-	// On every (re)connect the Com thread re-sends the current value (see tick)
-}
-
 void Com::setVoiceCommand(Ctrl::Command command){
 	voiceCommand = command;
 	if(status == ConnStatus::Connected){
@@ -105,6 +97,18 @@ void Com::sendScenario(BB::Action::Scenario scenario, ScenarioData data){
 	txBuf.clear();
 }
 
+void Com::sendSettings(SettingsData data){
+	Ctrl::Command command = Ctrl::Settings;
+	txBuf.resize(sizeof(Ctrl::Command));
+	memcpy(txBuf.data(), &command, sizeof(Ctrl::Command));
+
+	txBuf.resize(txBuf.size() + sizeof(SettingsData));
+	memcpy(txBuf.data() + sizeof(Ctrl::Command), &data, sizeof(SettingsData));
+
+	txChar->write(txBuf);
+	txBuf.clear();
+}
+
 void Com::tick(float deltaTime) noexcept{
 	if(status != ConnStatus::Connected) return;
 
@@ -113,7 +117,7 @@ void Com::tick(float deltaTime) noexcept{
 
 	if(sensorSyncPending.exchange(false)){
 		// Local buffer: txBuf is used by the UI thread
-		for(const Ctrl::Command cmd : { sensorCommand.load(), voiceCommand.load() }){
+		for(const Ctrl::Command cmd : { voiceCommand.load() }){
 			std::vector<uint8_t> buf(sizeof(Ctrl::Command));
 			memcpy(buf.data(), &cmd, sizeof(Ctrl::Command));
 			txChar->write(buf);
