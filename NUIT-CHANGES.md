@@ -9,7 +9,7 @@ Custom OVERKLOKING mod by NUIT d.o.o. Must be flashed together with the matching
 - Poke: short press = stock poke, hold 1 s = OVERKLOKING drive + line (`Screens/HomeScreen.*`)
 - `Components/HomeWindows/QuoteWindow` – shows the quote; long quotes follow the robot sentence by sentence
 - ButterBot-Common is shared with the robot repo – keep it identical in both.
-- Settings: 4th row SENSOR (ALL ON / FRONT OFF / FLOOR OFF / ALL OFF), `Components/SettingsWindow/SensorSelector`.
+- (Replaced in v7 by the CircuitMess 1.1 FRONT / BOTTOM rows) Settings: 4th row SENSOR (ALL ON / FRONT OFF / FLOOR OFF / ALL OFF), `Components/SettingsWindow/SensorSelector`.
   Stored in NVS key "Sensors" (separate from the settings blob), sent to the robot on change and on every connect
   (`Services/Com::setSensorCommand`). "Press joystick to return" hint removed to make room.
   Home screen guide shows "SENSORS: ... OFF" while any sensor is off.
@@ -79,11 +79,22 @@ Custom OVERKLOKING mod by NUIT d.o.o. Must be flashed together with the matching
     range clamped to +-65, glm restored.
   - `PairingScreen`: the hint is built for both variants (OVERKLOKING "CONNECTING..." and the animation); our reconnect
     loop stays, and a `leaving` flag makes sure only one transition (Settings or home) happens.
-  - `GAP::disconnect()` also clears `connectPending`, so our continuous scan can connect again.- v6 - Settings row CHATTER (`Components/SettingsWindow/ChatterSelector`, OFF / RARE / NORMAL / OFTEN / TOASTER)
+  - `GAP::disconnect()` also clears `connectPending`, so our continuous scan can connect again.
+- v6 - Settings row CHATTER (`Components/SettingsWindow/ChatterSelector`, OFF / RARE / NORMAL / OFTEN / TOASTER)
   between VOICE and STARTUP, 13 rows (`RowY`, `DateRowIndex` 11, `TimeRowIndex` 12). Stored in
   `RobotConfigData::chatter` (NVS key "Chatter"), sent with `Ctrl::RobotConfig`; `Com::pack` keeps it in bits 28-30
   (roaming bit 24, "set" marker bit 31). ButterBot-Common as in the robot repo: `RambleKind::Toaster` shows the
   `Toaster_Ramble` line the robot says in CHATTER TOASTER.
+
+- v7 - merged CircuitMess controller 1.1 (branch `merge-upstream-1.1`): Settings rows FRONT (`FrontSensorSelector`), BOTTOM
+  (`BottomSensorSelector`) and ACTIVITY (`ActivitySelector`) replace our SENSOR and CHATTER rows (14 rows:
+  `RowY`, `DateRowIndex` 12, `TimeRowIndex` 13); the upstream selectors were made 15 px high and given short labels to
+  fit the compact layout, and `ActivitySelector::setToaster()` renames HYPER to TOASTER while VOICE is TALKIE TOASTER.
+  `SettingsScreen` sends `Ctrl::Settings` when Settings closes and applies `Idle::SettingsSync` from the robot;
+  `SettingsChangeWindow` and the activity menu items come from upstream. `Com::pack` no longer carries chatter (roaming
+  bit 24, "set" marker bit 31). `GuideElement` reads the new sensor modes. `ButterBot-Common` is identical to the robot repo.
+  `RambleWindow`: label 90 px wide like `QuoteWindow`; lines over 140 characters go in a scrolling box that moves down
+  while the robot speaks (60 ms per character after 1.5 s).
 
 ## Flashing
 

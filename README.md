@@ -28,6 +28,13 @@ Fork of the [CircuitMess ButterBot controller](https://github.com/CircuitMess/Bu
 
 ## What's new
 
+### v7 – CircuitMess update 1.1
+- Includes the official CircuitMess controller update 1.1: proximity sensor settings, idle activity levels, battery reading and battery life improvements, and the new phrases and actions.
+- **Settings:** the mod's SENSOR and CHATTER rows are replaced by the official **FRONT**, **BOTTOM** and **ACTIVITY** rows (14 rows now). With VOICE → TALKIE TOASTER the highest ACTIVITY level reads **TOASTER**. They are sent to the robot when you leave Settings and synced back from it. The home screen guide still reminds you when a sensor is off.
+- Long ramble lines (over 140 characters) now scroll in a box while the robot speaks, instead of running off the screen.
+- Kept: ROAMING, VOICE, VOLUME, NIGHT MODE, DATE / TIME, STARTUP, the menu with all the characters and TERMINATE CONSCIOUSNESS.
+- Flash together with the [robot mod v7](https://github.com/nuit-dev/ButterBot-Firmware-Public/releases/tag/v7).
+
 ### v6 – Talkie Toaster chatter
 - **Settings → CHATTER**, between VOICE and STARTUP: OFF / RARE / NORMAL / OFTEN / TOASTER – how often the robot talks on its own while idle (RARE 1–3 h, NORMAL 30–60 min, OFTEN 10–20 min, TOASTER 3–8 min). TOASTER makes the robot say only Talkie Toaster lines, and the screen shows the same line. Settings now has 13 rows. Saved on the controller and sent to the robot on every connect.
 - Flash together with the [robot mod v6](https://github.com/nuit-dev/ButterBot-Firmware-Public/releases/tag/v6). With a v5.x robot the new row does nothing.
@@ -120,10 +127,10 @@ Ready-made images are attached to releases from [v3](https://github.com/nuit-dev
 python -m esptool -p <PORT> flash_id
 ```
 
-**Option A – one file** (`…-controller-full.bin`): simplest, but resets the controller's settings (theme, brightness, sleep, SENSOR, ROAMING, VOICE, CHATTER, STARTUP, VOLUME, NIGHT MODE, NIGHT VOLUME).
+**Option A – one file** (`…-controller-full.bin`): simplest, but resets the controller's settings (theme, brightness, sleep, FRONT, BOTTOM, ACTIVITY, ROAMING, VOICE, STARTUP, VOLUME, NIGHT MODE, NIGHT VOLUME).
 
 ```shell
-python -m esptool --chip esp32s3 -p <PORT> -b 460800 --before default_reset --after no_reset write_flash 0 ButterBot-OVERKLOKING-v6-controller-full.bin
+python -m esptool --chip esp32s3 -p <PORT> -b 460800 --before default_reset --after no_reset write_flash 0 ButterBot-OVERKLOKING-v7-controller-full.bin
 ```
 
 **Option B – keep settings** (`…-controller-parts.zip`): unzip, then run in the unzipped folder:
