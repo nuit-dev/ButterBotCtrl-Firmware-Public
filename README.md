@@ -147,6 +147,8 @@ python -c "import serial,time; s=serial.Serial(); s.port='<PORT>'; s.dtr=False; 
 
 Don't use `--after hard_reset` (esptool's default) – it left the controller stuck once, like the robot. Flash the [robot](https://github.com/nuit-dev/ButterBot-Firmware-Public#flash-without-building) too – it needs its own steps. SHA-256 checksums are in `SHA256SUMS-controller.txt` in the release.
 
+**Doesn't start?** If the screen stays dark but the USB port is still there, the controller is stuck in download mode (e.g. after `flash_id` or an interrupted flash). Run the reset command above.
+
 ## Build & flash
 ESP-IDF 5.5.3: `idf.py build`, then flash from the `build` directory with the Option B command above (`--after no_reset` + reset over USB) – plain `idf.py flash` ends with `--after hard_reset`.
 The controller has 4 MB flash, the robot 16 MB – check with `esptool.py -p <PORT> flash_id` and don't mix up the firmwares.
