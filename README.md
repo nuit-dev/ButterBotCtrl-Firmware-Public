@@ -28,6 +28,10 @@ Fork of the [CircuitMess ButterBot controller](https://github.com/CircuitMess/Bu
 
 ## What's new
 
+### Next (v7.1, in testing, not released yet – build from source)
+- Shows the robot's rewritten toaster lines: all 1,015 are short and silly now (none over 89 characters), so they fit the screen without scrolling.
+- The robot now talks a lot less often on the lower ACTIVITY levels (CHILL a few times a day) – see the [robot repo](https://github.com/nuit-dev/ButterBot-Firmware-Public#whats-new).
+
 ### v7 – CircuitMess update 1.1
 - Includes the official CircuitMess controller update 1.1: proximity sensor settings, idle activity levels, battery reading and battery life improvements, and the new phrases and actions.
 - **Settings:** the mod's SENSOR and CHATTER rows are replaced by the official **FRONT**, **BOTTOM** and **ACTIVITY** rows (14 rows now). With VOICE → TALKIE TOASTER the highest ACTIVITY level reads **TOASTER**. They are sent to the robot when you leave Settings and synced back from it. The home screen guide still reminds you when a sensor is off.

@@ -95,6 +95,8 @@ Custom OVERKLOKING mod by NUIT d.o.o. Must be flashed together with the matching
   bit 24, "set" marker bit 31). `GuideElement` reads the new sensor modes. `ButterBot-Common` is identical to the robot repo.
   `RambleWindow`: label 90 px wide like `QuoteWindow`; lines over 140 characters go in a scrolling box that moves down
   while the robot speaks (60 ms per character after 1.5 s).
+- v7.1 (in testing) - `ButterBot-Common` with the rewritten `Toaster_Ramble` (1,015 lines, max 89 characters, so the
+  `RambleWindow` scroll box is no longer needed for them). Identical in both repos.
 
 ## Flashing
 
