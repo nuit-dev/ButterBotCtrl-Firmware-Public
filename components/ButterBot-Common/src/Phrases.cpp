@@ -3783,7 +3783,8 @@ namespace {
 
     bool isCharacterQuote(Phrase phrase){
         return phrase == Phrase::Darth || phrase == Phrase::Hawking || phrase == Phrase::Hal || phrase == Phrase::Daisy ||
-               phrase == Phrase::Toaster || phrase == Phrase::Yoda || phrase == Phrase::Croatian || phrase == Phrase::TerminateRefusal;
+               phrase == Phrase::Toaster || phrase == Phrase::Yoda || phrase == Phrase::Croatian || phrase == Phrase::TerminateRefusal ||
+               phrase == Phrase::Ultron;
     }
 
     // Custom (NUIT): YODA voice. "I will remember." -> "Remember, I will." Only the first auxiliary in the first four

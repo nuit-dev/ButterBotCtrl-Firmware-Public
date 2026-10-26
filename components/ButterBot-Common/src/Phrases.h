@@ -230,7 +230,7 @@ public:
     // Toaster: every phrase that has a Talkie Toaster version (all but the character quotes) uses it, same
     // placeholders, so functional messages keep their information (Toaster_* arrays in Phrases.cpp).
     // Yoda: map()/mapShown() reorder sentences Yoda style ("I will remember" -> "Remember, I will").
-    // Character quotes (Darth, Hawking, HAL, Daisy, Toaster, Yoda, Croatian, TerminateRefusal) are never changed.
+    // Character quotes (Darth, Hawking, HAL, Daisy, Toaster, Yoda, Croatian, TerminateRefusal, Ultron) are never changed.
     static inline std::atomic<bool> toasterMode{ false };
     static inline std::atomic<bool> yodaMode{ false };
 
