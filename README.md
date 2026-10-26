@@ -31,6 +31,7 @@ Fork of the [CircuitMess ButterBot controller](https://github.com/CircuitMess/Bu
 ### Next (v7.1, in testing, not released yet – build from source)
 - Shows the robot's rewritten toaster lines: all 1,015 are short and silly now (none over 89 characters), so they fit the screen without scrolling.
 - The robot now talks a lot less often on the lower ACTIVITY levels (CHILL a few times a day) – see the [robot repo](https://github.com/nuit-dev/ButterBot-Firmware-Public#whats-new).
+- ULTRON's monologue is shown as written in Yoda mode too (the robot always says it in the stock voice now).
 
 ### v7 – CircuitMess update 1.1
 - Includes the official CircuitMess controller update 1.1: proximity sensor settings, idle activity levels, battery reading and battery life improvements, and the new phrases and actions.
