@@ -28,10 +28,11 @@ Fork of the [CircuitMess ButterBot controller](https://github.com/CircuitMess/Bu
 
 ## What's new
 
-### Next (v7.1, in testing, not released yet – build from source)
+### v7.1 – quieter talking, shorter toaster lines
 - Shows the robot's rewritten toaster lines: all 1,015 are short and silly now (none over 89 characters), so they fit the screen without scrolling.
 - The robot now talks a lot less often on the lower ACTIVITY levels (CHILL a few times a day) – see the [robot repo](https://github.com/nuit-dev/ButterBot-Firmware-Public#whats-new).
 - ULTRON's monologue is shown as written in Yoda mode too (the robot always says it in the stock voice now).
+- Flash together with the [robot mod v7.1](https://github.com/nuit-dev/ButterBot-Firmware-Public/releases/tag/v7.1). Upgrading from v7: only the app changed, flashing it alone at 0x10000 is enough.
 
 ### v7 – CircuitMess update 1.1
 - Includes the official CircuitMess controller update 1.1: proximity sensor settings, idle activity levels, battery reading and battery life improvements, and the new phrases and actions.
@@ -135,7 +136,7 @@ python -m esptool -p <PORT> flash_id
 **Option A – one file** (`…-controller-full.bin`): simplest, but resets the controller's settings (theme, brightness, sleep, FRONT, BOTTOM, ACTIVITY, ROAMING, VOICE, STARTUP, VOLUME, NIGHT MODE, NIGHT VOLUME).
 
 ```shell
-python -m esptool --chip esp32s3 -p <PORT> -b 460800 --before default_reset --after no_reset write_flash 0 ButterBot-OVERKLOKING-v7-controller-full.bin
+python -m esptool --chip esp32s3 -p <PORT> -b 460800 --before default_reset --after no_reset write_flash 0 ButterBot-OVERKLOKING-v7.1-controller-full.bin
 ```
 
 **Option B – keep settings** (`…-controller-parts.zip`): unzip, then run in the unzipped folder:
